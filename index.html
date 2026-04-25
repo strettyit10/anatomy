@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GI Anatomy — Study Hub</title>
+<style>
+  :root {
+    --bg: #fbf9f6;
+    --surface: #ffffff;
+    --ink: #1c2230;
+    --ink-soft: #4a5568;
+    --ink-light: #6b7280;
+    --accent: #b14b2c;
+    --accent-soft: #fde8df;
+    --accent-pale: #fef5f0;
+    --teal: #2c7a7b;
+    --teal-soft: #e0f2f1;
+    --teal-pale: #f0f9f8;
+    --gold: #b8860b;
+    --gold-soft: #fef6e0;
+    --gold-pale: #fef9ec;
+    --plum: #7c4262;
+    --plum-soft: #f3e6ed;
+    --plum-pale: #faf3f6;
+    --green: #2f7d32;
+    --green-soft: #e3f5e3;
+    --border: #e8e3da;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
+    --shadow-hover: 0 4px 8px rgba(0,0,0,0.08), 0 12px 24px rgba(0,0,0,0.08);
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    margin: 0;
+    line-height: 1.6;
+    font-size: 14px;
+  }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 32px 60px;
+  }
+  @media (max-width: 700px) {
+    .container { padding: 24px 16px 40px; }
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, var(--accent) 0%, #d96b3c 60%, var(--gold) 100%);
+    color: white;
+    padding: 36px 40px;
+    border-radius: 16px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow);
+  }
+  .hero h1 {
+    margin: 0 0 8px;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+  }
+  .hero .tagline {
+    font-size: 16px;
+    opacity: 0.92;
+    margin: 0 0 20px;
+  }
+  .hero .meta {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    font-size: 13px;
+  }
+  .hero .meta div {
+    background: rgba(255,255,255,0.18);
+    padding: 8px 14px;
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+  }
+  .hero .meta strong { display: block; font-size: 16px; margin-top: 2px; }
+
+  /* Section */
+  section { margin: 40px 0; }
+  h2 {
+    font-size: 20px;
+    color: var(--ink);
+    margin: 0 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2 .badge {
+    background: var(--accent);
+    color: white;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  h2 .count {
+    background: var(--ink-light);
+    color: white;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-weight: 700;
+  }
+  .section-sub {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin: 0 0 16px;
+  }
+
+  /* Hero cards (3 main) */
+  .hero-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  @media (max-width: 800px) {
+    .hero-cards { grid-template-columns: 1fr; }
+  }
+  .hero-card {
+    background: white;
+    border-radius: 14px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+    border-top: 5px solid var(--accent);
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: block;
+  }
+  .hero-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+  .hero-card.teal { border-top-color: var(--teal); }
+  .hero-card.plum { border-top-color: var(--plum); }
+  .hero-card .label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .hero-card.teal .label { color: var(--teal); }
+  .hero-card.plum .label { color: var(--plum); }
+  .hero-card h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    color: var(--ink);
+  }
+  .hero-card p { margin: 0; font-size: 13px; color: var(--ink-soft); }
+  .hero-card .arrow {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .hero-card.teal .arrow { color: var(--teal); }
+  .hero-card.plum .arrow { color: var(--plum); }
+
+  /* Resource grid (smaller cards) */
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+  .resource {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: all 0.15s;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .resource:hover {
+    border-color: var(--accent);
+    background: var(--accent-pale);
+    transform: translateX(2px);
+  }
+  .resource .tag {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 10px;
+    font-weight: 800;
+    padding: 3px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .resource .tag.gallery { background: var(--plum-soft); color: var(--plum); }
+  .resource .tag.notes { background: var(--teal-soft); color: var(--teal); }
+  .resource .tag.exam { background: var(--gold-soft); color: var(--gold); }
+  .resource .tag.book { background: #e8e3da; color: var(--ink-soft); }
+  .resource .tag.lect { background: #f3e6ed; color: var(--plum); }
+  .resource .info { flex: 1; min-width: 0; }
+  .resource .title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    word-break: break-word;
+  }
+  .resource .desc {
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  /* Plan timeline */
+  .plan {
+    background: linear-gradient(135deg, var(--gold-pale), var(--teal-pale));
+    border-radius: 14px;
+    padding: 24px 28px;
+    border: 1px solid var(--border);
+  }
+  .plan-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 18px;
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .plan-row:last-child { border-bottom: none; }
+  .plan-day {
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+  }
+  .plan-day .date { display: block; color: var(--ink-soft); font-size: 11px; font-weight: 400; margin-top: 2px; }
+  .plan-content { font-size: 13px; }
+  .plan-content strong { color: var(--ink); }
+  .plan-content a { color: var(--accent); text-decoration: none; font-weight: 600; border-bottom: 1px dashed var(--accent); }
+  .plan-content a:hover { background: var(--accent-pale); padding: 1px 4px; border-radius: 3px; border-bottom: none; }
+
+  /* Disclosure groups */
+  details.group {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin: 8px 0;
+    overflow: hidden;
+  }
+  details.group summary {
+    padding: 14px 18px;
+    cursor: pointer;
+    background: #fafaf7;
+    list-style: none;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+  }
+  details.group summary::-webkit-details-marker { display: none; }
+  details.group summary::after {
+    content: "▸";
+    margin-left: auto;
+    color: var(--ink-light);
+    transition: transform 0.2s;
+  }
+  details.group[open] summary::after { transform: rotate(90deg); }
+  details.group summary:hover { background: var(--accent-pale); }
+  details.group .group-body { padding: 12px 18px 16px; }
+  details.group .group-tag {
+    background: var(--ink);
+    color: white;
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  details.group .group-count {
+    background: var(--ink-light);
+    color: white;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+  }
+  details.group ul { margin: 4px 0; padding-left: 20px; columns: 2; column-gap: 24px; }
+  @media (max-width: 700px) { details.group ul { columns: 1; } }
+  details.group li { padding: 3px 0; break-inside: avoid; font-size: 13px; }
+  details.group li a { color: var(--accent); text-decoration: none; }
+  details.group li a:hover { text-decoration: underline; }
+
+  footer {
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 12px;
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header class="hero">
+  <h1>GI Anatomy — Study Hub</h1>
+  <p class="tagline">Everything you need for Monday's exam, in one place.</p>
+  <div class="meta">
+    <div>Exam<strong>Mon Apr 27, 2026</strong></div>
+    <div>Format<strong>30–35 image-based MCQs</strong></div>
+    <div>Topics<strong>4 labs · 8 themes</strong></div>
+  </div>
+</header>
+
+<!-- ================== START HERE ================== -->
+<section>
+<h2>Start here <span class="badge">Day 1–3 core</span></h2>
+<p class="section-sub">The 3 interactive resources I built. Use these as your primary study tools.</p>
+
+<div class="hero-cards">
+<a class="hero-card" href="GI_Study_Guide.html">
+  <div class="label">Day 1 · Learn</div>
+  <h3>Main Study Guide</h3>
+  <p>The whole framework, chunked into 53 small sections across 8 themes. Built-in Predict & Check, Fill-in, Spaced Review, and quiz at the end of each theme. Takes ~3.5 hours to work through the first time.</p>
+  <span class="arrow">Open guide →</span>
+</a>
+
+<a class="hero-card teal" href="Active_Recall.html">
+  <div class="label">Day 2 · Drill</div>
+  <h3>Active Recall</h3>
+  <p>50 exam-style MCQs + 12 fill-in-blanks + 8 quick recalls + 7 interactive matching exercises + 3 pathway tracings, organized by the 10 highest-frequency exam themes. Live score tracker.</p>
+  <span class="arrow">Start drilling →</span>
+</a>
+
+<a class="hero-card plum" href="GI_Anatomy_By_Lab_Gallery.html">
+  <div class="label">Visual reference</div>
+  <h3>GI Image Gallery</h3>
+  <p>316 anatomy images extracted from your Anki decks (Block 4 + GUSOM) and filtered by GI lab tags. Sorted into Lab 1–4 to mirror your structures list.</p>
+  <span class="arrow">Browse images →</span>
+</a>
+</div>
+</section>
+
+<!-- ================== STUDY PLAN ================== -->
+<section>
+<h2>72-hour study plan</h2>
+<div class="plan">
+
+<div class="plan-row">
+<div class="plan-day">Sat<span class="date">Apr 25</span></div>
+<div class="plan-content"><strong>Day 1 — Build the framework.</strong> Work through the <a href="GI_Study_Guide.html">Main Study Guide</a> theme by theme. ~30 min per theme, take a break between each. Open the <a href="GI_Anatomy_By_Lab_Gallery.html">image gallery</a> alongside for visual reinforcement. Don't worry about memorization yet — focus on understanding.</div>
+</div>
+
+<div class="plan-row">
+<div class="plan-day">Sun<span class="date">Apr 26</span></div>
+<div class="plan-content"><strong>Day 2 — Drill cold.</strong> Take the <a href="Active_Recall.html">Active Recall</a> drill without notes — score yourself. Anything below 80% on a theme = priority review. Re-read those chunks in the study guide. Then re-take the drill (use "Reset everything" in sidebar). Also work through the <a href="Exam%20Questions/GI%20ANAT%20Practice%20Questions.pdf">Practice Questions PDF</a> — these mirror the actual exam format.</div>
+</div>
+
+<div class="plan-row">
+<div class="plan-day">Mon AM<span class="date">Apr 27</span></div>
+<div class="plan-content"><strong>Exam day — Final scan.</strong> Re-read the "Top 25 must-knows" at the top of the <a href="GI_Study_Guide.html#top25">study guide</a>. Skim any matched-area images you got wrong. Don't try to learn anything new — trust the work you've done.</div>
+</div>
+
+</div>
+</section>
+
+<!-- ================== IMAGE GALLERIES ================== -->
+<section>
+<h2>Image galleries <span class="count">2,148 images</span></h2>
+<p class="section-sub">Browsable thumbnail grids of every cadaver photo and diagram extracted from your Anki decks.</p>
+
+<div class="resource-grid">
+<a class="resource" href="GI_Anatomy_By_Lab_Gallery.html">
+  <span class="tag gallery">Top pick</span>
+  <div class="info"><div class="title">GI by Lab — Anki tag-filtered</div><div class="desc">316 images sorted into Lab 1–4 (Block 4 + GUSOM)</div></div>
+</a>
+<a class="resource" href="BlueLink_Gallery.html">
+  <span class="tag gallery">Cadaver</span>
+  <div class="info"><div class="title">Michigan BlueLink Atlas</div><div class="desc">145 labeled cadaver dissection photos</div></div>
+</a>
+<a class="resource" href="AnatomyConcepts_Gallery.html">
+  <span class="tag gallery">Diagram</span>
+  <div class="info"><div class="title">AnatomyConcepts</div><div class="desc">198 textbook-style anatomy diagrams</div></div>
+</a>
+<a class="resource" href="GUSOM_Gallery.html">
+  <span class="tag gallery">Mixed</span>
+  <div class="info"><div class="title">GUSOM Anki — all</div><div class="desc">682 images (lectures + cadaver, all blocks)</div></div>
+</a>
+<a class="resource" href="Block4_Gallery.html">
+  <span class="tag gallery">Mixed</span>
+  <div class="info"><div class="title">Block 4 Anki — all</div><div class="desc">1,123 images (mostly Block 4 lectures)</div></div>
+</a>
+</div>
+</section>
+
+<!-- ================== EXAM QUESTIONS ================== -->
+<section>
+<h2>Past exam materials <span class="badge">Highest yield</span></h2>
+<p class="section-sub">The Practice Questions PDF is the single best simulation of Monday's exam. Drill it cold on Day 2.</p>
+
+<div class="resource-grid">
+<a class="resource" href="Exam%20Questions/GI%20ANAT%20Practice%20Questions.pdf">
+  <span class="tag exam">★ Top</span>
+  <div class="info"><div class="title">GI ANAT Practice Questions</div><div class="desc">30 exam-style MCQs — most representative of Monday's format</div></div>
+</a>
+<a class="resource" href="Exam%20Questions/GI%20ANAT%20Practice%20Questions_Annotated.pdf">
+  <span class="tag exam">Annotated</span>
+  <div class="info"><div class="title">Practice Questions — Annotated</div><div class="desc">Same questions with explanation overlays</div></div>
+</a>
+<a class="resource" href="Exam%20Questions/GI%20Practice%20Practical%202024.pdf">
+  <span class="tag exam">Practical</span>
+  <div class="info"><div class="title">2024 Practice Practical</div><div class="desc">Last year's practice practical with answers</div></div>
+</a>
+<a class="resource" href="Exam%20Questions/2026%20GI%20lab%20quiz%201.pdf">
+  <span class="tag exam">Lab 1</span>
+  <div class="info"><div class="title">2026 Lab Quiz 1</div><div class="desc">Wall + inguinal region</div></div>
+</a>
+<a class="resource" href="Exam%20Questions/2026%20GI%20lab%20quiz%202.pdf">
+  <span class="tag exam">Lab 2</span>
+  <div class="info"><div class="title">2026 Lab Quiz 2</div><div class="desc">Peritoneum + foregut</div></div>
+</a>
+<a class="resource" href="Exam%20Questions/2026%20GI%20lab%20quiz%203.pdf">
+  <span class="tag exam">Lab 3</span>
+  <div class="info"><div class="title">2026 Lab Quiz 3</div><div class="desc">Midgut + hindgut</div></div>
+</a>
+<a class="resource" href="Exam%20Questions/2026%20GI%20lab%20quiz%204.pdf">
+  <span class="tag exam">Lab 4</span>
+  <div class="info"><div class="title">2026 Lab Quiz 4</div><div class="desc">Posterior wall + kidneys</div></div>
+</a>
+<a class="resource" href="Practice%20Problems/GI%20Anatomy%20P2P%20Questions%20Annotated.pdf">
+  <span class="tag exam">P2P</span>
+  <div class="info"><div class="title">GI Anatomy P2P Questions</div><div class="desc">Peer-to-peer practice questions, annotated</div></div>
+</a>
+</div>
+
+<details class="group">
+<summary><span class="group-tag">Older quizzes</span> 2024 lab quizzes (4) <span class="group-count">4</span></summary>
+<div class="group-body">
+<ul>
+<li><a href="Exam%20Questions/2024%20GI%20lab%20quiz%201.pdf">2024 Lab Quiz 1</a></li>
+<li><a href="Exam%20Questions/2024%20GI%20lab%20quiz%202.pdf">2024 Lab Quiz 2</a></li>
+<li><a href="Exam%20Questions/2024%20GI%20lab%20quiz%203.pdf">2024 Lab Quiz 3</a></li>
+<li><a href="Exam%20Questions/2024%20GI%20lab%20quiz%204.pdf">2024 Lab Quiz 4</a></li>
+</ul>
+</div>
+</details>
+</section>
+
+<!-- ================== COURSE NOTES ================== -->
+<section>
+<h2>Course notes &amp; structure list</h2>
+<p class="section-sub">Your structures list and lab dissection notes — open while studying for direct mapping.</p>
+
+<div class="resource-grid">
+<a class="resource" href="2026%20GI%20Lab%20Structure%20List%20%281%29.pdf">
+  <span class="tag notes">★ Required</span>
+  <div class="info"><div class="title">2026 GI Lab Structure List</div><div class="desc">The official list of structures you must know &amp; label</div></div>
+</a>
+<a class="resource" href="Notes/GI%20Lab%201%20Osteology%20%26%20Anterior%20Abdominal%20Wall.pdf">
+  <span class="tag notes">Lab 1</span>
+  <div class="info"><div class="title">Lab 1 — Osteology &amp; Anterior Wall</div><div class="desc">Course lab notes</div></div>
+</a>
+<a class="resource" href="Notes/GI%20Lab%202%20Inspection%20of%20Viscera%20and%20Celiac%20Trunk%20Dissection.pdf">
+  <span class="tag notes">Lab 2</span>
+  <div class="info"><div class="title">Lab 2 — Viscera &amp; Celiac Trunk</div><div class="desc">Course lab notes</div></div>
+</a>
+<a class="resource" href="Notes/GI%20Lab%203%20SMA%20and%20IMA%20Dissection.pdf">
+  <span class="tag notes">Lab 3</span>
+  <div class="info"><div class="title">Lab 3 — SMA + IMA Dissection</div><div class="desc">Course lab notes</div></div>
+</a>
+<a class="resource" href="Notes/GI%20Lab%204%20Dissection%20of%20the%20Posterior%20Abdominal%20Wall%20and%20Kidneys.pdf">
+  <span class="tag notes">Lab 4</span>
+  <div class="info"><div class="title">Lab 4 — Posterior Wall + Kidneys</div><div class="desc">Course lab notes</div></div>
+</a>
+</div>
+
+<details class="group">
+<summary><span class="group-tag">HY summaries</span> Student summary docs <span class="group-count">5</span></summary>
+<div class="group-body">
+<ul>
+<li><a href="Notes/Student%20Summary/HY%20GI%20Anatomy%20Guide-2.pdf">HY GI Anatomy Guide</a></li>
+<li><a href="Notes/Student%20Summary/2_GI%20Anat%20Lab_Peritoneal%20Cavity%20Structure%20List%20SP.pdf">Peritoneal Cavity Structure List</a></li>
+<li><a href="Notes/Student%20Summary/3_GI%20Anat%20Lab_Midgut%20and%20Hindgut%20SP.pdf">Midgut + Hindgut Summary</a></li>
+<li><a href="Notes/Student%20Summary/4_GI%20Anat%20Lab_Retroperitoneum%20SP.pdf">Retroperitoneum Summary</a></li>
+<li><a href="Notes/Student%20Summary/GI%20Vasculature%20Anatomy.pdf">GI Vasculature Anatomy</a></li>
+</ul>
+</div>
+</details>
+</section>
+
+<!-- ================== WORKBOOKS + TEXTBOOKS ================== -->
+<section>
+<h2>Workbooks &amp; textbooks</h2>
+<p class="section-sub">Visual companions for dissection-style learning + comprehensive reference texts.</p>
+
+<div class="resource-grid">
+<a class="resource" href="Images/Abdominal%20Wall%20and%20Viscera%20in%20Situ%20%281%29.pdf">
+  <span class="tag book">Workbook</span>
+  <div class="info"><div class="title">Abdominal Wall &amp; Viscera in Situ</div><div class="desc">Lab dissection workbook (themes 1, 3)</div></div>
+</a>
+<a class="resource" href="Images/Hepatoduodenal%2C%20Celiac%20Trunk.pdf">
+  <span class="tag book">Workbook</span>
+  <div class="info"><div class="title">Hepatoduodenal &amp; Celiac Trunk</div><div class="desc">Foregut vasculature workbook (theme 4)</div></div>
+</a>
+<a class="resource" href="Images/SMA%2C%20IMA%2C%20Pancreas%2C%20Intestines.pdf">
+  <span class="tag book">Workbook</span>
+  <div class="info"><div class="title">SMA, IMA, Pancreas, Intestines</div><div class="desc">Midgut/hindgut workbook (themes 5, 6)</div></div>
+</a>
+<a class="resource" href="Images/Posterior%20Abdominal%20Viscera%2C%20Muscles%20and%20Diaphragm.pdf">
+  <span class="tag book">Workbook</span>
+  <div class="info"><div class="title">Posterior Abdominal Wall + Diaphragm</div><div class="desc">Posterior wall workbook (themes 7, 8)</div></div>
+</a>
+<a class="resource" href="Images/Posterior%20Abdominal%20Wall%2C%20Inguinal%20Region%2C%20Scrotum%2C%20Testis%20%26%20Spermatic%20Cord.pdf">
+  <span class="tag book">Workbook</span>
+  <div class="info"><div class="title">Inguinal Region &amp; Spermatic Cord</div><div class="desc">Lower posterior + cord workbook (theme 2)</div></div>
+</a>
+<a class="resource" href="Images/kenhub.pdf">
+  <span class="tag book">Atlas</span>
+  <div class="info"><div class="title">Kenhub Atlas</div><div class="desc">General anatomy atlas (all themes)</div></div>
+</a>
+<a class="resource" href="3rd%20Party/Clinical%20Anatomy%20Made%20Ridiculously%20Simple.pdf">
+  <span class="tag book">Textbook</span>
+  <div class="info"><div class="title">Clinical Anatomy Made Ridiculously Simple</div><div class="desc">Fastest, most digestible</div></div>
+</a>
+<a class="resource" href="3rd%20Party/BRS%20Anatomy.pdf">
+  <span class="tag book">Textbook</span>
+  <div class="info"><div class="title">BRS Anatomy</div><div class="desc">Board-style outline format</div></div>
+</a>
+<a class="resource" href="3rd%20Party/Lippincott_s%20Illustrated%20Reviews%20-%20Anatomy%20and%20Embryology.pdf">
+  <span class="tag book">Textbook</span>
+  <div class="info"><div class="title">Lippincott's Illustrated Reviews</div><div class="desc">Anatomy &amp; Embryology — best for embryo</div></div>
+</a>
+<a class="resource" href="Practice%20Problems/3rd%20Party/BRS%20Gross%20Anatomy%20Abdomen%20Practice%20Questions.pdf">
+  <span class="tag book">Q-bank</span>
+  <div class="info"><div class="title">BRS Gross Anatomy — Abdomen</div><div class="desc">Practice questions on abdomen</div></div>
+</a>
+<a class="resource" href="Practice%20Problems/3rd%20Party/Grays%20Question%20Bank%20Abdomen.pdf">
+  <span class="tag book">Q-bank</span>
+  <div class="info"><div class="title">Gray's Question Bank — Abdomen</div><div class="desc">Practice questions on abdomen</div></div>
+</a>
+<a class="resource" href="Practice%20Problems/3rd%20Party/05%20Abdomen%20Board.pdf">
+  <span class="tag book">Q-bank</span>
+  <div class="info"><div class="title">05 Abdomen Board Review</div><div class="desc">Board-style Q&amp;A</div></div>
+</a>
+</div>
+</section>
+
+<!-- ================== LECTURIO ================== -->
+<section>
+<h2>Lecturio anatomy lectures <span class="count">14 PDFs</span></h2>
+<p class="section-sub">Topic-specific anatomy lectures — pick the one matching whichever theme you're stuck on.</p>
+
+<div class="resource-grid">
+<a class="resource" href="3rd%20Party/Lecturio/Anterior%20Abdominal%20Wall_%20Anatomy%20-%20Lecturio.pdf"><span class="tag lect">Wall</span><div class="info"><div class="title">Anterior Abdominal Wall</div></div></a>
+<a class="resource" href="3rd%20Party/Lecturio/Inguinal%20Canal_%20Anatomy%20and%20Hernias%20-%20Lecturio.pdf"><span class="tag lect">Inguinal</span><div class="info"><div class="title">Inguinal Canal &amp; Hernias</div></div></a>
+<a class="resource" href="3rd%20Party/Lecturio/Peritoneum_%20Anatomy%20-%20Lecturio.pdf"><span class="tag lect">Perit.</span><div class="info"><div class="title">Peritoneum</div></div></a>
+<a class="resource" href="3rd%20Party/Lecturio/Esophagus_%20Anatomy%20-%20Lecturio.pdf"><span class="tag lect">Foregut</span><div class="info"><div class="title">Esophagus</div></div></a>
+<a class="resource" href="3rd%20Party/Lecturio/Stomach_%20Anatomy%20-%20Lecturio.pdf"><span class="tag lect">Foregut</span><div class="info"><div class="title">Stomach</div></div></a>
+<a class="resource" href="3rd%20Party/Lecturio/Liver_%20Anatomy%20-%20Lecturio.pdf"><span class="tag lect">Foregut</span><div class="info"><div class="title">Liver</div></div></a>
+<a class="resource" href="3rd%20Party/Lecturio/Gallbladder%20and%20Biliary%20Tract_%20Anatomy%20-%20Lecturio.pdf"><span class="tag lect">Foregut</span><div class="info"><div class="title">Gallbladder &amp; Biliary Tract</div></div></a>
+<a class="resource" href="3rd%20Party/Lecturio/Pancreas_%20Anatomy%20-%20Lecturio.pdf"><span class="tag lect">Foregut</span><div class="info"><div class="title">Pancreas</div></div></a>
+<a class="resource" href="3rd%20Party/Lecturio/Small%20Intestine_%20Anatomy%20-%20Lecturio.pdf"><span class="tag lect">Midgut</span><div class="info"><div class="title">Small Intestine</div></div></a>
+<a class="resource" href="3rd%20Party/Lecturio/Colon%2C%20Cecum%2C%20and%20Appendix_%20Anatomy%20-%20Lecturio.pdf"><span class="tag lect">Mid/Hind</span><div class="info"><div class="title">Colon, Cecum, Appendix</div></div></a>
+<a class="resource" href="3rd%20Party/Lecturio/Rectum%20and%20Anal%20Canal_%20Anatomy%20-%20Lecturio.pdf"><span class="tag lect">Hindgut</span><div class="info"><div class="title">Rectum &amp; Anal Canal</div></div></a>
+<a class="resource" href="3rd%20Party/Lecturio/Development%20of%20the%20Abdominal%20Organs%20-%20Lecturio.pdf"><span class="tag lect">Embryo</span><div class="info"><div class="title">Development of Abdominal Organs</div></div></a>
+</div>
+</section>
+
+<!-- ================== AMBOSS COLLAPSED ================== -->
+<section>
+<h2>AMBOSS reference library <span class="count">~75 PDFs</span></h2>
+<p class="section-sub">Collapsed by category. Open the one you need when reviewing a specific concept.</p>
+
+<details class="group">
+<summary><span class="group-tag">Structures</span> AMBOSS Anatomy &amp; Structures <span class="group-count">~25</span></summary>
+<div class="group-body">
+<ul>
+<li><a href="3rd%20Party/Amboss%20Structures/Anatomy%20overview%20-%20AMBOSS.pdf">Anatomy overview</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Anterior%20abdominal%20wall%20-%20AMBOSS.pdf">Anterior abdominal wall</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Abdominal%20cavity%20-%20AMBOSS%20%281%29.pdf">Abdominal cavity</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Acute%20abdomen%20-%20AMBOSS.pdf">Acute abdomen</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Gastrointestinal%20tract%20-%20AMBOSS%20%281%29.pdf">GI tract overview</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Esophagus%20-%20AMBOSS.pdf">Esophagus</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Stomach%20-%20AMBOSS.pdf">Stomach</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Small%20intestine%20-%20AMBOSS.pdf">Small intestine</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Large%20intestine%20-%20AMBOSS.pdf">Large intestine</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Liver%20-%20AMBOSS.pdf">Liver</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Gallbladder%20and%20bile%20-%20AMBOSS%20%281%29.pdf">Gallbladder &amp; bile</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Pancreas%20-%20AMBOSS.pdf">Pancreas</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Spleen%20-%20AMBOSS%20%281%29.pdf">Spleen</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Adrenal%20gland%20-%20AMBOSS%20%281%29.pdf">Adrenal gland</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Overview%20of%20the%20urinary%20tract%20-%20AMBOSS.pdf">Urinary tract</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Abdominal%20hernias%20-%20AMBOSS%20%281%29.pdf">Abdominal hernias overview</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Autonomic%20nervous%20system%20-%20AMBOSS.pdf">Autonomic nervous system</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Principles%20of%20pain%20management%20-%20AMBOSS.pdf">Principles of pain management</a></li>
+</ul>
+</div>
+</details>
+
+<details class="group">
+<summary><span class="group-tag">Diseases</span> AMBOSS Diseases &amp; clinical correlates <span class="group-count">~35</span></summary>
+<div class="group-body">
+<ul>
+<li><a href="3rd%20Party/Amboss%20Diseases/Inguinal%20hernia%20-%20AMBOSS.pdf">Inguinal hernia</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Internal%20hernia%20-%20AMBOSS.pdf">Internal hernia</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Hiatal%20hernia%20-%20AMBOSS.pdf">Hiatal hernia</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Congenital%20diaphragmatic%20hernias%20-%20AMBOSS.pdf">Congenital diaphragmatic hernias</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Peptic%20ulcer%20disease%20-%20AMBOSS.pdf">Peptic ulcer disease</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Gastritis%20-%20AMBOSS.pdf">Gastritis</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Mallory-Weiss%20syndrome%20-%20AMBOSS.pdf">Mallory-Weiss syndrome</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Gastric%20cancer%20-%20AMBOSS.pdf">Gastric cancer</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Gastrointestinal%20bleeding%20-%20AMBOSS.pdf">GI bleeding</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Gastrointestinal%20perforation%20-%20AMBOSS.pdf">GI perforation</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Hypertrophic%20pyloric%20stenosis%20-%20AMBOSS.pdf">Hypertrophic pyloric stenosis</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Acute%20appendicitis%20-%20AMBOSS.pdf">Acute appendicitis</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Bowel%20obstruction%20-%20AMBOSS.pdf">Bowel obstruction</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Bowel%20surgery%20-%20AMBOSS.pdf">Bowel surgery</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Intestinal%20ischemia%20-%20AMBOSS.pdf">Intestinal ischemia</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Superior%20mesenteric%20artery%20syndrome%20-%20AMBOSS.pdf">SMA syndrome</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Intestinal%20malrotation%2C%20midgut%20volvulus%2C%20and%20gastric%20volvulus%20-%20AMBOSS.pdf">Malrotation &amp; volvulus</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Sigmoid%20volvulus%20and%20cecal%20volvulus%20-%20AMBOSS.pdf">Sigmoid &amp; cecal volvulus</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Hirschsprung%20disease%20-%20AMBOSS.pdf">Hirschsprung disease</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Paralytic%20ileus%20-%20AMBOSS.pdf">Paralytic ileus</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Ulcerative%20colitis%20-%20AMBOSS.pdf">Ulcerative colitis</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Colonic%20polyps%20-%20AMBOSS.pdf">Colonic polyps</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Colorectal%20cancer%20-%20AMBOSS.pdf">Colorectal cancer</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Hemorrhoids%20-%20AMBOSS.pdf">Hemorrhoids</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Anorectal%20abscess%20and%20fistula%20-%20AMBOSS.pdf">Anorectal abscess &amp; fistula</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Cholelithiasis%20-%20AMBOSS.pdf">Cholelithiasis</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Choledocholithiasis%20-%20AMBOSS.pdf">Choledocholithiasis</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Cholecystectomy%20-%20AMBOSS.pdf">Cholecystectomy</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Sphincter%20of%20Oddi%20dysfunction%20-%20AMBOSS.pdf">Sphincter of Oddi dysfunction</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Acute%20pancreatitis%20-%20AMBOSS.pdf">Acute pancreatitis</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Chronic%20pancreatitis%20-%20AMBOSS.pdf">Chronic pancreatitis</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Splenic%20injuries%20-%20AMBOSS.pdf">Splenic injuries</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Splenic%20vein%20thrombosis%20-%20AMBOSS.pdf">Splenic vein thrombosis</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Budd-Chiari%20syndrome%20-%20AMBOSS.pdf">Budd-Chiari syndrome</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Portal%20hypertension%20-%20AMBOSS.pdf">Portal hypertension</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Ascites%20-%20AMBOSS.pdf">Ascites</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Pancreatic%20and%20hepatic%20surgery%20-%20AMBOSS.pdf">Pancreatic &amp; hepatic surgery</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Biliary%20strictures%20and%20secondary%20sclerosing%20cholangitis%20-%20AMBOSS.pdf">Biliary strictures</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Nephrolithiasis%20-%20AMBOSS.pdf">Nephrolithiasis</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Urinary%20tract%20obstruction%20-%20AMBOSS.pdf">Urinary tract obstruction</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Retroperitoneal%20hematoma%20-%20AMBOSS.pdf">Retroperitoneal hematoma</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Retroperitoneal%20fibrosis%20-%20AMBOSS.pdf">Retroperitoneal fibrosis</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Penetrating%20trauma%20-%20AMBOSS.pdf">Penetrating trauma</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Blunt%20trauma%20-%20AMBOSS.pdf">Blunt trauma</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Diaphragmatic%20injuries%20-%20AMBOSS.pdf">Diaphragmatic injuries</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Congenital%20visceral%20malformations%20-%20AMBOSS.pdf">Congenital visceral malformations</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Fistulas%20-%20AMBOSS.pdf">Fistulas</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Transplantation%20-%20AMBOSS.pdf">Transplantation</a></li>
+</ul>
+</div>
+</details>
+</section>
+
+<footer>
+GI Anatomy Study Hub · Built for the Apr 27 exam · You've got this.
+</footer>
+
+</div>
+
+</body>
+</html>
