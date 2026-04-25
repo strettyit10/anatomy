@@ -1,0 +1,2717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GI Anatomy — 72-Hour Study Guide</title>
+<style>
+  :root {
+    --bg: #fbf9f6;
+    --surface: #ffffff;
+    --ink: #1c2230;
+    --ink-soft: #4a5568;
+    --ink-light: #6b7280;
+    --accent: #b14b2c;
+    --accent-soft: #fde8df;
+    --accent-pale: #fef5f0;
+    --teal: #2c7a7b;
+    --teal-soft: #e0f2f1;
+    --teal-pale: #f0f9f8;
+    --gold: #b8860b;
+    --gold-soft: #fef6e0;
+    --gold-pale: #fef9ec;
+    --plum: #7c4262;
+    --plum-soft: #f3e6ed;
+    --border: #e8e3da;
+    --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    margin: 0;
+    line-height: 1.6;
+    font-size: 13px;
+  }
+  /* TYPE SCALE — only 4 sizes used:
+     28px = page title (h1)
+     22px = section/theme title (h2)
+     13px = ALL body content (paragraphs, lists, tables, callouts, quizzes, fills, chunk titles)
+     11px = small UI labels, badges, table headers
+     12px = interactive buttons */
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    nav.sidebar { position: static; height: auto; }
+  }
+
+  nav.sidebar {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: 24px 16px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+  }
+  nav.sidebar h2 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-light);
+    margin: 18px 0 8px;
+    font-weight: 600;
+  }
+  nav.sidebar a {
+    display: block;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-bottom: 2px;
+    transition: background 0.15s;
+  }
+  nav.sidebar a:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+  .brand {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--accent);
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 14px;
+  }
+  .brand small { display: block; font-weight: 400; color: var(--ink-soft); font-size: 11px; margin-top: 4px; }
+
+  .reset-all-btn {
+    display: block;
+    width: 100%;
+    margin: 16px 0 0;
+    background: var(--ink);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .reset-all-btn:hover { background: var(--accent); }
+
+  main {
+    padding: 36px 56px;
+    max-width: 820px;
+  }
+  @media (max-width: 900px) {
+    main { padding: 20px; }
+  }
+
+  h1 {
+    font-size: 28px;
+    margin: 0 0 8px;
+    color: var(--ink);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  h1 .sub {
+    display: block;
+    font-size: 14px;
+    color: var(--ink-soft);
+    font-weight: 400;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  .theme-header {
+    margin: 64px 0 8px;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, var(--accent-pale) 0%, var(--gold-pale) 100%);
+    border-radius: 12px;
+    border-left: 6px solid var(--accent);
+  }
+  .theme-header .label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .theme-header h2 {
+    font-size: 22px;
+    margin: 0 0 6px;
+    border: none;
+    padding: 0;
+    color: var(--ink);
+  }
+  .theme-header .meta {
+    font-size: 11px;
+    color: var(--ink-soft);
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .theme-header .meta span {
+    background: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+
+  h2 {
+    font-size: 22px;
+    margin: 40px 0 12px;
+    color: var(--ink);
+  }
+  h3 {
+    font-size: 11px;
+    margin: 28px 0 10px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+  }
+  h4 {
+    font-size: 14px;
+    margin: 18px 0 6px;
+    color: var(--ink);
+    font-weight: 700;
+  }
+  p { margin: 8px 0 12px; }
+
+  .hook {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--plum);
+    padding: 12px 18px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0 20px;
+  }
+  .hook strong { color: var(--plum); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; display: block; margin-bottom: 4px; }
+
+  .chunk {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 14px 0;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+  .chunk h4 { margin-top: 0; }
+  .chunk p:last-child { margin-bottom: 0; }
+  .chunk ul, .chunk ol { margin: 8px 0; }
+
+  .keyfact {
+    background: var(--gold-pale);
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 12px 0;
+  }
+  .keyfact::before {
+    content: "KEY FACT";
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--gold);
+    background: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.08em;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  .trap {
+    background: #fff5f1;
+    border: 1px solid var(--accent);
+    border-left: 5px solid var(--accent);
+    padding: 14px 18px;
+    margin: 14px 0;
+    border-radius: 0 10px 10px 0;
+  }
+  .trap::before {
+    content: "TEST TRAP";
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--accent);
+    background: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.08em;
+    margin-right: 8px;
+    margin-bottom: 6px;
+    border: 1px solid var(--accent);
+  }
+
+  .pearl {
+    background: var(--teal-pale);
+    border: 1px solid var(--teal);
+    border-left: 5px solid var(--teal);
+    padding: 14px 18px;
+    margin: 14px 0;
+    border-radius: 0 10px 10px 0;
+  }
+  .pearl::before {
+    content: "PEARL";
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--teal);
+    background: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.08em;
+    margin-right: 8px;
+    margin-bottom: 6px;
+    border: 1px solid var(--teal);
+  }
+
+  .clinical {
+    background: #faf5fa;
+    border: 1px solid var(--plum);
+    border-left: 5px solid var(--plum);
+    padding: 14px 18px;
+    margin: 14px 0;
+    border-radius: 0 10px 10px 0;
+  }
+  .clinical::before {
+    content: "CLINICAL";
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--plum);
+    background: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.08em;
+    margin-right: 8px;
+    margin-bottom: 6px;
+    border: 1px solid var(--plum);
+  }
+
+  .mnemonic {
+    background: white;
+    border: 2px dashed var(--gold);
+    padding: 14px 18px;
+    margin: 14px 0;
+    border-radius: 10px;
+  }
+  .mnemonic::before {
+    content: "MNEMONIC";
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: 0.08em;
+    margin-right: 8px;
+    margin-bottom: 4px;
+  }
+
+  /* Active learning blocks with reset */
+  .active-block {
+    position: relative;
+  }
+  .reset-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: white;
+    border: 1px solid currentColor;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+  }
+  .reset-btn:hover { opacity: 1; }
+
+  .predict {
+    background: var(--plum-soft);
+    border: 2px solid var(--plum);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 18px 0;
+    color: var(--plum);
+  }
+  .predict .label {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--plum);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .predict .question {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--ink);
+  }
+  .predict .answer {
+    background: white;
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 3px solid var(--plum);
+    color: var(--plum);
+    display: none;
+    margin-top: 10px;
+  }
+  .predict.revealed .answer { display: block; }
+  .predict .reveal-action {
+    background: var(--plum);
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .predict .reveal-action:hover { background: #5d3149; }
+  .predict.revealed .reveal-action { display: none; }
+  .predict .reset-btn { color: var(--plum); border-color: var(--plum); }
+
+  .fill {
+    background: white;
+    border: 2px solid var(--teal);
+    border-radius: 10px;
+    padding: 14px 18px 18px;
+    margin: 14px 0;
+    color: var(--teal);
+  }
+  .fill .label {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .fill ol { margin: 4px 0 8px 20px; padding: 0; color: var(--ink); }
+  .fill li { margin: 8px 0; }
+  .fill .blank {
+    display: inline-block;
+    min-width: 100px;
+    border-bottom: 2px dotted var(--teal);
+    text-align: center;
+    color: transparent;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0 6px;
+    user-select: none;
+  }
+  .fill .blank.shown { color: var(--teal); }
+  .fill .reset-btn { color: var(--teal); border-color: var(--teal); }
+
+  .spaced {
+    background: linear-gradient(135deg, var(--gold-pale), var(--teal-pale));
+    border-radius: 12px;
+    padding: 18px 22px 22px;
+    margin: 24px 0;
+    border: 1px solid var(--border);
+  }
+  .spaced .label {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .spaced h4 { margin: 0 0 12px; color: var(--ink); }
+  .spaced .reset-btn { color: var(--ink-soft); border-color: var(--ink-soft); }
+
+  .quiz {
+    background: white;
+    border: 2px solid var(--accent);
+    border-radius: 12px;
+    padding: 20px 24px 24px;
+    margin: 28px 0;
+  }
+  .quiz h4 {
+    margin: 0 0 4px;
+    color: var(--accent);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .quiz .label {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .quiz .reset-btn { color: var(--accent); border-color: var(--accent); }
+  .qitem {
+    margin: 14px 0;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .qitem:last-child { border-bottom: none; padding-bottom: 0; }
+  .qitem .q { font-weight: 500; margin-bottom: 8px; }
+  .qitem .a {
+    background: var(--teal-pale);
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-top: 8px;
+    color: var(--teal);
+    border-left: 3px solid var(--teal);
+    display: none;
+  }
+  .qitem.revealed .a { display: block; }
+  .reveal-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 7px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .reveal-btn:hover { background: #913a1f; }
+  .qitem.revealed .reveal-btn { display: none; }
+
+  .ref {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin: 16px 0;
+    overflow: hidden;
+  }
+  .ref summary {
+    padding: 12px 18px;
+    cursor: pointer;
+    background: #fafaf7;
+    list-style: none;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .ref summary::-webkit-details-marker { display: none; }
+  .ref summary::after {
+    content: "▸";
+    margin-left: auto;
+    color: var(--accent);
+    transition: transform 0.2s;
+  }
+  .ref[open] summary::after { transform: rotate(90deg); }
+  .ref summary:hover { background: var(--accent-pale); }
+  .ref .ref-tag {
+    background: var(--accent);
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .ref-content {
+    padding: 16px;
+    text-align: center;
+  }
+  .ref-content a { display: inline-block; text-decoration: none; }
+  .ref-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid var(--border);
+  }
+  .ref-content .open-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--accent);
+    font-size: 13px;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  .top25 {
+    background: linear-gradient(135deg, var(--accent-pale) 0%, var(--gold-pale) 100%);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .top25 ol { padding-left: 22px; column-count: 1; }
+  @media (min-width: 700px) { .top25 ol { column-count: 2; column-gap: 28px; } }
+  .top25 li { padding: 4px 0; break-inside: avoid; }
+
+  .compact-list {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 18px;
+    margin: 12px 0;
+  }
+  .compact-list ul { margin: 4px 0; padding-left: 20px; }
+  .compact-list li { padding: 4px 0; }
+
+  .minitable {
+    display: grid;
+    grid-template-columns: minmax(140px, auto) 1fr;
+    gap: 1px;
+    background: var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 12px 0;
+  }
+  .minitable > div {
+    background: white;
+    padding: 10px 14px;
+  }
+  .minitable .h {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 8px 14px;
+  }
+  .minitable .term { font-weight: 600; color: var(--ink); }
+
+  .threecol {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 12px 0;
+  }
+  @media (max-width: 700px) { .threecol { grid-template-columns: 1fr; } }
+  .threecol > div { background: white; padding: 10px 14px; }
+  .threecol .h { background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; padding: 8px 14px; }
+
+  .done-check {
+    background: var(--teal-pale);
+    border: 1px solid var(--teal);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 24px 0 32px;
+  }
+  .done-check label { cursor: pointer; user-select: none; display: flex; align-items: center; gap: 10px; }
+  .done-check input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; }
+  .done-check label:has(input:checked) { color: var(--teal); font-weight: 600; }
+
+  ul, ol { padding-left: 22px; }
+  li { margin: 4px 0; }
+  strong { color: var(--ink); }
+  em { color: var(--ink-soft); }
+  hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+  /* Workbook PDFs — quick-link strip at start of each theme */
+  .workbooks {
+    background: var(--plum-soft);
+    border: 1px solid var(--plum);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin: 12px 0 20px;
+  }
+  .workbooks .wb-label {
+    display: inline-block;
+    background: var(--plum);
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-right: 8px;
+  }
+  .workbooks .wb-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    margin-top: 8px;
+  }
+  .workbooks .wb-list a {
+    color: var(--plum);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px dashed var(--plum);
+    padding-bottom: 1px;
+  }
+  .workbooks .wb-list a:hover { background: white; padding: 2px 6px; border-radius: 4px; border-bottom: none; }
+  .workbooks .wb-note { color: var(--ink-soft); font-style: italic; }
+
+  /* Deep-dive references (expandable PDF lists per theme) */
+  .more-refs {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin: 8px 0 20px;
+    overflow: hidden;
+  }
+  .more-refs summary {
+    padding: 10px 16px;
+    cursor: pointer;
+    background: #fafaf7;
+    list-style: none;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+  }
+  .more-refs summary::-webkit-details-marker { display: none; }
+  .more-refs summary::after {
+    content: "▸";
+    margin-left: auto;
+    color: var(--ink-soft);
+    transition: transform 0.2s;
+  }
+  .more-refs[open] summary::after { transform: rotate(90deg); }
+  .more-refs summary:hover { background: var(--gold-pale); }
+  .more-refs .mr-tag {
+    background: var(--gold);
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .mr-body { padding: 12px 18px 16px; }
+  .mr-group { margin: 10px 0; }
+  .mr-group-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .mr-group ul { margin: 4px 0; padding-left: 18px; }
+  .mr-group li { padding: 2px 0; }
+  .mr-group a { color: var(--accent); text-decoration: none; border-bottom: 1px dashed var(--accent); }
+  .mr-group a:hover { background: var(--accent-pale); padding: 1px 4px; border-radius: 3px; border-bottom: none; }
+
+  /* Inline labeled image (small visual anchor inside a chunk) */
+  .inline-img {
+    margin: 12px 0;
+    text-align: center;
+  }
+  .inline-img a {
+    display: inline-block;
+    max-width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.15s;
+  }
+  .inline-img a:hover { transform: scale(1.02); }
+  .inline-img img { display: block; max-width: 100%; height: auto; }
+  .inline-img .caption { font-size: 11px; color: var(--ink-soft); font-style: italic; margin-top: 6px; }
+
+  @media print {
+    nav.sidebar { display: none; }
+    .layout { grid-template-columns: 1fr; }
+    main { padding: 0; max-width: 100%; }
+    .quiz, details { page-break-inside: avoid; }
+    .reveal-btn, .predict .reveal-action, .reset-btn { display: none !important; }
+    .qitem .a, .predict .answer { display: block !important; }
+    .blank { color: var(--teal) !important; }
+    .ref[open] { display: block; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+<nav class="sidebar">
+  <div class="brand">GI Anatomy<small>72-Hour Guide</small></div>
+  <button class="reset-all-btn" onclick="resetAll()">Reset all answers</button>
+
+  <h2>Start</h2>
+  <a href="#how-to-use">How to use this</a>
+  <a href="#top25">Top 25 must-knows</a>
+
+  <h2>The 8 Themes</h2>
+  <a href="#theme1">1. Wall &amp; surface</a>
+  <a href="#theme2">2. Inguinal region</a>
+  <a href="#theme3">3. Peritoneum</a>
+  <a href="#theme4">4. Foregut</a>
+  <a href="#theme5">5. Midgut</a>
+  <a href="#theme6">6. Hindgut</a>
+  <a href="#theme7">7. Posterior wall</a>
+  <a href="#theme8">8. Nerves &amp; autonomics</a>
+
+  <h2>Drill Mode</h2>
+  <a href="Active_Recall.html" target="_blank"><strong>Active Recall (50 MCQs + more)</strong></a>
+
+  <h2>Image Galleries</h2>
+  <a href="GI_Anatomy_By_Lab_Gallery.html" target="_blank"><strong>GI by Lab — Anki tag-filtered (316)</strong></a>
+  <a href="BlueLink_Gallery.html" target="_blank">BlueLink cadavers (145)</a>
+  <a href="AnatomyConcepts_Gallery.html" target="_blank">AnatomyConcepts (198)</a>
+  <a href="GUSOM_Gallery.html" target="_blank">GUSOM all (682)</a>
+  <a href="Block4_Gallery.html" target="_blank">Block 4 all (1,123)</a>
+
+  <h2>Reference</h2>
+  <a href="#diaphragm">Diaphragm openings</a>
+  <a href="#labeling">Labeling practice</a>
+  <a href="#final-quiz">Rapid drill (40 Qs)</a>
+</nav>
+
+<main>
+
+<h1>GI Anatomy<span class="sub">A focused 72-hour guide. Built for short attention windows, with active recall every few paragraphs and infographic references hidden until you need them.</span></h1>
+
+<section id="how-to-use">
+<div class="chunk" style="background:var(--gold-pale);border-color:var(--gold);">
+<h4 style="color:var(--gold);">2,400+ anatomy images extracted, 316 filtered to GI lab practical content</h4>
+<p>I extracted every image from your 4 Anki decks (BlueLink, AnatomyConcepts, GUSOM, Block 4 — total ~2,400 images) AND used the Anki tags <code>Block4::GI_AnatomyPractical::*</code> + <code>GUSOM::Anat::GI::*</code> to filter to <strong>316 GI-only images sorted by Lab 1–4</strong>. The "GI by Lab" gallery in the sidebar is your highest-yield browse. Several are already embedded inline at the most important chunks.</p>
+</div>
+
+<div class="chunk">
+<h4>How this guide works</h4>
+<p>Each section is built to be skimmed in <strong>20–40 minutes</strong>. Content is broken into small chunks. Every few chunks there's a <strong>Predict &amp; Check</strong>, <strong>Fill-in-the-blank</strong>, or <strong>Spaced Review</strong> box — these are the most important parts. Doing them is what makes the studying stick.</p>
+<p>Each interactive box has a small <strong>Reset</strong> button so you can re-test yourself. There's also a <strong>Reset all answers</strong> button in the sidebar that clears everything.</p>
+<p>The dense infographics are tucked into <strong>collapsed reference cards</strong>. The text guide contains all the same information, so you don't <em>need</em> to open them — they're for visual reinforcement.</p>
+<p><strong>Pace:</strong> One theme per sitting. Take a 10-minute break between themes.</p>
+</div>
+
+<details class="more-refs">
+<summary><span class="mr-tag">Textbooks</span> Full anatomy textbooks (open if you want a different explanation of any concept)</summary>
+<div class="mr-body">
+<div class="mr-group">
+<ul>
+<li><a href="3rd%20Party/Clinical%20Anatomy%20Made%20Ridiculously%20Simple.pdf" target="_blank">Clinical Anatomy Made Ridiculously Simple</a> — fastest, most digestible</li>
+<li><a href="3rd%20Party/BRS%20Anatomy.pdf" target="_blank">BRS Anatomy</a> — board-style, dense outline format</li>
+<li><a href="3rd%20Party/Lippincott_s%20Illustrated%20Reviews%20-%20Anatomy%20and%20Embryology.pdf" target="_blank">Lippincott's Illustrated Reviews — Anatomy &amp; Embryology</a> — best for embryology</li>
+</ul>
+<p style="margin-top:8px;color:var(--ink-soft);font-size:12px;">Each theme also has its own focused Lecturio + AMBOSS PDF list inside the "Deep dive" card.</p>
+</div>
+</div>
+</details>
+</section>
+
+<!-- ================== TOP 25 ================== -->
+<section id="top25">
+<h2>Top 25 must-knows</h2>
+<p>Skim these now. You'll see them again at the end of every section as <strong>spaced review</strong>. By Sunday they'll be reflexive.</p>
+<div class="top25">
+<ol>
+<li><strong>Foregut</strong> = celiac (T12) → portal/splenic v. <strong>Midgut</strong> = SMA (L1) → SMV. <strong>Hindgut</strong> = IMA (L3) → IMV.</li>
+<li><strong>Foregut pain</strong> = epigastric (T5–T9). <strong>Midgut</strong> = periumbilical (T10–T11). <strong>Hindgut</strong> = suprapubic (L1–L2).</li>
+<li><strong>Hindgut parasymp</strong> = pelvic splanchnics (S2–S4). <em>Not vagus.</em></li>
+<li><strong>Caudate lobe</strong> drains direct into IVC → hypertrophies in Budd-Chiari.</li>
+<li><strong>Hepatoduodenal lig</strong> contains <strong>portal triad</strong> (bile duct, hepatic a. proper, portal v.). Pringle maneuver.</li>
+<li><strong>Left gonadal/suprarenal v.</strong> → left renal v. → IVC. <strong>Right</strong> → IVC direct.</li>
+<li><strong>SAD PUCKER</strong> = retroperitoneal: Suprarenals, Aorta/IVC, Duodenum (2–4), Pancreas (not tail), Ureters, Colon (asc/desc), Kidneys, Esophagus, Rectum.</li>
+<li><strong>Marginal a. of Drummond</strong> connects SMA ↔ IMA. Watershed at <strong>splenic flexure</strong>.</li>
+<li><strong>SMA</strong>: anterior to 3rd duodenum (SMA syndrome) + anterior to L renal v. (nutcracker).</li>
+<li><strong>McBurney pain</strong> → appendix → appendicular a. → ileocolic a. → SMA. Surgeon ligates ileocolic.</li>
+<li><strong>Direct hernia</strong> = medial to inf. epigastric (Hesselbach's). <strong>Indirect</strong> = lateral.</li>
+<li><strong>Spermatic cord layers</strong>: ext. spermatic (ext. oblique) → cremaster (int. oblique) → int. spermatic (transversalis fascia).</li>
+<li><strong>Ilioinguinal n. (L1)</strong> = anterior scrotum/labia + medial thigh. Cut in appendectomy/hernia repair.</li>
+<li><strong>Testis</strong> drains to <strong>para-aortic</strong> nodes. <strong>Scrotum</strong> drains to <strong>superficial inguinal</strong>. Don't confuse.</li>
+<li><strong>Diaphragm</strong>: I 8 (ate) 10 EGGs At 12 → IVC T8, esoph T10, aorta T12.</li>
+<li><strong>Dermatomes</strong>: T7 = xiphoid, T10 = umbilicus, L1 = inguinal, T8 = subcostal margin.</li>
+<li><strong>Inf. epigastric a.</strong> enters rectus sheath at <strong>arcuate line</strong>. Below it: no posterior sheath.</li>
+<li><strong>Cystic a.</strong> from right hepatic a. (Calot's triangle).</li>
+<li><strong>Aorta</strong>: 3 unpaired (celiac T12, SMA L1, IMA L3) + 5 paired. Bifurcates L4.</li>
+<li><strong>Pancreas tail</strong> = intraperitoneal (splenorenal lig). Head/body/uncinate = retroperitoneal.</li>
+<li><strong>Liver lobes</strong>: right, left, caudate (between IVC + lig venosum), quadrate (between GB + lig teres).</li>
+<li><strong>Lumbar plexus to psoas</strong>: obturator MEDIAL, femoral LATERAL, genitofemoral on ANTERIOR surface.</li>
+<li><strong>Ureter constrictions</strong>: UPJ → pelvic brim → UVJ.</li>
+<li><strong>Splenectomy via gastrosplenic lig</strong>: cuts short gastrics → fundus ischemia.</li>
+<li><strong>Greater curvature</strong> = R + L gastro-omental aa. <strong>Lesser</strong> = R + L gastric aa. Conduit survives on R gastro-omental.</li>
+</ol>
+</div>
+</section>
+
+<!-- ================== THEME 1 ================== -->
+<div class="theme-header">
+<span class="label">Theme 1 of 8</span>
+<h2 id="theme1">Surface anatomy &amp; abdominal wall</h2>
+<div class="meta">
+  <span>~30 min</span>
+  <span>7 chunks</span>
+  <span>3 active checks</span>
+  <span>2 references</span>
+</div>
+</div>
+
+<div class="hook"><strong>Why it matters</strong>Tested every year as: dermatome questions ("which spinal level carries the pain from this incision"), penetrating wound questions ("what layer was cut"), and rectus sheath questions ("which structure is at risk").</div>
+
+<div class="workbooks">
+<span class="wb-label">Workbooks for this theme</span>
+<div class="wb-list">
+<a href="Images/Abdominal%20Wall%20and%20Viscera%20in%20Situ%20%281%29.pdf" target="_blank">Abdominal Wall &amp; Viscera in Situ</a>
+<a href="Images/kenhub.pdf" target="_blank">Kenhub atlas</a>
+</div>
+<div class="wb-note">Lab dissection guides with labeled images — open as visual companions while reading.</div>
+</div>
+
+<details class="more-refs">
+<summary><span class="mr-tag">Deep dive</span> Lecturio + AMBOSS reference PDFs (open if you want more detail)</summary>
+<div class="mr-body">
+<div class="mr-group">
+<span class="mr-group-label">Lecturio lectures</span>
+<ul><li><a href="3rd%20Party/Lecturio/Anterior%20Abdominal%20Wall_%20Anatomy%20-%20Lecturio.pdf" target="_blank">Anterior Abdominal Wall: Anatomy</a></li></ul>
+</div>
+<div class="mr-group">
+<span class="mr-group-label">AMBOSS — Structures</span>
+<ul>
+<li><a href="3rd%20Party/Amboss%20Structures/Anterior%20abdominal%20wall%20-%20AMBOSS.pdf" target="_blank">Anterior abdominal wall</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Acute%20abdomen%20-%20AMBOSS.pdf" target="_blank">Acute abdomen</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Principles%20of%20pain%20management%20-%20AMBOSS.pdf" target="_blank">Principles of pain management</a></li>
+</ul>
+</div>
+<div class="mr-group">
+<span class="mr-group-label">AMBOSS — Diseases / clinical correlates</span>
+<ul>
+<li><a href="3rd%20Party/Amboss%20Diseases/Penetrating%20trauma%20-%20AMBOSS.pdf" target="_blank">Penetrating trauma</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Blunt%20trauma%20-%20AMBOSS.pdf" target="_blank">Blunt trauma</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Abdominal%20hernias%20-%20AMBOSS%20%281%29.pdf" target="_blank">Abdominal hernias overview</a></li>
+</ul>
+</div>
+</div>
+</details>
+
+<div class="chunk">
+<h4>Chunk 1 of 7 — Bony framework</h4>
+<p>The skeleton supporting the abdomen consists of:</p>
+<ul>
+<li><strong>Lower ribs</strong>: 7–10 (false ribs, attach to costal cartilage of rib above), 11–12 (floating ribs, no anterior attachment)</li>
+<li><strong>Xiphoid process</strong>: inferior tip of sternum, sits at T9 vertebral level</li>
+<li><strong>Costal margin</strong>: lower border of rib cage; meets in midline at xiphoid</li>
+<li><strong>Vertebrae</strong>: T12 + L1–L5 form posterior support; L1 vertebral body sits at the transpyloric plane</li>
+<li><strong>Pelvis</strong>: iliac crest (top of ilium), ASIS, iliac tubercle (5cm posterior to ASIS), pubic symphysis, pubic tubercle</li>
+</ul>
+</div>
+
+<div class="chunk">
+<h4>Chunk 2 of 7 — The 9 regions and 4 quadrants</h4>
+<p>Two horizontal planes (subcostal at L3 + transtubercular at L5) and two midclavicular vertical lines split the abdomen into <strong>9 regions</strong>. The simpler 4-quadrant scheme uses the median + transumbilical planes.</p>
+<div class="minitable">
+  <div class="h">Region</div><div class="h">Major contents</div>
+  <div class="term">Right hypochondriac</div><div>Liver (right lobe), gallbladder, hepatic flexure</div>
+  <div class="term">Epigastric</div><div>Stomach, pancreas (head/body), duodenum (1st), liver (left lobe)</div>
+  <div class="term">Left hypochondriac</div><div>Spleen, stomach (fundus), tail of pancreas, splenic flexure</div>
+  <div class="term">Right lumbar (flank)</div><div>Ascending colon, right kidney, hepatic flexure</div>
+  <div class="term">Umbilical</div><div>Transverse colon, jejunum, ileum, duodenum (3rd/4th)</div>
+  <div class="term">Left lumbar (flank)</div><div>Descending colon, left kidney</div>
+  <div class="term">Right inguinal (groin)</div><div>Cecum, appendix, terminal ileum</div>
+  <div class="term">Hypogastric (pubic)</div><div>Bladder, uterus, sigmoid colon, ileal loops</div>
+  <div class="term">Left inguinal (groin)</div><div>Sigmoid colon</div>
+</div>
+</div>
+
+<div class="predict active-block">
+<button class="reset-btn" onclick="resetPredict(this)">Reset</button>
+<span class="label">Predict &amp; Check</span>
+<div class="question">A 32-year-old has tenderness in her left inguinal region. Which organ is most likely to be inflamed?</div>
+<button class="reveal-action" onclick="this.parentElement.classList.add('revealed')">Reveal</button>
+<div class="answer">Sigmoid colon (think: sigmoid diverticulitis is left lower quadrant pain).</div>
+</div>
+
+<div class="chunk">
+<h4>Chunk 3 of 7 — Important surface landmarks</h4>
+<p><strong>Vertical / planes:</strong></p>
+<ul>
+<li><strong>Median plane</strong>: midline; divides into left/right halves</li>
+<li><strong>Midclavicular lines</strong>: L &amp; R, used for the 9 regions</li>
+<li><strong>Transumbilical plane</strong>: through umbilicus (~L3–L4); divides into upper/lower halves for 4 quadrants</li>
+</ul>
+<p><strong>Horizontal:</strong></p>
+<ul>
+<li><strong>Subcostal plane</strong>: across lowest costal margin (~L3)</li>
+<li><strong>Transtubercular plane</strong>: between iliac tubercles (~L5)</li>
+<li><strong>Transpyloric plane</strong>: midway xiphoid to umbilicus (~L1) — passes through pylorus, neck of pancreas, fundus of GB</li>
+</ul>
+<p><strong>Surface points:</strong></p>
+<ul>
+<li><strong>Umbilicus</strong>: ~T10 dermatome, ~L3–L4 vertebral level</li>
+<li><strong>McBurney point</strong>: 1/3 distance from ASIS to umbilicus → surface marking of appendix base</li>
+<li><strong>Murphy point</strong>: tip of right 9th costal cartilage → fundus of gallbladder</li>
+</ul>
+</div>
+
+<div class="chunk">
+<h4>Chunk 4 of 7 — Dermatomes (memorize these)</h4>
+<div class="minitable">
+  <div class="h">Level</div><div class="h">Landmark</div>
+  <div class="term">T4</div><div>Nipple line</div>
+  <div class="term">T7</div><div>Xiphoid process</div>
+  <div class="term">T8</div><div>Subcostal margin (lap chole port site)</div>
+  <div class="term">T10</div><div>Umbilicus</div>
+  <div class="term">T12</div><div>Just above pubis (subcostal nerve)</div>
+  <div class="term">L1</div><div>Inguinal / groin (ilioinguinal + iliohypogastric)</div>
+</div>
+<div class="mnemonic"><strong>"T4 at the teats, T10 at the tummy, L1 at the loin."</strong></div>
+</div>
+
+<div class="fill active-block">
+<button class="reset-btn" onclick="resetFill(this)">Reset</button>
+<span class="label">Quick recall — click each blank</span>
+<ol>
+  <li>The umbilicus sits on dermatome <span class="blank" onclick="this.classList.add('shown')">T10</span>.</li>
+  <li>A surgical incision at the xiphoid is innervated by <span class="blank" onclick="this.classList.add('shown')">T7</span>.</li>
+  <li>The inguinal ligament region maps to dermatome <span class="blank" onclick="this.classList.add('shown')">L1</span>.</li>
+  <li>McBurney point is 1/3 the distance from the <span class="blank" onclick="this.classList.add('shown')">ASIS</span> to the <span class="blank" onclick="this.classList.add('shown')">umbilicus</span>.</li>
+  <li>The transpyloric plane sits at vertebral level <span class="blank" onclick="this.classList.add('shown')">L1</span>.</li>
+</ol>
+</div>
+
+<div class="chunk">
+<h4>Chunk 5 of 7 — Wall layers (superficial → deep)</h4>
+<div class="inline-img">
+<a href="Images/anki-block4-gi/lab1_wall_hernias/id101_31824acd335dad61380442e4745339b05d361e51.jpg" target="_blank">
+<img src="Images/anki-block4-gi/lab1_wall_hernias/id101_31824acd335dad61380442e4745339b05d361e51.jpg" alt="Anterior abdominal wall fascial layers">
+</a>
+<div class="caption">Camper's vs Scarpa's fascia + ext. oblique aponeurosis — from your Block 4 GI lecture (Lab 1). Click to enlarge.</div>
+</div>
+<ol>
+  <li><strong>Skin</strong></li>
+  <li><strong>Camper's fascia</strong> (superficial fatty layer)</li>
+  <li><strong>Scarpa's fascia</strong> (deep membranous layer; continues into perineum as Colles' fascia)</li>
+  <li><strong>External oblique</strong> muscle → aponeurosis (forms outer rectus sheath, inguinal lig, lacunar lig)</li>
+  <li><strong>Internal oblique</strong> muscle → aponeurosis (splits to enclose rectus above arcuate line)</li>
+  <li><strong>Transversus abdominis</strong> muscle → aponeurosis</li>
+  <li><strong>Transversalis fascia</strong> (lines the inner surface; deep ring is an opening in it)</li>
+  <li><strong>Extraperitoneal fat</strong></li>
+  <li><strong>Parietal peritoneum</strong></li>
+</ol>
+<p>The fibers of the three flat muscles run perpendicular to each other (external oblique = downward + medial; internal oblique = upward + medial; transversus = horizontal).</p>
+</div>
+
+<div class="chunk">
+<h4>Chunk 6 of 7 — Rectus abdominis &amp; the rectus sheath</h4>
+<div class="inline-img">
+<a href="Images/anki-bluelink/bluelink_70.png" target="_blank">
+<img src="Images/anki-bluelink/bluelink_70.png" alt="Anterior abdominal wall — labeled cadaver">
+</a>
+<div class="caption">Anterior abdominal wall cadaver: linea alba, external oblique, rectus sheath (Michigan BlueLink). Click to enlarge.</div>
+</div>
+<p><strong>Rectus abdominis</strong>: paired strap muscle running from pubic crest/symphysis to costal cartilages 5–7 + xiphoid. Has 3 <strong>tendinous intersections</strong> (creating the "six-pack" appearance).</p>
+<p>The <strong>rectus sheath</strong> is formed by the aponeuroses of the 3 flat muscles. <strong>Its composition CHANGES at the arcuate line</strong> (~halfway between umbilicus and pubic symphysis):</p>
+<div class="minitable">
+  <div class="h">Above arcuate line</div><div class="h">Below arcuate line</div>
+  <div>Anterior sheath: ext. oblique + ant. half of int. oblique aponeuroses</div><div>Anterior sheath: ALL THREE aponeuroses pass anterior to rectus</div>
+  <div>Posterior sheath: post. half of int. oblique + transversus aponeuroses</div><div><strong>NO posterior rectus sheath</strong> — only transversalis fascia behind rectus</div>
+</div>
+<p><strong>Linea alba</strong>: midline raphe formed by interdigitating fibers of all 3 aponeuroses. <strong>Linea semilunaris</strong>: lateral border of rectus.</p>
+</div>
+
+<div class="trap">A stab wound below the arcuate line, just lateral to linea alba, perforates rectus → next layer hit is <strong>transversalis fascia</strong> (NOT posterior rectus sheath — it doesn't exist down there).</div>
+
+<div class="chunk">
+<h4>Chunk 7 of 7 — Vasculature &amp; nerves of the wall</h4>
+<p><strong>Arteries:</strong></p>
+<ul>
+<li><strong>Superior epigastric a.</strong> = continuation of <em>internal thoracic</em> a. → enters rectus sheath superiorly through diaphragm</li>
+<li><strong>Inferior epigastric a.</strong> = branch of <em>external iliac</em> a. → enters rectus sheath at the <strong>arcuate line</strong></li>
+<li>These anastomose vertically → basis of TRAM flap (which sacrifices inferior epigastric)</li>
+<li><strong>Deep circumflex iliac a.</strong> (also from external iliac) supplies lateral wall</li>
+</ul>
+<p><strong>Cutaneous nerves:</strong> from anterior rami of T7–L1 spinal nerves. Subcostal nerve = T12. Iliohypogastric (L1) + ilioinguinal (L1) supply suprapubic + inguinal regions. Each gives <strong>anterior</strong> + <strong>lateral cutaneous branches</strong>.</p>
+</div>
+
+<div class="pearl">The inferior epigastric a. is the dividing landmark for hernia type. <strong>Lateral to it = indirect.</strong> <strong>Medial to it = direct.</strong> Coming up in Theme 2.</div>
+
+<div class="clinical"><strong>Common hernia surface locations:</strong> epigastric (linea alba above umbilicus), umbilical (through navel), spigelian (along linea semilunaris below arcuate line), incisional (through old surgical scars), inguinal (above inguinal lig), femoral (below inguinal lig, medial to femoral v.).</div>
+
+<details class="ref">
+<summary><span class="ref-tag">Reference</span> Osteology &amp; Surface Anatomy infographic</summary>
+<div class="ref-content">
+<a href="Images/infographics/osteology-surfaceanatomy.png" target="_blank">
+<img src="Images/infographics/osteology-surfaceanatomy.png" alt="Osteology &amp; Surface Anatomy">
+<div class="open-link">Open full size in new tab →</div>
+</a>
+</div>
+</details>
+
+<details class="ref">
+<summary><span class="ref-tag">Reference</span> Rectus Sheath &amp; Arcuate Line infographic</summary>
+<div class="ref-content">
+<a href="Images/infographics/rectus_sheath-arcuate_line.png" target="_blank">
+<img src="Images/infographics/rectus_sheath-arcuate_line.png" alt="Rectus Sheath &amp; Arcuate Line">
+<div class="open-link">Open full size in new tab →</div>
+</a>
+</div>
+</details>
+
+<div class="quiz active-block">
+<button class="reset-btn" onclick="resetQuiz(this)">Reset</button>
+<span class="label">Section quiz — Theme 1</span>
+<h4>Test yourself before moving on</h4>
+<div class="qitem"><div class="q">1. Port-site infection just above umbilicus → which spinal nerve?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">T9 (umbilicus = T10, just above is T9).</div></div>
+<div class="qitem"><div class="q">2. Inferior epigastric artery enters rectus sheath at which line?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Arcuate line.</div></div>
+<div class="qitem"><div class="q">3. Below the arcuate line, what separates rectus from peritoneum?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Transversalis fascia (NO posterior rectus sheath there).</div></div>
+<div class="qitem"><div class="q">4. Spleen lives in which abdominal region?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Left hypochondriac (LUQ).</div></div>
+<div class="qitem"><div class="q">5. The transpyloric plane is at which vertebral level?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">L1.</div></div>
+<div class="qitem"><div class="q">6. The inferior epigastric artery branches off which vessel?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">External iliac artery.</div></div>
+</div>
+
+<div class="done-check"><label><input type="checkbox"> Theme 1 done — take a 5-min break before Theme 2.</label></div>
+
+<!-- ================== THEME 2 ================== -->
+<div class="theme-header">
+<span class="label">Theme 2 of 8</span>
+<h2 id="theme2">Inguinal region &amp; spermatic cord</h2>
+<div class="meta">
+  <span>~35 min</span>
+  <span>7 chunks</span>
+  <span>3 active checks</span>
+  <span>2 references</span>
+</div>
+</div>
+
+<div class="hook"><strong>Why it matters</strong>2–3 questions per exam. Always tests: direct vs. indirect hernia, spermatic cord layer derivation, or which nerve was injured during a procedure.</div>
+
+<div class="workbooks">
+<span class="wb-label">Workbooks for this theme</span>
+<div class="wb-list">
+<a href="Images/Posterior%20Abdominal%20Wall%2C%20Inguinal%20Region%2C%20Scrotum%2C%20Testis%20%26%20Spermatic%20Cord.pdf" target="_blank">Posterior Wall, Inguinal Region, Scrotum, Testis &amp; Spermatic Cord</a>
+<a href="Images/kenhub.pdf" target="_blank">Kenhub atlas</a>
+</div>
+<div class="wb-note">Open as visual companion while reading the spermatic cord layers + nerve sections.</div>
+</div>
+
+<details class="more-refs">
+<summary><span class="mr-tag">Deep dive</span> Lecturio + AMBOSS reference PDFs</summary>
+<div class="mr-body">
+<div class="mr-group">
+<span class="mr-group-label">Lecturio lectures</span>
+<ul><li><a href="3rd%20Party/Lecturio/Inguinal%20Canal_%20Anatomy%20and%20Hernias%20-%20Lecturio.pdf" target="_blank">Inguinal Canal: Anatomy and Hernias</a></li></ul>
+</div>
+<div class="mr-group">
+<span class="mr-group-label">AMBOSS — Structures</span>
+<ul><li><a href="3rd%20Party/Amboss%20Structures/Abdominal%20hernias%20-%20AMBOSS%20%281%29.pdf" target="_blank">Abdominal hernias overview</a></li></ul>
+</div>
+<div class="mr-group">
+<span class="mr-group-label">AMBOSS — Diseases / clinical correlates</span>
+<ul>
+<li><a href="3rd%20Party/Amboss%20Diseases/Inguinal%20hernia%20-%20AMBOSS.pdf" target="_blank">Inguinal hernia (direct/indirect)</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Internal%20hernia%20-%20AMBOSS.pdf" target="_blank">Internal hernia</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Hiatal%20hernia%20-%20AMBOSS.pdf" target="_blank">Hiatal hernia</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Congenital%20diaphragmatic%20hernias%20-%20AMBOSS.pdf" target="_blank">Congenital diaphragmatic hernias</a></li>
+</ul>
+</div>
+</div>
+</details>
+
+<div class="spaced active-block">
+<button class="reset-btn" onclick="resetSpaced(this)">Reset</button>
+<span class="label">Spaced review — from Theme 1</span>
+<h4>Recall first, then keep reading:</h4>
+<div class="qitem"><div class="q">A surgical incision below the arcuate line cuts through rectus. What's the next deep layer?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Transversalis fascia (no posterior rectus sheath below arcuate line).</div></div>
+<div class="qitem"><div class="q">McBurney point is located where?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">1/3 distance from ASIS to umbilicus on the right side.</div></div>
+</div>
+
+<div class="chunk">
+<h4>Chunk 1 of 7 — The inguinal canal: definition + course</h4>
+<p>The inguinal canal is an oblique passageway (~4 cm long) through the lower abdominal wall, parallel and just superior to the medial half of the inguinal ligament.</p>
+<p><strong>Course</strong>: begins at the <strong>deep inguinal ring</strong> (lateral, opening in transversalis fascia, lateral to inferior epigastric a.) → runs medially → ends at the <strong>superficial inguinal ring</strong> (medial, opening in external oblique aponeurosis, just superolateral to pubic tubercle).</p>
+<p>It carries the <strong>spermatic cord</strong> (males) or <strong>round ligament of the uterus</strong> (females), plus the ilioinguinal nerve.</p>
+</div>
+
+<div class="chunk">
+<h4>Chunk 2 of 7 — Inguinal canal walls (boundaries)</h4>
+<div class="minitable">
+  <div class="h">Wall</div><div class="h">Made of</div>
+  <div class="term">Anterior</div><div>External oblique aponeurosis (entire length); internal oblique reinforces laterally</div>
+  <div class="term">Posterior</div><div>Transversalis fascia (entire length); conjoint tendon (= int. oblique + transversus combined) reinforces medially</div>
+  <div class="term">Roof</div><div>Arching fibers of internal oblique + transversus abdominis</div>
+  <div class="term">Floor</div><div>Inguinal ligament; lacunar ligament reinforces medially</div>
+</div>
+</div>
+
+<div class="chunk">
+<h4>Chunk 3 of 7 — Hesselbach's triangle</h4>
+<p>A weak spot on the posterior wall of the inguinal canal — site of <strong>direct</strong> inguinal hernias.</p>
+<p><strong>Boundaries (mnemonic: "RIP"):</strong></p>
+<ul>
+<li><strong>R</strong>ectus abdominis (medial border)</li>
+<li><strong>I</strong>nferior epigastric a. (lateral border)</li>
+<li><strong>P</strong>oupart's (inguinal) ligament (inferior border)</li>
+</ul>
+<p>The floor (posterior wall) is just transversalis fascia — easily bulges outward in older men with chronic abdominal strain.</p>
+</div>
+
+<div class="chunk">
+<h4>Chunk 4 of 7 — Direct vs. indirect hernia (full comparison)</h4>
+<div class="inline-img">
+<a href="Images/anki-anatomyconcepts/concept_10.jpg" target="_blank">
+<img src="Images/anki-anatomyconcepts/concept_10.jpg" alt="Indirect inguinal hernia diagram + clinical">
+</a>
+<div class="caption">Indirect inguinal hernia — pathway through deep ring + clinical photo (AnatomyConcepts deck). Click to enlarge.</div>
+</div>
+<div class="minitable">
+  <div class="h">Feature</div><div class="h">Indirect</div>
+  <div class="term">Pathway</div><div>Through deep ring → through inguinal canal → through superficial ring → into scrotum</div>
+  <div class="term">Inf. epigastric</div><div><strong>LATERAL</strong> to it</div>
+  <div class="term">Cause</div><div>Congenital — patent processus vaginalis</div>
+  <div class="term">Coverings</div><div>Covered by ALL 3 spermatic fascial layers (passes through deep ring with cord)</div>
+  <div class="term">Demographics</div><div>Younger (often pediatric, but most common type overall)</div>
+  <div class="term">Side</div><div>R &gt; L (right processus vaginalis closes later)</div>
+</div>
+<div class="minitable">
+  <div class="h">Feature</div><div class="h">Direct</div>
+  <div class="term">Pathway</div><div>Bulges through Hesselbach's triangle (weak posterior wall) → exits superficial ring</div>
+  <div class="term">Inf. epigastric</div><div><strong>MEDIAL</strong> to it</div>
+  <div class="term">Cause</div><div>Acquired — weakness of transversalis fascia</div>
+  <div class="term">Coverings</div><div>Only external spermatic fascia (does NOT pass through deep ring)</div>
+  <div class="term">Demographics</div><div>Older men with chronic strain (cough, BPH, heavy lifting)</div>
+</div>
+<div class="mnemonic"><strong>MD's don't LIe</strong>: <strong>M</strong>edial = <strong>D</strong>irect, <strong>L</strong>ateral = <strong>I</strong>ndirect (relative to inferior epigastric a.).</div>
+</div>
+
+<div class="predict active-block">
+<button class="reset-btn" onclick="resetPredict(this)">Reset</button>
+<span class="label">Predict &amp; Check</span>
+<div class="question">A 75-year-old man with a chronic cough has a hernia bulging MEDIAL to the inferior epigastric a. Type?</div>
+<button class="reveal-action" onclick="this.parentElement.classList.add('revealed')">Reveal</button>
+<div class="answer">Direct inguinal hernia (Hesselbach's triangle, acquired weakness, older male, strain). Classic stem.</div>
+</div>
+
+<div class="chunk">
+<h4>Chunk 5 of 7 — Spermatic cord contents (rule of 3s)</h4>
+<div class="inline-img">
+<a href="Images/anki-bluelink/bluelink_26.png" target="_blank">
+<img src="Images/anki-bluelink/bluelink_26.png" alt="Testis + epididymis — labeled cadaver">
+</a>
+<div class="caption">Testis + epididymis (head, body, tail) cadaver labeling (Michigan BlueLink). Click to enlarge.</div>
+</div>
+<p><strong>3 arteries:</strong></p>
+<ul>
+<li><strong>Testicular a.</strong> (from abdominal aorta at L2)</li>
+<li><strong>Cremasteric a.</strong> (from inferior epigastric a.)</li>
+<li><strong>Artery of ductus deferens</strong> (from inferior vesical a.)</li>
+</ul>
+<p><strong>3 nerves:</strong></p>
+<ul>
+<li><strong>Genital branch of genitofemoral n.</strong> (motor to cremaster, sensory to scrotum)</li>
+<li><strong>Ilioinguinal n.</strong> (technically ON the cord, not in it)</li>
+<li><strong>Autonomic fibers</strong> (sympathetic to ductus deferens)</li>
+</ul>
+<p><strong>3 other:</strong></p>
+<ul>
+<li><strong>Ductus (vas) deferens</strong></li>
+<li><strong>Pampiniform plexus of veins</strong> (drains testicle; left → left renal v.; right → IVC)</li>
+<li><strong>Lymphatics</strong> (to para-aortic nodes)</li>
+</ul>
+</div>
+
+<div class="chunk">
+<h4>Chunk 6 of 7 — Spermatic cord fascial layers</h4>
+<p>As the cord punches through the abdominal wall, each wall layer wraps it. Memorize these <strong>3 derivations</strong>:</p>
+<div class="minitable">
+  <div class="h">Cord layer</div><div class="h">Comes from</div>
+  <div class="term">External spermatic fascia</div><div>External oblique aponeurosis</div>
+  <div class="term">Cremaster muscle &amp; fascia</div><div>Internal oblique</div>
+  <div class="term">Internal spermatic fascia</div><div>Transversalis fascia</div>
+</div>
+<p><strong>Beneath these</strong> wrap the testis itself: tunica vaginalis (parietal + visceral layers, derived from peritoneum) → tunica albuginea (fibrous capsule of testis).</p>
+</div>
+
+<div class="trap">Transversus abdominis does <strong>NOT</strong> contribute a layer (it arches over the cord, doesn't wrap it). Classic distractor.</div>
+
+<div class="fill active-block">
+<button class="reset-btn" onclick="resetFill(this)">Reset</button>
+<span class="label">Fill in the blank — click each</span>
+<ol>
+  <li>The cremaster muscle is derived from the <span class="blank" onclick="this.classList.add('shown')">internal oblique</span>.</li>
+  <li>External spermatic fascia comes from the <span class="blank" onclick="this.classList.add('shown')">external oblique aponeurosis</span>.</li>
+  <li>The internal spermatic fascia comes from the <span class="blank" onclick="this.classList.add('shown')">transversalis fascia</span>.</li>
+  <li><span class="blank" onclick="this.classList.add('shown')">Transversus abdominis</span> contributes NO layer to the cord.</li>
+  <li>The testicular artery branches from the abdominal aorta at vertebral level <span class="blank" onclick="this.classList.add('shown')">L2</span>.</li>
+  <li>The pampiniform plexus on the left drains into the <span class="blank" onclick="this.classList.add('shown')">left renal vein</span>.</li>
+</ol>
+</div>
+
+<div class="chunk">
+<h4>Chunk 7 of 7 — The 3 inguinal nerves &amp; female homologue</h4>
+<div class="minitable">
+  <div class="h">Nerve</div><div class="h">Function (test version)</div>
+  <div class="term">Iliohypogastric (L1)</div><div>Sensory: suprapubic skin. Motor: lower abdominal wall.</div>
+  <div class="term">Ilioinguinal (L1)</div><div><strong>Anterior scrotum/labia + medial thigh sensation.</strong> Most common nerve injured in appendectomy &amp; hernia repair → numb scrotum/labia.</div>
+  <div class="term">Genitofemoral (L1, L2)</div><div>Genital branch → cremaster muscle (cremasteric reflex). Femoral branch → upper anterior thigh sensation.</div>
+</div>
+<p><strong>Female homologue</strong>: the <strong>round ligament of the uterus</strong> traverses the inguinal canal and ends in the labia majora. Lymph drainage of the uterus follows it → uterine cancer can metastasize to <strong>superficial inguinal nodes</strong>.</p>
+</div>
+
+<div class="trap">Don't confuse: <strong>testis</strong> drains to para-aortic nodes (embryologic L2 origin). <strong>Scrotum (skin)</strong> drains to superficial inguinal. Tested as: "testicular cancer mets where?" → para-aortic.</div>
+
+<details class="ref">
+<summary><span class="ref-tag">Reference</span> Inguinal Canal &amp; Hesselbach's Triangle</summary>
+<div class="ref-content">
+<a href="Images/infographics/inguinal-canal_hesselbachs-triangle.png" target="_blank">
+<img src="Images/infographics/inguinal-canal_hesselbachs-triangle.png" alt="Inguinal Canal">
+<div class="open-link">Open full size in new tab →</div>
+</a>
+</div>
+</details>
+
+<details class="ref">
+<summary><span class="ref-tag">Reference</span> Inguinal Region (general + male + female)</summary>
+<div class="ref-content">
+<a href="Images/infographics/inguinal.png" target="_blank">
+<img src="Images/infographics/inguinal.png" alt="Inguinal Region">
+<div class="open-link">Open full size in new tab →</div>
+</a>
+</div>
+</details>
+
+<div class="quiz active-block">
+<button class="reset-btn" onclick="resetQuiz(this)">Reset</button>
+<span class="label">Section quiz — Theme 2</span>
+<h4>Test yourself before moving on</h4>
+<div class="qitem"><div class="q">1. Hernia bulging medial to inferior epigastric a. — type?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Direct (Hesselbach's triangle).</div></div>
+<div class="qitem"><div class="q">2. Cremaster muscle comes from which abdominal layer?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Internal oblique.</div></div>
+<div class="qitem"><div class="q">3. Numb anterior scrotum post-hernia repair — nerve injured?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Ilioinguinal nerve.</div></div>
+<div class="qitem"><div class="q">4. Uterine cancer spreads via round ligament to which nodes?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Superficial inguinal nodes.</div></div>
+<div class="qitem"><div class="q">5. Testicular cancer spreads to which nodes?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Para-aortic (lumbar) nodes — testis = embryologic L2 origin.</div></div>
+<div class="qitem"><div class="q">6. The 3 boundaries of Hesselbach's triangle?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Rectus abdominis (medial), inferior epigastric a. (lateral), inguinal ligament (inferior).</div></div>
+<div class="qitem"><div class="q">7. Which nerve runs ON the spermatic cord (not inside)?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Ilioinguinal nerve.</div></div>
+</div>
+
+<div class="done-check"><label><input type="checkbox"> Theme 2 done — take a 5-min break.</label></div>
+
+<!-- ================== THEME 3 ================== -->
+<div class="theme-header">
+<span class="label">Theme 3 of 8</span>
+<h2 id="theme3">Peritoneum &amp; ligaments</h2>
+<div class="meta">
+  <span>~30 min</span>
+  <span>6 chunks</span>
+  <span>3 active checks</span>
+  <span>2 references</span>
+</div>
+</div>
+
+<div class="hook"><strong>Why it matters</strong>Always 2–3 questions: intra/retroperitoneal sorting, mesenteric ligament + its contents, or where an infection spreads.</div>
+
+<div class="workbooks">
+<span class="wb-label">Workbooks for this theme</span>
+<div class="wb-list">
+<a href="Images/Abdominal%20Wall%20and%20Viscera%20in%20Situ%20%281%29.pdf" target="_blank">Abdominal Wall &amp; Viscera in Situ</a>
+<a href="Images/kenhub.pdf" target="_blank">Kenhub atlas</a>
+</div>
+<div class="wb-note">The "in situ" workbook shows peritoneal reflections + ligaments in living color.</div>
+</div>
+
+<details class="more-refs">
+<summary><span class="mr-tag">Deep dive</span> Lecturio + AMBOSS reference PDFs</summary>
+<div class="mr-body">
+<div class="mr-group">
+<span class="mr-group-label">Lecturio lectures</span>
+<ul>
+<li><a href="3rd%20Party/Lecturio/Peritoneum_%20Anatomy%20-%20Lecturio.pdf" target="_blank">Peritoneum: Anatomy</a></li>
+<li><a href="3rd%20Party/Lecturio/Development%20of%20the%20Abdominal%20Organs%20-%20Lecturio.pdf" target="_blank">Development of Abdominal Organs (embryology)</a></li>
+</ul>
+</div>
+<div class="mr-group">
+<span class="mr-group-label">AMBOSS — Structures</span>
+<ul><li><a href="3rd%20Party/Amboss%20Structures/Abdominal%20cavity%20-%20AMBOSS%20%281%29.pdf" target="_blank">Abdominal cavity</a></li></ul>
+</div>
+<div class="mr-group">
+<span class="mr-group-label">AMBOSS — Diseases / clinical correlates</span>
+<ul>
+<li><a href="3rd%20Party/Amboss%20Diseases/Ascites%20-%20AMBOSS.pdf" target="_blank">Ascites</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Gastrointestinal%20perforation%20-%20AMBOSS.pdf" target="_blank">GI perforation</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Retroperitoneal%20hematoma%20-%20AMBOSS.pdf" target="_blank">Retroperitoneal hematoma</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Retroperitoneal%20fibrosis%20-%20AMBOSS.pdf" target="_blank">Retroperitoneal fibrosis</a></li>
+</ul>
+</div>
+</div>
+</details>
+
+<div class="spaced active-block">
+<button class="reset-btn" onclick="resetSpaced(this)">Reset</button>
+<span class="label">Spaced review — from Theme 2</span>
+<div class="qitem"><div class="q">Direct vs. indirect inguinal hernia is distinguished by relationship to which artery?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Inferior epigastric artery. Direct = medial, Indirect = lateral.</div></div>
+<div class="qitem"><div class="q">External spermatic fascia comes from which abdominal layer?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">External oblique aponeurosis.</div></div>
+</div>
+
+<div class="chunk">
+<h4>Chunk 1 of 6 — What IS the peritoneum?</h4>
+<p>A continuous serous membrane lining the abdominal cavity (<strong>parietal peritoneum</strong>) and reflecting onto the organs (<strong>visceral peritoneum</strong>).</p>
+<p>Between them is the <strong>peritoneal cavity</strong> — a potential space containing only a thin film of lubricating fluid.</p>
+<ul>
+<li><strong>Parietal peritoneum</strong>: somatically innervated → sharp, well-localized pain</li>
+<li><strong>Visceral peritoneum</strong>: visceral afferent fibers → dull, poorly-localized referred pain</li>
+</ul>
+</div>
+
+<div class="chunk">
+<h4>Chunk 2 of 6 — Intra vs. retroperitoneal (the SAD PUCKER mnemonic)</h4>
+<p><strong>SAD PUCKER</strong> = primarily retroperitoneal organs (sit behind the parietal peritoneum on the posterior wall):</p>
+<div class="compact-list">
+<ul>
+<li><strong>S</strong>uprarenal glands</li>
+<li><strong>A</strong>orta &amp; IVC</li>
+<li><strong>D</strong>uodenum (parts 2, 3, 4)</li>
+<li><strong>P</strong>ancreas (except tail)</li>
+<li><strong>U</strong>reters</li>
+<li><strong>C</strong>olon (ascending &amp; descending only)</li>
+<li><strong>K</strong>idneys</li>
+<li><strong>E</strong>sophagus (lower)</li>
+<li><strong>R</strong>ectum (lower 2/3)</li>
+</ul>
+</div>
+<p><strong>Intraperitoneal</strong> (suspended by mesentery, mobile): stomach, 1st duodenum, jejunum, ileum, cecum + appendix, transverse colon, sigmoid, liver, gallbladder, spleen, <strong>tail of pancreas</strong>.</p>
+<p><strong>Secondarily retroperitoneal</strong>: structures that started intraperitoneal but became fixed during development (ascending colon, descending colon, duodenum 2-4, pancreas head/body).</p>
+</div>
+
+<div class="trap">The favorite twist: <strong>tail of pancreas is intraperitoneal</strong> (it sits in the splenorenal ligament). Head/body/uncinate are retroperitoneal. Same goes for duodenum: only the 1st part is intraperitoneal — parts 2-4 are retroperitoneal.</div>
+
+<div class="predict active-block">
+<button class="reset-btn" onclick="resetPredict(this)">Reset</button>
+<span class="label">Predict &amp; Check</span>
+<div class="question">Pick the intraperitoneal one: 2nd part of duodenum, ascending colon, transverse colon, kidney, suprarenal gland.</div>
+<button class="reveal-action" onclick="this.parentElement.classList.add('revealed')">Reveal</button>
+<div class="answer">Transverse colon (suspended by transverse mesocolon). All others are retroperitoneal.</div>
+</div>
+
+<div class="chunk">
+<h4>Chunk 3 of 6 — Greater sac, lesser sac, omental foramen</h4>
+<p>The peritoneal cavity has 2 compartments:</p>
+<ul>
+<li><strong>Greater peritoneal sac</strong>: the main space. Subdivided into <strong>supracolic</strong> (above transverse mesocolon) and <strong>infracolic</strong> (below). Infracolic has L &amp; R paracolic gutters.</li>
+<li><strong>Lesser sac (omental bursa)</strong>: behind the stomach + lesser omentum. Allows the stomach to move freely.</li>
+</ul>
+<p>They communicate via the <strong>omental (epiploic) foramen of Winslow</strong>:</p>
+<div class="minitable">
+  <div class="h">Boundary</div><div class="h">Structure</div>
+  <div class="term">Anterior</div><div><strong>Hepatoduodenal ligament</strong> (containing portal triad)</div>
+  <div class="term">Posterior</div><div>IVC</div>
+  <div class="term">Superior</div><div>Caudate lobe of liver</div>
+  <div class="term">Inferior</div><div>1st part of duodenum</div>
+</div>
+</div>
+
+<div class="pearl"><strong>Pringle maneuver</strong>: surgeon puts thumb in omental foramen and squeezes the hepatoduodenal lig (containing portal triad) to stop hepatic bleeding.</div>
+
+<div class="chunk">
+<h4>Chunk 4 of 6 — Mesenteries (peritoneal folds that suspend organs)</h4>
+<div class="minitable">
+  <div class="h">Mesentery</div><div class="h">Suspends what / Contains</div>
+  <div class="term">Mesentery proper</div><div>Suspends jejunum + ileum from posterior wall. Contains SMA branches, SMV.</div>
+  <div class="term">Transverse mesocolon</div><div>Suspends transverse colon. Contains middle colic vessels. Divides peritoneal cavity into supracolic + infracolic.</div>
+  <div class="term">Sigmoid mesocolon</div><div>Suspends sigmoid colon. Contains sigmoid vessels.</div>
+  <div class="term">Mesoappendix</div><div>Small mesentery suspending appendix from terminal ileum mesentery. Carries appendicular a.</div>
+</div>
+<p><strong>Mesentery = mobility</strong>; <strong>retroperitoneal = fixed</strong>.</p>
+</div>
+
+<div class="chunk">
+<h4>Chunk 5 of 6 — Peritoneal ligaments &amp; their contents (the highest yield table)</h4>
+<div class="inline-img">
+<a href="Images/amboss/big_60d081c6a5aac.jpg" target="_blank">
+<img src="Images/amboss/big_60d081c6a5aac.jpg" alt="Peritoneal ligaments labeled">
+</a>
+<div class="caption">Cross-section + 3D view of all peritoneal ligaments (AMBOSS). Click to enlarge.</div>
+</div>
+<div class="minitable">
+  <div class="h">Ligament</div><div class="h">Attaches + Contents</div>
+  <div class="term">Hepatoduodenal</div><div>Liver ↔ duodenum. <strong>Portal triad</strong>: bile duct (anterolateral right), hepatic artery proper (anterolateral left), portal vein (posterior). Anterior border of omental foramen.</div>
+  <div class="term">Hepatogastric</div><div>Liver ↔ lesser curvature stomach. Gastric arteries (R + L gastric).</div>
+  <div class="term">Falciform</div><div>Liver ↔ anterior abdominal wall. Contains <strong>round ligament of liver (ligamentum teres)</strong> = remnant of fetal umbilical vein.</div>
+  <div class="term">Coronary</div><div>Liver ↔ diaphragm. Surrounds the <strong>bare area of liver</strong>. Connects to L + R triangular ligaments.</div>
+  <div class="term">Gastrosplenic</div><div>Greater curvature stomach ↔ spleen. <strong>Short gastric aa.</strong> + L gastro-omental a.</div>
+  <div class="term">Splenorenal (lienorenal)</div><div>Spleen ↔ left kidney. <strong>Splenic vessels + tail of pancreas</strong>.</div>
+  <div class="term">Gastrophrenic</div><div>Stomach ↔ diaphragm. Top part of greater omentum's anchor.</div>
+  <div class="term">Phrenicocolic</div><div>Splenic flexure ↔ diaphragm. No major vessels — just supports.</div>
+  <div class="term">Gastrocolic</div><div>Greater curvature ↔ transverse colon. Major part of greater omentum.</div>
+</div>
+<p><strong>Lesser omentum</strong> = hepatogastric + hepatoduodenal lig (between liver, stomach, &amp; duodenum).</p>
+<p><strong>Greater omentum</strong> = "policeman of the abdomen." Hangs from greater curvature down over intestines (gastrocolic + gastrosplenic + gastrophrenic). Walls off infections.</p>
+</div>
+
+<div class="fill active-block">
+<button class="reset-btn" onclick="resetFill(this)">Reset</button>
+<span class="label">Fill in the blank</span>
+<ol>
+  <li>Pringle maneuver compresses the <span class="blank" onclick="this.classList.add('shown')">hepatoduodenal</span> ligament.</li>
+  <li>Splenectomy via gastrosplenic lig sacrifices the <span class="blank" onclick="this.classList.add('shown')">short gastric</span> arteries → <span class="blank" onclick="this.classList.add('shown')">fundus</span> ischemia.</li>
+  <li>The tail of the pancreas sits in the <span class="blank" onclick="this.classList.add('shown')">splenorenal</span> ligament along with the splenic vessels.</li>
+  <li>The falciform ligament contains the <span class="blank" onclick="this.classList.add('shown')">ligamentum teres / round ligament of liver</span>.</li>
+  <li>The omental foramen has the <span class="blank" onclick="this.classList.add('shown')">caudate lobe</span> as its superior boundary and the <span class="blank" onclick="this.classList.add('shown')">IVC</span> as its posterior boundary.</li>
+</ol>
+</div>
+
+<div class="chunk">
+<h4>Chunk 6 of 6 — Peritoneal recesses (where fluid pools)</h4>
+<div class="inline-img">
+<a href="Images/anki-block4-gi/lab3_visceraII/id1002_128ef02201559db3a3fd3e0200412f9ac1090efd.jpg" target="_blank">
+<img src="Images/anki-block4-gi/lab3_visceraII/id1002_128ef02201559db3a3fd3e0200412f9ac1090efd.jpg" alt="Liver + peritoneum + recesses">
+</a>
+<div class="caption">Liver, bare area, coronary lig, hepatorenal recess, subphrenic recess — Block 4 GI lecture diagram. Click to enlarge.</div>
+</div>
+<p>When you have ascites or hemoperitoneum, fluid collects in the lowest peritoneal recesses (clinically important):</p>
+<ul>
+<li><strong>Subphrenic recess</strong>: between liver + diaphragm; common abscess site post-perforation</li>
+<li><strong>Hepatorenal recess (Morison's pouch)</strong>: between liver + R kidney; <strong>most dependent space when supine</strong> → first place fluid collects</li>
+<li><strong>Paracolic gutters</strong>: lateral to ascending + descending colon; conduits for fluid spread</li>
+<li><strong>Rectovesical pouch</strong> (men) / <strong>rectouterine pouch of Douglas</strong> (women): most dependent space when standing</li>
+</ul>
+</div>
+
+<div class="clinical">A patient with a perforated duodenal ulcer often gets infection in the <strong>subphrenic recess</strong> on the right (subphrenic abscess). Free air on upright x-ray = perforated viscus.</div>
+
+<details class="ref">
+<summary><span class="ref-tag">Reference</span> Peritoneal Cavity overview</summary>
+<div class="ref-content">
+<a href="Images/infographics/peritoneal-cavity.png" target="_blank">
+<img src="Images/infographics/peritoneal-cavity.png" alt="Peritoneal Cavity">
+<div class="open-link">Open full size in new tab →</div>
+</a>
+</div>
+</details>
+
+<details class="ref">
+<summary><span class="ref-tag">Reference</span> Peritoneal Ligaments — every ligament + contents</summary>
+<div class="ref-content">
+<a href="Images/infographics/peritoneal-ligaments.png" target="_blank">
+<img src="Images/infographics/peritoneal-ligaments.png" alt="Peritoneal Ligaments">
+<div class="open-link">Open full size in new tab →</div>
+</a>
+</div>
+</details>
+
+<div class="quiz active-block">
+<button class="reset-btn" onclick="resetQuiz(this)">Reset</button>
+<span class="label">Section quiz — Theme 3</span>
+<h4>Test yourself before moving on</h4>
+<div class="qitem"><div class="q">1. Tail of pancreas sits in which ligament?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Splenorenal (also contains splenic vessels).</div></div>
+<div class="qitem"><div class="q">2. Anterior boundary of the omental foramen?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Hepatoduodenal ligament (portal triad).</div></div>
+<div class="qitem"><div class="q">3. Splenectomy cuts the gastrosplenic ligament. What's at risk for ischemia?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Fundus of stomach (short gastrics sacrificed).</div></div>
+<div class="qitem"><div class="q">4. Bleeding from hepatic a. proper — which ligament must be cut to access?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Hepatoduodenal (contains portal triad).</div></div>
+<div class="qitem"><div class="q">5. Most dependent peritoneal recess when patient is SUPINE?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Hepatorenal recess (Morison's pouch).</div></div>
+<div class="qitem"><div class="q">6. Which ligament suspends the round ligament of the liver?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Falciform ligament.</div></div>
+</div>
+
+<div class="done-check"><label><input type="checkbox"> Theme 3 done.</label></div>
+
+<!-- ================== THEME 4 ================== -->
+<div class="theme-header">
+<span class="label">Theme 4 of 8</span>
+<h2 id="theme4">Foregut (celiac trunk territory)</h2>
+<div class="meta">
+  <span>~40 min</span>
+  <span>8 chunks</span>
+  <span>3 active checks</span>
+  <span>3 references</span>
+</div>
+</div>
+
+<div class="hook"><strong>Why it matters</strong>The celiac trunk family tree is the most-tested vasculature on the exam. Plus: caudate lobe + Budd-Chiari, biliary tree obstruction, and gastric conduit ischemia.</div>
+
+<div class="workbooks">
+<span class="wb-label">Workbooks for this theme</span>
+<div class="wb-list">
+<a href="Images/Hepatoduodenal%2C%20Celiac%20Trunk.pdf" target="_blank">Hepatoduodenal, Celiac Trunk</a>
+<a href="Images/kenhub.pdf" target="_blank">Kenhub atlas</a>
+</div>
+<div class="wb-note">The celiac trunk workbook shows every branch dissected — perfect alongside Chunk 2.</div>
+</div>
+
+<details class="more-refs">
+<summary><span class="mr-tag">Deep dive</span> Lecturio + AMBOSS reference PDFs</summary>
+<div class="mr-body">
+<div class="mr-group">
+<span class="mr-group-label">Lecturio lectures</span>
+<ul>
+<li><a href="3rd%20Party/Lecturio/Esophagus_%20Anatomy%20-%20Lecturio.pdf" target="_blank">Esophagus</a></li>
+<li><a href="3rd%20Party/Lecturio/Stomach_%20Anatomy%20-%20Lecturio.pdf" target="_blank">Stomach</a></li>
+<li><a href="3rd%20Party/Lecturio/Liver_%20Anatomy%20-%20Lecturio.pdf" target="_blank">Liver</a></li>
+<li><a href="3rd%20Party/Lecturio/Gallbladder%20and%20Biliary%20Tract_%20Anatomy%20-%20Lecturio.pdf" target="_blank">Gallbladder &amp; Biliary Tract</a></li>
+<li><a href="3rd%20Party/Lecturio/Pancreas_%20Anatomy%20-%20Lecturio.pdf" target="_blank">Pancreas</a></li>
+</ul>
+</div>
+<div class="mr-group">
+<span class="mr-group-label">AMBOSS — Structures</span>
+<ul>
+<li><a href="3rd%20Party/Amboss%20Structures/Esophagus%20-%20AMBOSS.pdf" target="_blank">Esophagus</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Stomach%20-%20AMBOSS.pdf" target="_blank">Stomach</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Liver%20-%20AMBOSS.pdf" target="_blank">Liver</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Gallbladder%20and%20bile%20-%20AMBOSS%20%281%29.pdf" target="_blank">Gallbladder &amp; bile</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Pancreas%20-%20AMBOSS.pdf" target="_blank">Pancreas</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Spleen%20-%20AMBOSS%20%281%29.pdf" target="_blank">Spleen</a></li>
+</ul>
+</div>
+<div class="mr-group">
+<span class="mr-group-label">AMBOSS — Diseases / clinical correlates</span>
+<ul>
+<li><a href="3rd%20Party/Amboss%20Diseases/Peptic%20ulcer%20disease%20-%20AMBOSS.pdf" target="_blank">Peptic ulcer disease</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Gastritis%20-%20AMBOSS.pdf" target="_blank">Gastritis</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Mallory-Weiss%20syndrome%20-%20AMBOSS.pdf" target="_blank">Mallory-Weiss syndrome</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Gastric%20cancer%20-%20AMBOSS.pdf" target="_blank">Gastric cancer</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Gastrointestinal%20bleeding%20-%20AMBOSS.pdf" target="_blank">GI bleeding</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Cholelithiasis%20-%20AMBOSS.pdf" target="_blank">Cholelithiasis</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Choledocholithiasis%20-%20AMBOSS.pdf" target="_blank">Choledocholithiasis</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Cholecystectomy%20-%20AMBOSS.pdf" target="_blank">Cholecystectomy (Calot's triangle)</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Sphincter%20of%20Oddi%20dysfunction%20-%20AMBOSS.pdf" target="_blank">Sphincter of Oddi dysfunction</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Acute%20pancreatitis%20-%20AMBOSS.pdf" target="_blank">Acute pancreatitis</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Splenic%20injuries%20-%20AMBOSS.pdf" target="_blank">Splenic injuries</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Budd-Chiari%20syndrome%20-%20AMBOSS.pdf" target="_blank">Budd-Chiari syndrome (caudate lobe)</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Portal%20hypertension%20-%20AMBOSS.pdf" target="_blank">Portal hypertension</a></li>
+</ul>
+</div>
+</div>
+</details>
+
+<div class="spaced active-block">
+<button class="reset-btn" onclick="resetSpaced(this)">Reset</button>
+<span class="label">Spaced review — from Themes 1–3</span>
+<div class="qitem"><div class="q">SAD PUCKER — name 4 of the retroperitoneal organs.</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Suprarenals, Aorta/IVC, Duodenum 2-4, Pancreas (not tail), Ureters, Colon (asc/desc), Kidneys, Esophagus, Rectum. Any 4 work.</div></div>
+<div class="qitem"><div class="q">Cremaster muscle is derived from which abdominal wall layer?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Internal oblique.</div></div>
+</div>
+
+<div class="chunk">
+<h4>Chunk 1 of 8 — Foregut definition + the celiac trunk</h4>
+<div class="inline-img">
+<a href="Images/amboss/gi-anatomy.jpeg" target="_blank">
+<img src="Images/amboss/gi-anatomy.jpeg" alt="Celiac trunk anatomy">
+</a>
+<div class="caption">Celiac trunk in situ (AMBOSS). Try to label R/L gastric, splenic, common hepatic, gastroduodenal, R/L gastro-omental as you read. Click to enlarge.</div>
+</div>
+<p><strong>Foregut</strong> = lower esophagus → 2nd part of duodenum (up to the ampulla of Vater). Includes: stomach, liver, gallbladder, pancreas (head), spleen.</p>
+<p>Supplied by the <strong>celiac trunk</strong> at vertebral level <strong>T12</strong>. Drains via the <strong>portal venous system</strong>.</p>
+<p>The celiac trunk is short (1–2 cm) and immediately splits into 3 branches:</p>
+<ol>
+<li><strong>Common hepatic a.</strong> → liver, stomach (R side), pancreas head, duodenum</li>
+<li><strong>Splenic a.</strong> → spleen, stomach (L side), pancreas body/tail</li>
+<li><strong>Left gastric a.</strong> → lesser curvature + lower esophagus</li>
+</ol>
+</div>
+
+<div class="chunk">
+<h4>Chunk 2 of 8 — Common hepatic a. branches</h4>
+<p><strong>Common hepatic a.</strong> splits into two:</p>
+<ul>
+<li><strong>Gastroduodenal a.</strong> → descends behind 1st duodenum, gives off:
+  <ul>
+    <li>Right gastro-omental a. (greater curvature)</li>
+    <li>Superior pancreaticoduodenal aa. (head of pancreas + duodenum)</li>
+    <li>Supraduodenal a.</li>
+  </ul>
+</li>
+<li><strong>Hepatic a. proper</strong> → ascends in hepatoduodenal lig, gives off:
+  <ul>
+    <li>Right gastric a. (lesser curvature)</li>
+    <li>Right + Left hepatic aa. (liver lobes)</li>
+    <li><strong>Cystic a.</strong> branches off right hepatic a. (in Calot's triangle)</li>
+  </ul>
+</li>
+</ul>
+</div>
+
+<div class="clinical"><strong>Calot's (cystohepatic) triangle</strong>: cystic duct (lateral), common hepatic duct (medial), inferior border of liver (superior). <strong>Cystic a. lives here</strong> — must be identified during cholecystectomy.</div>
+
+<div class="chunk">
+<h4>Chunk 3 of 8 — Splenic a. + Left gastric a. branches</h4>
+<p><strong>Splenic a.</strong> takes a tortuous course superior to the pancreas. Branches:</p>
+<ul>
+<li><strong>Pancreatic branches</strong> (to body + tail of pancreas)</li>
+<li><strong>Short gastric aa.</strong> → fundus of stomach (run in gastrosplenic lig)</li>
+<li><strong>Left gastro-omental a.</strong> → greater curvature</li>
+<li>Terminates as splenic branches into spleen</li>
+</ul>
+<p><strong>Left gastric a.</strong> is the smallest celiac branch. Runs along lesser curvature, anastomosing with right gastric a. Gives <strong>esophageal branches</strong> upward (relevant for esophageal varices in portal hypertension).</p>
+</div>
+
+<div class="chunk">
+<h4>Chunk 4 of 8 — Stomach blood supply by curvature (memorize)</h4>
+<div class="minitable">
+  <div class="h">Region</div><div class="h">Supply</div>
+  <div class="term">Lesser curvature</div><div>R gastric (← hep a. proper) + L gastric (← celiac)</div>
+  <div class="term">Greater curvature</div><div>R gastro-omental (← gastroduodenal) + L gastro-omental (← splenic)</div>
+  <div class="term">Fundus</div><div>Short gastric aa. (← splenic)</div>
+  <div class="term">Cardia / lower esophagus</div><div>Esophageal branches of L gastric a.</div>
+</div>
+</div>
+
+<div class="trap">After esophagectomy + partial gastrectomy, the new gastric conduit is supplied ONLY by the <strong>right gastro-omental a.</strong> The left gastric, left gastro-omental, and short gastrics are all sacrificed when the proximal stomach is removed. Classic exam stem.</div>
+
+<div class="predict active-block">
+<button class="reset-btn" onclick="resetPredict(this)">Reset</button>
+<span class="label">Predict &amp; Check</span>
+<div class="question">A patient is bleeding from the cystic artery during a cholecystectomy. The cystic artery branches from which vessel?</div>
+<button class="reveal-action" onclick="this.parentElement.classList.add('revealed')">Reveal</button>
+<div class="answer">Right hepatic artery (in Calot's triangle, bounded by cystic duct, common hepatic duct, inferior border of liver).</div>
+</div>
+
+<div class="chunk">
+<h4>Chunk 5 of 8 — Stomach anatomy (parts you must identify)</h4>
+<ul>
+<li><strong>Cardia</strong>: where esophagus enters (just below esophageal hiatus, T11)</li>
+<li><strong>Cardiac notch</strong>: angle between esophagus + fundus</li>
+<li><strong>Fundus</strong>: dome above the cardia (rises to dome of L hemidiaphragm)</li>
+<li><strong>Body</strong>: largest part</li>
+<li><strong>Pylorus</strong>: distal narrow part — antrum → pyloric canal → pyloric sphincter</li>
+<li><strong>Greater curvature</strong>: long convex left/inferior border</li>
+<li><strong>Lesser curvature</strong>: short concave right/superior border</li>
+</ul>
+<p>Stomach is fully <strong>intraperitoneal</strong>, anchored by the lesser omentum (to liver), greater omentum (to transverse colon), and gastrosplenic lig (to spleen).</p>
+</div>
+
+<div class="chunk">
+<h4>Chunk 6 of 8 — Liver: lobes &amp; surfaces</h4>
+<div class="minitable">
+  <div class="h">Lobe</div><div class="h">Where</div>
+  <div class="term">Right</div><div>Largest, right of falciform &amp; gallbladder</div>
+  <div class="term">Left</div><div>Left of falciform ligament</div>
+  <div class="term">Caudate</div><div>Posterior, between IVC (right) + ligamentum venosum (left), above porta hepatis</div>
+  <div class="term">Quadrate</div><div>Anterior-inferior, between gallbladder (right) + ligamentum teres (left), below porta hepatis</div>
+</div>
+<p><strong>Surfaces:</strong> diaphragmatic (smooth, anterior/superior) and visceral (with impressions of stomach, duodenum, kidney). The <strong>bare area of liver</strong> (posterior, between coronary lig leaves) directly contacts the diaphragm — no peritoneum here, important for abscess spread to pleural cavity.</p>
+<p><strong>Liver ligaments</strong>: falciform (with ligamentum teres = obliterated umbilical v.), coronary (with bare area), L + R triangular, ligamentum venosum (= obliterated ductus venosus, between caudate + L lobe).</p>
+</div>
+
+<div class="pearl"><strong>Caudate lobe = Budd-Chiari magnet.</strong> Its veins drain DIRECTLY into IVC (not through hepatic veins). When hepatic veins occlude (Budd-Chiari), only caudate keeps draining → it hypertrophies. Classic exam Q: jaundiced patient with ascites + hypertrophy of which structure? → caudate lobe.</div>
+
+<div class="chunk">
+<h4>Chunk 7 of 8 — Porta hepatis &amp; portal triad</h4>
+<div class="inline-img">
+<a href="Images/anki-block4-gi/lab2_viscera/id1041_3d0340e219b4800b16c4aad7a28dca3c741d3745.jpg" target="_blank">
+<img src="Images/anki-block4-gi/lab2_viscera/id1041_3d0340e219b4800b16c4aad7a28dca3c741d3745.jpg" alt="Hepatic portal venous system overview">
+</a>
+<div class="caption">Hepatic portal venous system overview — Block 4 GI lecture diagram. Click to enlarge.</div>
+</div>
+<p>The <strong>porta hepatis</strong> is the gateway into the visceral surface of the liver. It contains the <strong>portal triad</strong> + nerves + lymphatics.</p>
+<p><strong>Portal triad</strong> (memorize spatial arrangement at porta hepatis):</p>
+<div class="minitable">
+  <div class="h">Position</div><div class="h">Structure</div>
+  <div class="term">Anterior right</div><div>Bile duct</div>
+  <div class="term">Anterior left</div><div>Hepatic artery proper</div>
+  <div class="term">Posterior</div><div>Hepatic portal vein (largest)</div>
+</div>
+<p>The triad runs in the <strong>hepatoduodenal ligament</strong> (free edge of lesser omentum, anterior border of omental foramen).</p>
+</div>
+
+<div class="chunk">
+<h4>Chunk 8 of 8 — Biliary tree + pancreas</h4>
+<div class="inline-img">
+<a href="Images/amboss/big_593a6f8e0e0fa.jpg" target="_blank">
+<img src="Images/amboss/big_593a6f8e0e0fa.jpg" alt="Biliary tree + ampulla of Vater labeled">
+</a>
+<div class="caption">Biliary tree + ampulla of Vater + sphincter of Oddi labeled (AMBOSS). Click to enlarge.</div>
+</div>
+<p><strong>Biliary tract pathway:</strong></p>
+<ol>
+<li>Right + Left hepatic ducts (from R + L liver lobes)</li>
+<li>Merge → <strong>Common hepatic duct</strong></li>
+<li>Joined by <strong>cystic duct</strong> (from gallbladder) → <strong>Bile duct</strong> (formerly "common bile duct")</li>
+<li>Bile duct + main pancreatic duct → <strong>Hepatopancreatic ampulla of Vater</strong></li>
+<li>Empties into <strong>2nd part of duodenum</strong> at the <strong>major duodenal papilla</strong>, controlled by sphincter of Oddi</li>
+</ol>
+<p><strong>Gallbladder</strong>: pear-shaped sac under R lobe of liver. Parts: fundus (rounded tip projects below liver edge), body, neck (continuous with cystic duct, has spiral folds = "spiral valve of Heister").</p>
+<p><strong>Pancreas</strong> parts (right to left): <strong>head</strong> (in C-loop of duodenum), <strong>uncinate process</strong> (extends behind SMA/SMV), <strong>neck</strong> (overlies SMV/portal v. junction), <strong>body</strong>, <strong>tail</strong> (intraperitoneal in splenorenal lig). The <strong>main pancreatic duct (Wirsung)</strong> runs the length of pancreas; an accessory duct (Santorini) may open into duodenum separately.</p>
+</div>
+
+<div class="fill active-block">
+<button class="reset-btn" onclick="resetFill(this)">Reset</button>
+<span class="label">Fill in the blank</span>
+<ol>
+  <li>The cystic artery branches from the <span class="blank" onclick="this.classList.add('shown')">right hepatic</span> artery.</li>
+  <li>In Budd-Chiari, the <span class="blank" onclick="this.classList.add('shown')">caudate</span> lobe hypertrophies because it drains directly into the <span class="blank" onclick="this.classList.add('shown')">IVC</span>.</li>
+  <li>The artery that keeps a post-esophagectomy gastric conduit alive is the <span class="blank" onclick="this.classList.add('shown')">right gastro-omental</span>.</li>
+  <li>The bile duct empties into the <span class="blank" onclick="this.classList.add('shown')">2nd part of duodenum</span> at the <span class="blank" onclick="this.classList.add('shown')">ampulla of Vater</span>.</li>
+  <li>The portal triad consists of: bile duct, <span class="blank" onclick="this.classList.add('shown')">hepatic artery proper</span>, and <span class="blank" onclick="this.classList.add('shown')">portal vein</span>.</li>
+  <li>The uncinate process of the pancreas extends posterior to the <span class="blank" onclick="this.classList.add('shown')">SMA</span>.</li>
+</ol>
+</div>
+
+<details class="ref">
+<summary><span class="ref-tag">Reference</span> Foregut Vasculature (celiac &amp; branches)</summary>
+<div class="ref-content">
+<a href="Images/infographics/vasculature-foregut.png" target="_blank">
+<img src="Images/infographics/vasculature-foregut.png" alt="Foregut Vasculature">
+<div class="open-link">Open full size in new tab →</div>
+</a>
+</div>
+</details>
+
+<details class="ref">
+<summary><span class="ref-tag">Reference</span> Liver — anterior + posterior + portal triad</summary>
+<div class="ref-content">
+<a href="Images/amboss/liver.jpg" target="_blank">
+<img src="Images/amboss/liver.jpg" alt="Liver">
+<div class="open-link">Open full size in new tab →</div>
+</a>
+</div>
+</details>
+
+<details class="ref">
+<summary><span class="ref-tag">Reference</span> Pancreas anatomy &amp; relationships</summary>
+<div class="ref-content">
+<a href="Images/infographics/pancreas.png" target="_blank">
+<img src="Images/infographics/pancreas.png" alt="Pancreas">
+<div class="open-link">Open full size in new tab →</div>
+</a>
+</div>
+</details>
+
+<div class="quiz active-block">
+<button class="reset-btn" onclick="resetQuiz(this)">Reset</button>
+<span class="label">Section quiz — Theme 4</span>
+<h4>Test yourself</h4>
+<div class="qitem"><div class="q">1. Patient with Budd-Chiari has hypertrophy of which liver lobe?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Caudate lobe — drains directly into IVC.</div></div>
+<div class="qitem"><div class="q">2. Cystic artery branches from?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Right hepatic artery.</div></div>
+<div class="qitem"><div class="q">3. Bleeding from hepatic a. proper — cut which ligament?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Hepatoduodenal (contains portal triad).</div></div>
+<div class="qitem"><div class="q">4. Gallstone obstructs the duct opening into 2nd duodenum. Where is it?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Hepatopancreatic ampulla (of Vater).</div></div>
+<div class="qitem"><div class="q">5. Fundus blood supply?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Short gastric aa. (from splenic).</div></div>
+<div class="qitem"><div class="q">6. Bile duct + which other duct form the ampulla of Vater?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Main pancreatic duct.</div></div>
+<div class="qitem"><div class="q">7. Calot's triangle boundaries?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Cystic duct, common hepatic duct, inferior border of liver. Cystic a. lives here.</div></div>
+</div>
+
+<div class="done-check"><label><input type="checkbox"> Theme 4 done — break time.</label></div>
+
+<!-- ================== THEME 5 ================== -->
+<div class="theme-header">
+<span class="label">Theme 5 of 8</span>
+<h2 id="theme5">Midgut (SMA territory)</h2>
+<div class="meta">
+  <span>~35 min</span>
+  <span>7 chunks</span>
+  <span>3 active checks</span>
+  <span>2 references</span>
+</div>
+</div>
+
+<div class="hook"><strong>Why it matters</strong>SMA branches + appendicitis path + SMA syndrome are tested every year. Always 2–3 questions.</div>
+
+<div class="workbooks">
+<span class="wb-label">Workbooks for this theme</span>
+<div class="wb-list">
+<a href="Images/SMA%2C%20IMA%2C%20Pancreas%2C%20Intestines.pdf" target="_blank">SMA, IMA, Pancreas, Intestines</a>
+<a href="Images/kenhub.pdf" target="_blank">Kenhub atlas</a>
+</div>
+<div class="wb-note">Trace SMA branches in dissection alongside the chunk diagrams.</div>
+</div>
+
+<details class="more-refs">
+<summary><span class="mr-tag">Deep dive</span> Lecturio + AMBOSS reference PDFs</summary>
+<div class="mr-body">
+<div class="mr-group">
+<span class="mr-group-label">Lecturio lectures</span>
+<ul>
+<li><a href="3rd%20Party/Lecturio/Small%20Intestine_%20Anatomy%20-%20Lecturio.pdf" target="_blank">Small Intestine</a></li>
+<li><a href="3rd%20Party/Lecturio/Colon%2C%20Cecum%2C%20and%20Appendix_%20Anatomy%20-%20Lecturio.pdf" target="_blank">Colon, Cecum, and Appendix</a></li>
+</ul>
+</div>
+<div class="mr-group">
+<span class="mr-group-label">AMBOSS — Structures</span>
+<ul>
+<li><a href="3rd%20Party/Amboss%20Structures/Small%20intestine%20-%20AMBOSS.pdf" target="_blank">Small intestine</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Large%20intestine%20-%20AMBOSS.pdf" target="_blank">Large intestine</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Gastrointestinal%20tract%20-%20AMBOSS%20%281%29.pdf" target="_blank">GI tract overview</a></li>
+</ul>
+</div>
+<div class="mr-group">
+<span class="mr-group-label">AMBOSS — Diseases / clinical correlates</span>
+<ul>
+<li><a href="3rd%20Party/Amboss%20Diseases/Acute%20appendicitis%20-%20AMBOSS.pdf" target="_blank">Acute appendicitis (McBurney)</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Superior%20mesenteric%20artery%20syndrome%20-%20AMBOSS.pdf" target="_blank">SMA syndrome</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Intestinal%20ischemia%20-%20AMBOSS.pdf" target="_blank">Intestinal ischemia</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Bowel%20obstruction%20-%20AMBOSS.pdf" target="_blank">Bowel obstruction</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Bowel%20surgery%20-%20AMBOSS.pdf" target="_blank">Bowel surgery</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Intestinal%20malrotation%2C%20midgut%20volvulus%2C%20and%20gastric%20volvulus%20-%20AMBOSS.pdf" target="_blank">Malrotation &amp; midgut volvulus</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Paralytic%20ileus%20-%20AMBOSS.pdf" target="_blank">Paralytic ileus</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Fistulas%20-%20AMBOSS.pdf" target="_blank">Fistulas</a></li>
+</ul>
+</div>
+</div>
+</details>
+
+<div class="spaced active-block">
+<button class="reset-btn" onclick="resetSpaced(this)">Reset</button>
+<span class="label">Spaced review — from previous themes</span>
+<div class="qitem"><div class="q">Caudate lobe drains into?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">IVC directly.</div></div>
+<div class="qitem"><div class="q">Right gastro-omental a. branches from?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Gastroduodenal a. (which is from common hepatic, off celiac).</div></div>
+</div>
+
+<div class="chunk">
+<h4>Chunk 1 of 7 — Midgut definition + SMA</h4>
+<div class="inline-img">
+<a href="Images/anki-bluelink/bluelink_2.png" target="_blank">
+<img src="Images/anki-bluelink/bluelink_2.png" alt="Jejunum, ileum, mesentery — labeled cadaver">
+</a>
+<div class="caption">Midgut in situ: jejunum, ileum, mesentery, root of mesentery (Michigan BlueLink). Click to enlarge.</div>
+</div>
+<p><strong>Midgut</strong> = 2nd half of duodenum (distal to ampulla) → proximal 2/3 of transverse colon. Includes: distal duodenum, jejunum, ileum, cecum, appendix, ascending colon, proximal 2/3 transverse colon.</p>
+<p>Supplied by <strong>SMA</strong> at vertebral level <strong>L1</strong>. Drained by <strong>SMV</strong>. Visceral pain refers to <strong>periumbilical region (T10)</strong>.</p>
+</div>
+
+<div class="chunk">
+<h4>Chunk 2 of 7 — The 5 SMA branches (proximal → distal)</h4>
+<div class="inline-img">
+<a href="Images/anki-bluelink/bluelink_62.png" target="_blank">
+<img src="Images/anki-bluelink/bluelink_62.png" alt="SMA, SMV, IMA, IMV — labeled cadaver">
+</a>
+<div class="caption">SMA + SMV + IMA + IMV all labeled in one cadaver view (Michigan BlueLink). Click to enlarge.</div>
+</div>
+<ol>
+<li><strong>Inferior pancreaticoduodenal aa.</strong> → head of pancreas + 4th part of duodenum. Anastomoses with sup. pancreaticoduodenal (foregut/midgut connection)</li>
+<li><strong>Jejunal aa.</strong> (4–5 branches) → jejunum. Long arcades + long vasa recta</li>
+<li><strong>Ileal aa.</strong> → ileum. Short arcades + short vasa recta + more arcades stacked</li>
+<li><strong>Middle colic a.</strong> → transverse colon (proximal 2/3). Runs in transverse mesocolon</li>
+<li><strong>Right colic a.</strong> → ascending colon (sometimes a branch of ileocolic)</li>
+<li><strong>Ileocolic a.</strong> (terminal branch of SMA) → terminal ileum, cecum, appendix (via the appendicular branch)</li>
+</ol>
+</div>
+
+<div class="chunk">
+<h4>Chunk 3 of 7 — SMA relationships (high yield)</h4>
+<div class="minitable">
+  <div class="h">Position</div><div class="h">Clinical syndrome</div>
+  <div class="term">Anterior to 3rd duodenum</div><div><strong>SMA syndrome</strong> — duodenum compressed between SMA + aorta → bilious vomiting + weight loss</div>
+  <div class="term">Anterior to L renal v.</div><div><strong>Nutcracker syndrome</strong> — left renal v. squeezed between SMA + aorta → hematuria, L varicocele</div>
+  <div class="term">Posterior to neck of pancreas</div><div>Pancreatic head Ca can encase SMA → unresectable</div>
+  <div class="term">Anterior to uncinate process</div><div>Uncinate wraps behind SMA</div>
+  <div class="term">Originates at L1</div><div>Just below celiac (T12)</div>
+</div>
+</div>
+
+<div class="predict active-block">
+<button class="reset-btn" onclick="resetPredict(this)">Reset</button>
+<span class="label">Predict &amp; Check</span>
+<div class="question">A 23-year-old with weight loss has bilious vomiting. CT shows the 3rd part of duodenum compressed between two structures. Which two?</div>
+<button class="reveal-action" onclick="this.parentElement.classList.add('revealed')">Reveal</button>
+<div class="answer">SMA (anteriorly) and aorta (posteriorly). The mesenteric fat normally pads the angle, but with weight loss it narrows = SMA syndrome.</div>
+</div>
+
+<div class="chunk">
+<h4>Chunk 4 of 7 — Duodenum: 4 parts in detail</h4>
+<div class="minitable">
+  <div class="h">Part</div><div class="h">Notes</div>
+  <div class="term">1st (superior, "duodenal cap")</div><div>Intraperitoneal (only part). Site of duodenal ulcer (anterior wall) → if perforates anteriorly, may erode into <strong>gastroduodenal a.</strong> → massive bleed.</div>
+  <div class="term">2nd (descending)</div><div>Retroperitoneal. Receives ampulla of Vater (foregut/midgut boundary). Major + minor duodenal papillae open here.</div>
+  <div class="term">3rd (horizontal)</div><div>Retroperitoneal. Crosses anterior to aorta + IVC. Passes BEHIND SMA (compressed in SMA syndrome).</div>
+  <div class="term">4th (ascending)</div><div>Retroperitoneal. Ascends to ligament of Treitz → duodenojejunal flexure.</div>
+</div>
+</div>
+
+<div class="chunk">
+<h4>Chunk 5 of 7 — McBurney point appendicitis pathway</h4>
+<p>Memorize this whole pathway — it's testable as "surgeon ligates a direct branch of which artery?"</p>
+<p><strong>Appendix → appendicular a. → cecal branch of ileocolic a. → ileocolic a. → SMA</strong></p>
+<p>Surgeon ligates the <strong>ileocolic artery</strong> during appendectomy.</p>
+<p>Appendix is held by the <strong>mesoappendix</strong> (carries the appendicular a.).</p>
+</div>
+
+<div class="trap">"Stenosis of SMA distal to right colic branch — which structure is most at risk?" → <strong>Distal ileum</strong> (supplied by ileocolic, which is downstream of right colic). Proximal jejunum + ascending colon are SPARED because their supply branches off SMA proximal to the stenosis.</div>
+
+<div class="chunk">
+<h4>Chunk 6 of 7 — Marginal a. of Drummond &amp; the watershed</h4>
+<p>The marginal artery of Drummond is a continuous arterial loop along the entire colon, formed where SMA territory (right + middle colic) anastomoses with IMA territory (left colic + sigmoid).</p>
+<p>The <strong>splenic flexure</strong> = <strong>watershed area</strong> — where SMA and IMA territories meet, often with weakest collaterals. First to die from hypoperfusion (ischemic colitis).</p>
+<p>Another collateral: <strong>arc of Riolan (meandering mesenteric a.)</strong> = inconstant connection between middle colic + left colic, providing extra collateral.</p>
+</div>
+
+<div class="chunk">
+<h4>Chunk 7 of 7 — Jejunum vs. ileum + identifying features of large bowel</h4>
+<div class="minitable">
+  <div class="h">Feature</div><div class="h">Jejunum</div>
+  <div class="term">Wall</div><div>Thicker, more vascular (redder)</div>
+  <div class="term">Plicae circulares</div><div>Tall, prominent, frequent</div>
+  <div class="term">Mesenteric arcades</div><div>Few, long arcades; long vasa recta</div>
+  <div class="term">Mesenteric fat</div><div>Less fat at root</div>
+  <div class="term">Lymphoid tissue</div><div>Sparse</div>
+</div>
+<div class="minitable">
+  <div class="h">Feature</div><div class="h">Ileum</div>
+  <div class="term">Wall</div><div>Thinner</div>
+  <div class="term">Plicae circulares</div><div>Sparse, low, eventually absent</div>
+  <div class="term">Mesenteric arcades</div><div>Many short arcades; short vasa recta</div>
+  <div class="term">Mesenteric fat</div><div>More fat — "creeping fat"</div>
+  <div class="term">Lymphoid tissue</div><div>Peyer's patches (terminal ileum)</div>
+</div>
+<p><strong>Large intestine identifying features (3 things):</strong></p>
+<ol>
+<li><strong>Teniae coli</strong> — three longitudinal muscle bands</li>
+<li><strong>Haustra</strong> — sacculations between teniae</li>
+<li><strong>Omental (epiploic) appendages</strong> — fatty tags hanging off</li>
+</ol>
+</div>
+
+<div class="fill active-block">
+<button class="reset-btn" onclick="resetFill(this)">Reset</button>
+<span class="label">Fill in the blank</span>
+<ol>
+  <li>SMA originates at vertebral level <span class="blank" onclick="this.classList.add('shown')">L1</span>.</li>
+  <li>SMA syndrome compresses the <span class="blank" onclick="this.classList.add('shown')">3rd part of duodenum</span>.</li>
+  <li>Appendectomy → surgeon ligates the <span class="blank" onclick="this.classList.add('shown')">ileocolic</span> artery.</li>
+  <li>The colon watershed is at the <span class="blank" onclick="this.classList.add('shown')">splenic flexure</span>.</li>
+  <li>Three identifying features of large bowel: <span class="blank" onclick="this.classList.add('shown')">teniae coli</span>, <span class="blank" onclick="this.classList.add('shown')">haustra</span>, and <span class="blank" onclick="this.classList.add('shown')">epiploic appendages</span>.</li>
+  <li>The 4th part of duodenum ends at the <span class="blank" onclick="this.classList.add('shown')">ligament of Treitz</span>.</li>
+</ol>
+</div>
+
+<details class="ref">
+<summary><span class="ref-tag">Reference</span> Midgut Vasculature (SMA + SMV)</summary>
+<div class="ref-content">
+<a href="Images/infographics/vasculature-midgut.png" target="_blank">
+<img src="Images/infographics/vasculature-midgut.png" alt="Midgut Vasculature">
+<div class="open-link">Open full size in new tab →</div>
+</a>
+</div>
+</details>
+
+<details class="ref">
+<summary><span class="ref-tag">Reference</span> Duodenum anatomy &amp; relationships</summary>
+<div class="ref-content">
+<a href="Images/infographics/duodenum.png" target="_blank">
+<img src="Images/infographics/duodenum.png" alt="Duodenum">
+<div class="open-link">Open full size in new tab →</div>
+</a>
+</div>
+</details>
+
+<div class="quiz active-block">
+<button class="reset-btn" onclick="resetQuiz(this)">Reset</button>
+<span class="label">Section quiz — Theme 5</span>
+<h4>Test yourself</h4>
+<div class="qitem"><div class="q">1. SMA stenosis distal to right colic branch — what's necrotic?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Distal ileum (ileocolic territory, downstream).</div></div>
+<div class="qitem"><div class="q">2. McBurney appendicitis — surgeon ligates which artery?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Ileocolic artery.</div></div>
+<div class="qitem"><div class="q">3. 3rd duodenum compressed by what in SMA syndrome?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">SMA anteriorly + aorta posteriorly.</div></div>
+<div class="qitem"><div class="q">4. Cecum drains via which vein?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">SMV (cecum is midgut).</div></div>
+<div class="qitem"><div class="q">5. Watershed area of the colon?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Splenic flexure.</div></div>
+<div class="qitem"><div class="q">6. The 1st part of the duodenum is the most common site of which pathology?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Duodenal ulcer (anterior perforation can erode into gastroduodenal a.).</div></div>
+<div class="qitem"><div class="q">7. Three identifying features of the large bowel?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Teniae coli, haustra, omental (epiploic) appendages.</div></div>
+</div>
+
+<div class="done-check"><label><input type="checkbox"> Theme 5 done — break.</label></div>
+
+<!-- ================== THEME 6 ================== -->
+<div class="theme-header">
+<span class="label">Theme 6 of 8</span>
+<h2 id="theme6">Hindgut (IMA territory)</h2>
+<div class="meta">
+  <span>~25 min</span>
+  <span>5 chunks</span>
+  <span>3 active checks</span>
+  <span>1 reference</span>
+</div>
+</div>
+
+<div class="hook"><strong>Why it matters</strong>The pelvic splanchnic / hindgut parasympathetic question is asked nearly every year, plus diverticulitis referred pain.</div>
+
+<div class="workbooks">
+<span class="wb-label">Workbooks for this theme</span>
+<div class="wb-list">
+<a href="Images/SMA%2C%20IMA%2C%20Pancreas%2C%20Intestines.pdf" target="_blank">SMA, IMA, Pancreas, Intestines</a>
+<a href="Images/kenhub.pdf" target="_blank">Kenhub atlas</a>
+</div>
+<div class="wb-note">Same workbook as midgut — trace IMA branches + their territory.</div>
+</div>
+
+<details class="more-refs">
+<summary><span class="mr-tag">Deep dive</span> Lecturio + AMBOSS reference PDFs</summary>
+<div class="mr-body">
+<div class="mr-group">
+<span class="mr-group-label">Lecturio lectures</span>
+<ul>
+<li><a href="3rd%20Party/Lecturio/Colon%2C%20Cecum%2C%20and%20Appendix_%20Anatomy%20-%20Lecturio.pdf" target="_blank">Colon, Cecum, and Appendix</a></li>
+<li><a href="3rd%20Party/Lecturio/Rectum%20and%20Anal%20Canal_%20Anatomy%20-%20Lecturio.pdf" target="_blank">Rectum and Anal Canal</a></li>
+</ul>
+</div>
+<div class="mr-group">
+<span class="mr-group-label">AMBOSS — Structures</span>
+<ul><li><a href="3rd%20Party/Amboss%20Structures/Large%20intestine%20-%20AMBOSS.pdf" target="_blank">Large intestine</a></li></ul>
+</div>
+<div class="mr-group">
+<span class="mr-group-label">AMBOSS — Diseases / clinical correlates</span>
+<ul>
+<li><a href="3rd%20Party/Amboss%20Diseases/Hemorrhoids%20-%20AMBOSS.pdf" target="_blank">Hemorrhoids (above/below pectinate line)</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Anorectal%20abscess%20and%20fistula%20-%20AMBOSS.pdf" target="_blank">Anorectal abscess &amp; fistula</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Colorectal%20cancer%20-%20AMBOSS.pdf" target="_blank">Colorectal cancer</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Colonic%20polyps%20-%20AMBOSS.pdf" target="_blank">Colonic polyps</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Sigmoid%20volvulus%20and%20cecal%20volvulus%20-%20AMBOSS.pdf" target="_blank">Sigmoid &amp; cecal volvulus</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Ulcerative%20colitis%20-%20AMBOSS.pdf" target="_blank">Ulcerative colitis</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Hirschsprung%20disease%20-%20AMBOSS.pdf" target="_blank">Hirschsprung disease</a></li>
+</ul>
+</div>
+</div>
+</details>
+
+<div class="spaced active-block">
+<button class="reset-btn" onclick="resetSpaced(this)">Reset</button>
+<span class="label">Spaced review</span>
+<div class="qitem"><div class="q">SMA originates at which vertebral level?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">L1.</div></div>
+<div class="qitem"><div class="q">Caudate lobe drains into?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">IVC directly.</div></div>
+</div>
+
+<div class="chunk">
+<h4>Chunk 1 of 5 — Hindgut definition + IMA</h4>
+<p><strong>Hindgut</strong> = distal 1/3 of transverse colon → upper anal canal (above pectinate line). Includes: splenic flexure, descending colon, sigmoid colon, rectum, upper anal canal.</p>
+<p>Supplied by <strong>IMA</strong> at vertebral level <strong>L3</strong>. Drained by <strong>IMV → splenic vein → portal vein</strong>.</p>
+<p>Visceral pain refers to <strong>suprapubic / hypogastric region (L1–L2)</strong>.</p>
+</div>
+
+<div class="chunk">
+<h4>Chunk 2 of 5 — IMA: only 3 branches to know</h4>
+<div class="inline-img">
+<a href="Images/anki-bluelink/bluelink_74.png" target="_blank">
+<img src="Images/anki-bluelink/bluelink_74.png" alt="IMA + branches — labeled cadaver">
+</a>
+<div class="caption">IMA + left colic + sigmoid + superior rectal cadaver labeling (Michigan BlueLink). Click to enlarge.</div>
+</div>
+<ol>
+<li><strong>Left colic a.</strong> → descending colon. Has ascending + descending branches</li>
+<li><strong>Sigmoid aa.</strong> (2-4 branches) → sigmoid colon</li>
+<li><strong>Superior rectal a.</strong> (terminal branch) → upper rectum (continues IMA past sigmoid)</li>
+</ol>
+<p><strong>Marginal a. of Drummond</strong> connects IMA territory back to SMA at the splenic flexure (watershed).</p>
+</div>
+
+<div class="chunk">
+<h4>Chunk 3 of 5 — Rectum + anal canal blood supply (test favorite)</h4>
+<div class="minitable">
+  <div class="h">Region</div><div class="h">Artery + Source</div>
+  <div class="term">Upper rectum</div><div>Superior rectal a. (← IMA — hindgut, portal venous drainage)</div>
+  <div class="term">Middle rectum</div><div>Middle rectal a. (← internal iliac — caval venous drainage)</div>
+  <div class="term">Anal canal (lower)</div><div>Inferior rectal a. (← internal pudendal ← internal iliac — caval drainage)</div>
+</div>
+<p><strong>Pectinate (dentate) line</strong> divides upper anal canal (visceral, IMA-derived) from lower (somatic, internal pudendal-derived). Above = autonomic innervation, painless internal hemorrhoids. Below = somatic innervation (very painful external hemorrhoids), squamous epithelium.</p>
+</div>
+
+<div class="chunk">
+<h4>Chunk 4 of 5 — Autonomic supply (the BIG test concept)</h4>
+<div class="minitable">
+  <div class="h">Function</div><div class="h">Pathway</div>
+  <div class="term">Sympathetic</div><div>Lateral horn L1–L2 → <strong>lumbar splanchnics</strong> → inferior mesenteric ganglion → hindgut</div>
+  <div class="term">Parasympathetic</div><div><strong>S2–S4 → pelvic splanchnics</strong> → intramural ganglia (NOT vagus!)</div>
+  <div class="term">Visceral pain</div><div>Follows sympathetics → referred to L1–L2 dermatomes (suprapubic)</div>
+</div>
+</div>
+
+<div class="trap">Pelvic splanchnic damage (e.g., MS, pelvic surgery) interrupts <strong>parasympathetic</strong> supply ONLY to <strong>hindgut</strong> (descending colon, sigmoid, rectum). The cecum + ascending + transverse colon are <strong>midgut → vagus</strong>, so they're spared.</div>
+
+<div class="predict active-block">
+<button class="reset-btn" onclick="resetPredict(this)">Reset</button>
+<span class="label">Predict &amp; Check</span>
+<div class="question">A 60-year-old with MS has demyelination of the pelvic splanchnic nerves. Parasympathetic input is lost to which: cecum, ascending colon, hepatic flexure, descending colon, or jejunum?</div>
+<button class="reveal-action" onclick="this.parentElement.classList.add('revealed')">Reveal</button>
+<div class="answer">Descending colon (the only hindgut option). All others are midgut → vagus.</div>
+</div>
+
+<div class="chunk">
+<h4>Chunk 5 of 5 — Visceral referred pain by gut origin + portal-caval anastomoses</h4>
+<div class="minitable">
+  <div class="h">Gut origin</div><div class="h">Pain location</div>
+  <div class="term">Foregut</div><div>Epigastric (T5–T9 via greater splanchnic)</div>
+  <div class="term">Midgut</div><div>Periumbilical (T10–T11 via lesser splanchnic)</div>
+  <div class="term">Hindgut</div><div>Suprapubic / pubic symphysis (L1–L2 via lumbar splanchnic)</div>
+</div>
+<p><strong>Portal-caval anastomoses</strong> (open up in portal hypertension):</p>
+<ul>
+<li><strong>Esophageal varices</strong>: left gastric v. (portal) ↔ esophageal v. (azygos system)</li>
+<li><strong>Caput medusae</strong>: paraumbilical vv. (portal, via round lig of liver) ↔ epigastric vv. (caval)</li>
+<li><strong>Anorectal varices / hemorrhoids</strong>: superior rectal v. (portal via IMV) ↔ middle/inferior rectal vv. (internal iliac → caval)</li>
+</ul>
+<div class="inline-img">
+<a href="Images/amboss/big_5b61a393c0d76.jpg" target="_blank">
+<img src="Images/amboss/big_5b61a393c0d76.jpg" alt="Portal hypertension + portal-caval anastomoses">
+</a>
+<div class="caption">All 3 portal-caval anastomoses in one labeled diagram (AMBOSS). The 3 red arrows show where varices form in portal hypertension. Click to enlarge.</div>
+</div>
+</div>
+
+<div class="fill active-block">
+<button class="reset-btn" onclick="resetFill(this)">Reset</button>
+<span class="label">Fill in the blank</span>
+<ol>
+  <li>Hindgut parasympathetic supply comes from <span class="blank" onclick="this.classList.add('shown')">pelvic splanchnics (S2–S4)</span>.</li>
+  <li>Sigmoid diverticulitis refers visceral pain to the <span class="blank" onclick="this.classList.add('shown')">suprapubic / pubic symphysis</span> region.</li>
+  <li>The IMA originates at vertebral level <span class="blank" onclick="this.classList.add('shown')">L3</span>.</li>
+  <li>Esophageal varices form between left gastric v. and <span class="blank" onclick="this.classList.add('shown')">esophageal vv. (azygos)</span>.</li>
+  <li>Internal hemorrhoids (above pectinate line) drain via the <span class="blank" onclick="this.classList.add('shown')">superior rectal vein</span> into the IMV.</li>
+</ol>
+</div>
+
+<details class="ref">
+<summary><span class="ref-tag">Reference</span> Hindgut Vasculature (IMA + IMV)</summary>
+<div class="ref-content">
+<a href="Images/infographics/vasculature-hindgut.png" target="_blank">
+<img src="Images/infographics/vasculature-hindgut.png" alt="Hindgut Vasculature">
+<div class="open-link">Open full size in new tab →</div>
+</a>
+</div>
+</details>
+
+<div class="quiz active-block">
+<button class="reset-btn" onclick="resetQuiz(this)">Reset</button>
+<span class="label">Section quiz — Theme 6</span>
+<h4>Test yourself</h4>
+<div class="qitem"><div class="q">1. Pelvic splanchnic damage → loss of parasymp to which colon?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Descending colon (and rest of hindgut). NOT cecum/ascending/transverse — those = vagus.</div></div>
+<div class="qitem"><div class="q">2. Diverticulitis of descending colon — where is referred pain?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Suprapubic / pubic symphysis (L1–L2 hindgut).</div></div>
+<div class="qitem"><div class="q">3. IMA at which vertebral level?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">L3.</div></div>
+<div class="qitem"><div class="q">4. IMV drains into which vein?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Splenic vein → portal vein.</div></div>
+<div class="qitem"><div class="q">5. Above the pectinate line, what kind of innervation does the anal canal have?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Visceral autonomic — internal hemorrhoids are painless.</div></div>
+</div>
+
+<div class="done-check"><label><input type="checkbox"> Theme 6 done.</label></div>
+
+<!-- ================== THEME 7 ================== -->
+<div class="theme-header">
+<span class="label">Theme 7 of 8</span>
+<h2 id="theme7">Posterior wall — viscera &amp; vasculature</h2>
+<div class="meta">
+  <span>~35 min</span>
+  <span>7 chunks</span>
+  <span>3 active checks</span>
+  <span>2 references</span>
+</div>
+</div>
+
+<div class="hook"><strong>Why it matters</strong>Aorta branch order, IVC asymmetry, kidney/suprarenal vascular questions, and ureter stones — all heavily tested.</div>
+
+<div class="workbooks">
+<span class="wb-label">Workbooks for this theme</span>
+<div class="wb-list">
+<a href="Images/Posterior%20Abdominal%20Viscera%2C%20Muscles%20and%20Diaphragm.pdf" target="_blank">Posterior Abdominal Viscera, Muscles &amp; Diaphragm</a>
+<a href="Images/kenhub.pdf" target="_blank">Kenhub atlas</a>
+</div>
+<div class="wb-note">Lab dissection of kidneys, suprarenals, posterior wall muscles + great vessels.</div>
+</div>
+
+<details class="more-refs">
+<summary><span class="mr-tag">Deep dive</span> AMBOSS reference PDFs</summary>
+<div class="mr-body">
+<div class="mr-group">
+<span class="mr-group-label">AMBOSS — Structures</span>
+<ul>
+<li><a href="3rd%20Party/Amboss%20Structures/Adrenal%20gland%20-%20AMBOSS%20%281%29.pdf" target="_blank">Adrenal (suprarenal) gland</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Overview%20of%20the%20urinary%20tract%20-%20AMBOSS.pdf" target="_blank">Urinary tract overview (kidneys + ureters)</a></li>
+</ul>
+</div>
+<div class="mr-group">
+<span class="mr-group-label">AMBOSS — Diseases / clinical correlates</span>
+<ul>
+<li><a href="3rd%20Party/Amboss%20Diseases/Nephrolithiasis%20-%20AMBOSS.pdf" target="_blank">Nephrolithiasis (ureteric stones)</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Urinary%20tract%20obstruction%20-%20AMBOSS.pdf" target="_blank">Urinary tract obstruction</a></li>
+<li><a href="3rd%20Party/Amboss%20Diseases/Diaphragmatic%20injuries%20-%20AMBOSS.pdf" target="_blank">Diaphragmatic injuries</a></li>
+</ul>
+</div>
+</div>
+</details>
+
+<div class="spaced active-block">
+<button class="reset-btn" onclick="resetSpaced(this)">Reset</button>
+<span class="label">Spaced review</span>
+<div class="qitem"><div class="q">Hindgut parasympathetic supply?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Pelvic splanchnics (S2–S4).</div></div>
+<div class="qitem"><div class="q">Cystic artery from?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Right hepatic artery.</div></div>
+</div>
+
+<div class="chunk">
+<h4>Chunk 1 of 7 — Aorta branches: 3 unpaired + 5 paired</h4>
+<p><strong>3 unpaired (anterior, supply gut):</strong></p>
+<ul>
+<li><strong>Celiac</strong> at T12 (foregut)</li>
+<li><strong>SMA</strong> at L1 (midgut)</li>
+<li><strong>IMA</strong> at L3 (hindgut)</li>
+</ul>
+<p><strong>5 paired (lateral, supply paired structures):</strong></p>
+<ul>
+<li><strong>Inferior phrenic aa.</strong> (just above celiac) — supply diaphragm + give superior suprarenal aa.</li>
+<li><strong>Middle suprarenal aa.</strong> (just above SMA) — to suprarenal glands</li>
+<li><strong>Renal aa.</strong> at L1–L2 — give inferior suprarenal aa.</li>
+<li><strong>Gonadal aa. (testicular/ovarian)</strong> at L2</li>
+<li><strong>Lumbar aa.</strong> (4 pairs at L1–L4) — to body wall + spine</li>
+</ul>
+<p>Aorta also gives the <strong>median sacral a.</strong> at the bifurcation.</p>
+<p><strong>Aorta bifurcates at L4</strong> into common iliac aa. → which split into external iliac (→ femoral) + internal iliac (→ pelvis).</p>
+</div>
+
+<div class="chunk">
+<h4>Chunk 2 of 7 — IVC tributaries</h4>
+<p>IVC formed at L5 by union of common iliac vv. Receives tributaries on its way up:</p>
+<ul>
+<li><strong>Common iliac vv.</strong> (form IVC)</li>
+<li><strong>Lumbar vv.</strong> (4 pairs)</li>
+<li><strong>Right gonadal v.</strong> (left goes to L renal v.)</li>
+<li><strong>Right + Left renal vv.</strong></li>
+<li><strong>Right suprarenal v.</strong> (left goes to L renal v.)</li>
+<li><strong>Hepatic vv.</strong> (3 of them, just below diaphragm)</li>
+<li><strong>Inferior phrenic vv.</strong></li>
+</ul>
+<p>IVC passes through <strong>caval opening of diaphragm at T8</strong>.</p>
+</div>
+
+<div class="chunk">
+<h4>Chunk 3 of 7 — IVC asymmetry (test favorite)</h4>
+<div class="minitable">
+  <div class="h">Vein</div><div class="h">Drains into</div>
+  <div class="term">Right gonadal v.</div><div>IVC directly</div>
+  <div class="term">Right suprarenal v.</div><div>IVC directly</div>
+  <div class="term">Left gonadal v.</div><div><strong>Left renal v.</strong> → IVC</div>
+  <div class="term">Left suprarenal v.</div><div><strong>Left renal v.</strong> → IVC</div>
+</div>
+<p>The <strong>left renal v.</strong> is longer than the right — must cross anterior to the aorta + posterior to the SMA to reach IVC.</p>
+</div>
+
+<div class="pearl">This asymmetry = why <strong>left varicoceles</strong> are way more common (longer left gonadal v. + right-angle entry into renal v. + possible nutcracker syndrome).</div>
+
+<div class="trap">"Hormones from the right suprarenal gland enter circulation via?" The trap is "right renal vein." The answer is <strong>IVC directly</strong>.</div>
+
+<div class="predict active-block">
+<button class="reset-btn" onclick="resetPredict(this)">Reset</button>
+<span class="label">Predict &amp; Check</span>
+<div class="question">A left adrenal tumor secretes hormones. Which vein do they enter first?</div>
+<button class="reveal-action" onclick="this.parentElement.classList.add('revealed')">Reveal</button>
+<div class="answer">Left renal vein (then to IVC). Left suprarenal v. drains into left renal v., not IVC directly.</div>
+</div>
+
+<div class="chunk">
+<h4>Chunk 4 of 7 — Kidney external + internal anatomy</h4>
+<div class="inline-img">
+<a href="Images/anki-block4-gi/lab4_retroperitoneum/id1149_616d353b034e12f723ebb2f13fc0fae0c93e7384.jpg" target="_blank">
+<img src="Images/anki-block4-gi/lab4_retroperitoneum/id1149_616d353b034e12f723ebb2f13fc0fae0c93e7384.jpg" alt="Renal hilum + sinus + suprarenal">
+</a>
+<div class="caption">Renal hilum + sinus: suprarenal, renal a/v, renal pelvis, ureter — Block 4 GI lecture (Lab 4). Click to enlarge.</div>
+</div>
+<p><strong>External layers (outside in):</strong></p>
+<ol>
+<li>Pararenal fat (lateral + posterior)</li>
+<li><strong>Renal fascia (Gerota's fascia)</strong> — encloses kidney + suprarenal + perirenal fat</li>
+<li>Perirenal (perinephric) fat</li>
+<li>Renal capsule (fibrous, on kidney itself)</li>
+</ol>
+<p><strong>Internal anatomy (cortex inward):</strong></p>
+<ul>
+<li><strong>Cortex</strong> (outer) → renal columns (Bertin) extend down between pyramids</li>
+<li><strong>Medulla</strong> = renal pyramids (radial striations)</li>
+<li>Apex of pyramid = <strong>renal papilla</strong> → drips urine into</li>
+<li><strong>Minor calyx</strong> → multiple → <strong>major calyx</strong> → multiple → <strong>renal pelvis</strong> → ureter</li>
+</ul>
+<p>The kidney has 5–14 minor calyces and 2–3 major calyces. <strong>Renal hilum</strong>: ureter (most posterior), renal v. (most anterior), renal a. (in between).</p>
+</div>
+
+<div class="chunk">
+<h4>Chunk 5 of 7 — Ureters</h4>
+<p>Retroperitoneal tubes from renal pelvis to bladder. Cross the <strong>pelvic brim</strong> by passing OVER the bifurcation of the common iliac a.</p>
+<p><strong>3 ureteric stone constrictions</strong> (where stones get stuck):</p>
+<ol>
+<li><strong>Ureteropelvic junction (UPJ)</strong> — where renal pelvis becomes ureter</li>
+<li><strong>Pelvic brim</strong> — where ureter crosses common iliac vessels</li>
+<li><strong>Ureterovesical junction (UVJ)</strong> — entry into bladder (most common stuck site)</li>
+</ol>
+<p><strong>Surgical relations</strong> (mnemonic: "water under the bridge"):</p>
+<ul>
+<li>In males: ductus deferens crosses anterior to ureter near bladder</li>
+<li>In females: uterine artery crosses anterior to ureter (~1.5 cm from cervix) — risk during hysterectomy</li>
+</ul>
+</div>
+
+<div class="chunk">
+<h4>Chunk 6 of 7 — Suprarenal (adrenal) glands</h4>
+<p>Sit on superior poles of kidneys, enclosed in renal (Gerota's) fascia. <strong>Right</strong> = pyramid-shaped, sits behind IVC. <strong>Left</strong> = crescent-shaped, sits behind stomach + tail of pancreas.</p>
+<p><strong>3 arterial sources per gland:</strong></p>
+<div class="minitable">
+  <div class="h">Artery</div><div class="h">From</div>
+  <div class="term">Superior suprarenal</div><div>Inferior phrenic a.</div>
+  <div class="term">Middle suprarenal</div><div>Aorta directly</div>
+  <div class="term">Inferior suprarenal</div><div>Renal a.</div>
+</div>
+<p><strong>Single venous drainage</strong>: 1 vein per gland. Right → IVC. Left → left renal v.</p>
+<p><strong>Histology layers</strong> (mnemonic GFR — make Good Sex):</p>
+<ul>
+<li>Cortex: Glomerulosa (mineralocorticoids — aldosterone), Fasciculata (glucocorticoids — cortisol), Reticularis (androgens — DHEA)</li>
+<li>Medulla: chromaffin cells → epinephrine + norepinephrine (sympathetic origin)</li>
+</ul>
+</div>
+
+<div class="chunk">
+<h4>Chunk 7 of 7 — Posterior wall muscles</h4>
+<div class="minitable">
+  <div class="h">Muscle</div><div class="h">Origin → Insertion → Action</div>
+  <div class="term">Psoas major</div><div>T12–L5 vertebrae → lesser trochanter of femur. Hip flexion. <strong>Lumbar plexus passes within it.</strong></div>
+  <div class="term">Psoas minor (variable)</div><div>T12–L1 → pectineal line. Weak trunk flexion.</div>
+  <div class="term">Iliacus</div><div>Iliac fossa → joins psoas major tendon. Hip flexion.</div>
+  <div class="term">Quadratus lumborum</div><div>Iliac crest → 12th rib + L1–L4 transverse processes. Lateral trunk flexion.</div>
+  <div class="term">Transversus abdominis</div><div>Forms posterior part of abdominal wall.</div>
+  <div class="term">Diaphragm</div><div>Central tendon + R/L crura. Main muscle of inspiration.</div>
+</div>
+<p><strong>Diaphragm crura</strong>: tendinous fibers attaching to lumbar spine. Right crus L1–L3, left crus L1–L2. <strong>Right crus forms a sling around the esophagus</strong> (helps prevent reflux).</p>
+</div>
+
+<div class="fill active-block">
+<button class="reset-btn" onclick="resetFill(this)">Reset</button>
+<span class="label">Fill in the blank</span>
+<ol>
+  <li>The celiac trunk is at level <span class="blank" onclick="this.classList.add('shown')">T12</span>, SMA at <span class="blank" onclick="this.classList.add('shown')">L1</span>, IMA at <span class="blank" onclick="this.classList.add('shown')">L3</span>, aortic bifurcation at <span class="blank" onclick="this.classList.add('shown')">L4</span>.</li>
+  <li>Right suprarenal vein drains into <span class="blank" onclick="this.classList.add('shown')">IVC directly</span>.</li>
+  <li>Left gonadal vein drains into <span class="blank" onclick="this.classList.add('shown')">left renal vein</span>.</li>
+  <li>The 3 ureteric stone constrictions: <span class="blank" onclick="this.classList.add('shown')">UPJ</span>, <span class="blank" onclick="this.classList.add('shown')">pelvic brim</span>, and <span class="blank" onclick="this.classList.add('shown')">UVJ</span>.</li>
+  <li>The aldosterone-producing layer of the suprarenal cortex is the zona <span class="blank" onclick="this.classList.add('shown')">glomerulosa</span>.</li>
+  <li>The lumbar plexus emerges from the <span class="blank" onclick="this.classList.add('shown')">psoas major</span> muscle.</li>
+</ol>
+</div>
+
+<details class="ref">
+<summary><span class="ref-tag">Reference</span> Posterior Wall Vasculature</summary>
+<div class="ref-content">
+<a href="Images/infographics/vasculature-posterior-wall.png" target="_blank">
+<img src="Images/infographics/vasculature-posterior-wall.png" alt="Posterior Wall Vasculature">
+<div class="open-link">Open full size in new tab →</div>
+</a>
+</div>
+</details>
+
+<details class="ref">
+<summary><span class="ref-tag">Reference</span> Kidneys &amp; Suprarenal Glands</summary>
+<div class="ref-content">
+<a href="Images/infographics/kidneys-adrenal.png" target="_blank">
+<img src="Images/infographics/kidneys-adrenal.png" alt="Kidneys &amp; Suprarenal Glands">
+<div class="open-link">Open full size in new tab →</div>
+</a>
+</div>
+</details>
+
+<div class="quiz active-block">
+<button class="reset-btn" onclick="resetQuiz(this)">Reset</button>
+<span class="label">Section quiz — Theme 7</span>
+<div class="qitem"><div class="q">1. Hormones from LEFT suprarenal go to which vein first?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Left renal vein.</div></div>
+<div class="qitem"><div class="q">2. IMA originates at?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">L3.</div></div>
+<div class="qitem"><div class="q">3. 4-mm stone at the renal pelvis — first place it gets stuck?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">UPJ (ureteropelvic junction).</div></div>
+<div class="qitem"><div class="q">4. Inferior suprarenal a. is a branch of?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Renal artery.</div></div>
+<div class="qitem"><div class="q">5. Which vein passes between the SMA and aorta?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Left renal vein (compressed in nutcracker syndrome).</div></div>
+<div class="qitem"><div class="q">6. Aorta bifurcates at which level?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">L4.</div></div>
+</div>
+
+<div class="done-check"><label><input type="checkbox"> Theme 7 done.</label></div>
+
+<!-- ================== THEME 8 ================== -->
+<div class="theme-header">
+<span class="label">Theme 8 of 8</span>
+<h2 id="theme8">Posterior wall — nerves &amp; autonomics</h2>
+<div class="meta">
+  <span>~30 min</span>
+  <span>6 chunks</span>
+  <span>3 active checks</span>
+  <span>2 references</span>
+</div>
+</div>
+
+<div class="hook"><strong>Why it matters</strong>The lumbar plexus identification + autonomic flow chart get tested at least 3 times. This is the densest theme but the questions are predictable.</div>
+
+<div class="workbooks">
+<span class="wb-label">Workbooks for this theme</span>
+<div class="wb-list">
+<a href="Images/Posterior%20Abdominal%20Viscera%2C%20Muscles%20and%20Diaphragm.pdf" target="_blank">Posterior Abdominal Viscera, Muscles &amp; Diaphragm</a>
+<a href="Images/Posterior%20Abdominal%20Wall%2C%20Inguinal%20Region%2C%20Scrotum%2C%20Testis%20%26%20Spermatic%20Cord.pdf" target="_blank">Posterior Wall, Inguinal Region</a>
+<a href="Images/kenhub.pdf" target="_blank">Kenhub atlas</a>
+</div>
+<div class="wb-note">Both posterior wall workbooks show the lumbar plexus emerging from psoas.</div>
+</div>
+
+<details class="more-refs">
+<summary><span class="mr-tag">Deep dive</span> AMBOSS reference PDFs</summary>
+<div class="mr-body">
+<div class="mr-group">
+<span class="mr-group-label">AMBOSS — Structures</span>
+<ul>
+<li><a href="3rd%20Party/Amboss%20Structures/Autonomic%20nervous%20system%20-%20AMBOSS.pdf" target="_blank">Autonomic nervous system</a></li>
+<li><a href="3rd%20Party/Amboss%20Structures/Principles%20of%20pain%20management%20-%20AMBOSS.pdf" target="_blank">Principles of pain management (referred pain)</a></li>
+</ul>
+</div>
+</div>
+</details>
+
+<div class="spaced active-block">
+<button class="reset-btn" onclick="resetSpaced(this)">Reset</button>
+<span class="label">Spaced review</span>
+<div class="qitem"><div class="q">Right gonadal vein drains into?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">IVC directly.</div></div>
+<div class="qitem"><div class="q">Hindgut parasympathetic source?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Pelvic splanchnics (S2–S4).</div></div>
+</div>
+
+<div class="chunk">
+<h4>Chunk 1 of 6 — Lumbar plexus by position relative to psoas</h4>
+<p>This is HOW you identify them on cadaver images. Memorize position, not just function.</p>
+<div class="minitable">
+  <div class="h">Position vs. psoas</div><div class="h">Nerves</div>
+  <div class="term">Lateral</div><div>Subcostal, iliohypogastric, ilioinguinal, lateral femoral cutaneous, femoral</div>
+  <div class="term">Anterior surface</div><div><strong>Genitofemoral (only one!)</strong></div>
+  <div class="term">Medial</div><div>Obturator</div>
+</div>
+</div>
+
+<div class="predict active-block">
+<button class="reset-btn" onclick="resetPredict(this)">Reset</button>
+<span class="label">Predict &amp; Check</span>
+<div class="question">A nerve injury during a psoas block causes loss of sensation on the medial thigh. Which nerve was hit?</div>
+<button class="reveal-action" onclick="this.parentElement.classList.add('revealed')">Reveal</button>
+<div class="answer">Obturator nerve. It's the only one that's MEDIAL to psoas and supplies medial thigh.</div>
+</div>
+
+<div class="chunk">
+<h4>Chunk 2 of 6 — Functions of each lumbar plexus nerve</h4>
+<div class="minitable">
+  <div class="h">Nerve (roots)</div><div class="h">Function</div>
+  <div class="term">Subcostal (T12)</div><div>Lower abdominal wall (motor + sensory). Below 12th rib.</div>
+  <div class="term">Iliohypogastric (L1)</div><div>Suprapubic skin sensation. Motor: lower abdominal wall.</div>
+  <div class="term">Ilioinguinal (L1)</div><div>Anterior scrotum/labia + medial thigh sensation. Through inguinal canal.</div>
+  <div class="term">Genitofemoral (L1, L2)</div><div>Genital → cremaster muscle (cremasteric reflex). Femoral → upper anterior thigh sensation.</div>
+  <div class="term">Lateral femoral cutaneous (L2, L3)</div><div>Lateral thigh sensation. Compressed under inguinal lig at ASIS = meralgia paresthetica.</div>
+  <div class="term">Femoral (L2–L4)</div><div>Anterior thigh motor + sensory; knee extension (quadriceps).</div>
+  <div class="term">Obturator (L2–L4)</div><div>Medial thigh motor + sensory; thigh adduction.</div>
+</div>
+</div>
+
+<div class="chunk">
+<h4>Chunk 3 of 6 — Autonomic flowchart (gut innervation)</h4>
+<p><strong>Sympathetic (preganglionic from lateral horn → splanchnic nerve → prevertebral ganglion → postganglionic to gut):</strong></p>
+<div class="minitable">
+  <div class="h">Region</div><div class="h">SYMP — preganglionic from</div>
+  <div class="term">Foregut</div><div>T5–T9 → greater splanchnic → celiac ganglion</div>
+  <div class="term">Midgut</div><div>T10–T11 → lesser splanchnic → sup. mesenteric ganglion</div>
+  <div class="term">Kidneys</div><div>T12 → least splanchnic → aorticorenal ganglion</div>
+  <div class="term">Hindgut</div><div>L1–L2 → lumbar splanchnics → inf. mesenteric ganglion</div>
+</div>
+<p><strong>Parasympathetic:</strong></p>
+<div class="minitable">
+  <div class="h">Region</div><div class="h">PARASYMP — from</div>
+  <div class="term">Foregut + Midgut</div><div>Vagus (CN X) → intramural ganglia</div>
+  <div class="term">Hindgut</div><div>S2–S4 pelvic splanchnics → intramural ganglia</div>
+</div>
+<p><strong>Special case</strong>: suprarenal medulla. Innervated by <strong>preganglionic sympathetic fibers directly</strong> (greater splanchnic) — no synapse in celiac ganglion. The chromaffin cells ARE the postganglionic neurons (release epi/norepi into bloodstream).</p>
+</div>
+
+<div class="chunk">
+<h4>Chunk 4 of 6 — The 4 prevertebral ganglia (where sympathetics synapse)</h4>
+<ul>
+<li><strong>Celiac ganglion</strong> — at celiac trunk, T12. Receives greater splanchnic.</li>
+<li><strong>Superior mesenteric ganglion</strong> — at SMA, L1. Receives lesser splanchnic.</li>
+<li><strong>Aorticorenal ganglia</strong> — at renal aa. Receive least splanchnic.</li>
+<li><strong>Inferior mesenteric ganglion</strong> — at IMA, L3. Receives lumbar splanchnics.</li>
+</ul>
+<p>Postganglionic sympathetic fibers from these ganglia <strong>follow the arteries</strong> to reach their target organs (peri-arterial plexuses).</p>
+</div>
+
+<div class="fill active-block">
+<button class="reset-btn" onclick="resetFill(this)">Reset</button>
+<span class="label">Fill in the blank</span>
+<ol>
+  <li>Foregut sympathetic preganglionic comes from cord levels <span class="blank" onclick="this.classList.add('shown')">T5–T9</span> via the <span class="blank" onclick="this.classList.add('shown')">greater splanchnic</span> nerve.</li>
+  <li>Hindgut parasympathetic comes from cord levels <span class="blank" onclick="this.classList.add('shown')">S2–S4</span> via the <span class="blank" onclick="this.classList.add('shown')">pelvic splanchnic</span> nerves.</li>
+  <li>The genitofemoral nerve runs on the <span class="blank" onclick="this.classList.add('shown')">anterior surface</span> of psoas major.</li>
+  <li>The lesser splanchnic n. (T10–T11) synapses in the <span class="blank" onclick="this.classList.add('shown')">superior mesenteric</span> ganglion.</li>
+  <li>The chromaffin cells of the suprarenal medulla are innervated directly by preganglionic sympathetic fibers from the <span class="blank" onclick="this.classList.add('shown')">greater splanchnic</span> nerve.</li>
+</ol>
+</div>
+
+<div class="chunk">
+<h4>Chunk 5 of 6 — Visceral referred pain (where you FEEL gut pain)</h4>
+<p>Visceral organs lack their own sensory nerves — pain travels along sympathetic afferents back to the spinal cord at the same level the sympathetic outflow originates. This gets perceived as somatic pain in the corresponding dermatomes.</p>
+<div class="minitable">
+  <div class="h">Source</div><div class="h">Refers to (dermatome)</div>
+  <div class="term">Stomach, foregut</div><div>Epigastric (T5–T9)</div>
+  <div class="term">Liver, GB, duodenum</div><div>RUQ; right shoulder if diaphragm involved (C3–C5 phrenic)</div>
+  <div class="term">Spleen</div><div>LUQ / left shoulder (Kehr sign)</div>
+  <div class="term">Pancreas</div><div>Epigastric → boring through to back</div>
+  <div class="term">Appendix (early)</div><div>Periumbilical</div>
+  <div class="term">Appendix (late, parietal)</div><div>RLQ at McBurney (somatic now)</div>
+  <div class="term">Cecum, asc, transv colon</div><div>Periumbilical (midgut)</div>
+  <div class="term">Descending colon, sigmoid</div><div>Suprapubic / pubic symphysis</div>
+  <div class="term">Kidney/ureter</div><div>Flank → groin (loin to groin)</div>
+</div>
+</div>
+
+<div class="predict active-block">
+<button class="reset-btn" onclick="resetPredict(this)">Reset</button>
+<span class="label">Predict &amp; Check</span>
+<div class="question">A patient has gallbladder pain referred to the right shoulder. Which nerve carries that referred pain?</div>
+<button class="reveal-action" onclick="this.parentElement.classList.add('revealed')">Reveal</button>
+<div class="answer">Phrenic nerve (C3–C5). The diaphragm is innervated by phrenic, so when the gallbladder irritates the diaphragm, pain is referred to the C3–C5 dermatome over the shoulder.</div>
+</div>
+
+<div class="chunk">
+<h4>Chunk 6 of 6 — Sympathetic trunk + ligation effects</h4>
+<p>The <strong>sympathetic trunk</strong> runs alongside the vertebral column. In the abdomen, lumbar sympathetic ganglia send <strong>lumbar splanchnic nerves</strong> to the inferior mesenteric ganglion (for hindgut + pelvic organs).</p>
+<p><strong>Common ligation effects (testable):</strong></p>
+<ul>
+<li>Cut <strong>greater splanchnic</strong> → loss of sympathetic to foregut + suprarenal medulla</li>
+<li>Cut <strong>vagus</strong> at esophageal hiatus → loss of parasymp to foregut + midgut (decreases gastric acid — historic ulcer treatment)</li>
+<li>Cut <strong>pelvic splanchnics</strong> (e.g., low anterior resection) → loss of parasymp to hindgut + pelvic organs (impotence, bladder dysfunction)</li>
+<li>Cut <strong>ilioinguinal n.</strong> in hernia repair → numb anterior scrotum/labia + medial thigh</li>
+</ul>
+</div>
+
+<details class="ref">
+<summary><span class="ref-tag">Reference</span> Nerves of the Posterior Wall</summary>
+<div class="ref-content">
+<a href="Images/infographics/posterior-wall-nerves.png" target="_blank">
+<img src="Images/infographics/posterior-wall-nerves.png" alt="Nerves of Posterior Wall">
+<div class="open-link">Open full size in new tab →</div>
+</a>
+</div>
+</details>
+
+<details class="ref">
+<summary><span class="ref-tag">Reference</span> Nerves in Action — innervation, referred pain, ligation</summary>
+<div class="ref-content">
+<a href="Images/infographics/atlas-part-nerves.png" target="_blank">
+<img src="Images/infographics/atlas-part-nerves.png" alt="Nerves in Action">
+<div class="open-link">Open full size in new tab →</div>
+</a>
+</div>
+</details>
+
+<div class="quiz active-block">
+<button class="reset-btn" onclick="resetQuiz(this)">Reset</button>
+<span class="label">Section quiz — Theme 8</span>
+<div class="qitem"><div class="q">1. Which lumbar plexus nerve runs on anterior surface of psoas?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Genitofemoral (L1, L2). Only one.</div></div>
+<div class="qitem"><div class="q">2. Foregut ulcer pain is referred where?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Epigastric (T5–T9 via greater splanchnic).</div></div>
+<div class="qitem"><div class="q">3. Loss of medial thigh sensation after psoas block — nerve?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Obturator nerve.</div></div>
+<div class="qitem"><div class="q">4. Loss of lateral thigh sensation — nerve?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Lateral femoral cutaneous nerve (L2, L3) — meralgia paresthetica.</div></div>
+<div class="qitem"><div class="q">5. Why doesn't pelvic splanchnic damage affect cecum?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Cecum = midgut → vagus, not pelvic splanchnics.</div></div>
+<div class="qitem"><div class="q">6. The greater splanchnic nerve synapses in which ganglion?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Celiac ganglion.</div></div>
+<div class="qitem"><div class="q">7. Suprarenal medulla is innervated by which type of nerve fiber?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Preganglionic sympathetic (chromaffin cells = postganglionic neurons).</div></div>
+</div>
+
+<div class="done-check"><label><input type="checkbox"> Theme 8 done — you've finished the framework.</label></div>
+
+<!-- ================== DIAPHRAGM ================== -->
+<h2 id="diaphragm">Reference: Diaphragm openings</h2>
+<div class="mnemonic"><strong>I 8 (ate) 10 EGGs At 12</strong> → IVC at T8, esophagus at T10, aorta at T12.</div>
+<div class="minitable">
+  <div class="h">Opening</div><div class="h">Level + contents</div>
+  <div class="term">Caval opening</div><div>T8 — IVC + right phrenic n.</div>
+  <div class="term">Esophageal hiatus</div><div>T10 — esophagus + vagal trunks (anterior + posterior)</div>
+  <div class="term">Aortic hiatus</div><div>T12 — aorta + thoracic duct + azygos vein (passes BEHIND diaphragm, not through)</div>
+</div>
+
+<!-- ================== LABELING PRACTICE ================== -->
+<h2 id="labeling">Bonus: Labeling practice</h2>
+<p>This sheet has 12 unlabeled diagrams covering every major topic. Print it (or open in a new tab) and label by hand from memory. <strong>Best single exercise for active recall</strong> before the practical.</p>
+
+<details class="ref">
+<summary><span class="ref-tag">Reference</span> Abdominal Anatomy Labeling Practice — 12 unlabeled diagrams</summary>
+<div class="ref-content">
+<a href="Images/infographics/atlas-label.png" target="_blank">
+<img src="Images/infographics/atlas-label.png" alt="Labeling Practice">
+<div class="open-link">Open full size in new tab →</div>
+</a>
+</div>
+</details>
+
+<!-- ================== FINAL QUIZ ================== -->
+<h2 id="final-quiz">Rapid drill — 40 mixed questions</h2>
+<p>Mix of all 8 themes. Aim for &lt;90 sec per question. This simulates the real exam pace.</p>
+
+<div class="quiz active-block">
+<button class="reset-btn" onclick="resetQuiz(this)">Reset</button>
+<span class="label">Final drill — pick answer, then reveal</span>
+<div class="qitem"><div class="q">1. The hepatoduodenal ligament contains:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Portal triad: bile duct, hepatic a. proper, portal vein.</div></div>
+<div class="qitem"><div class="q">2. Greater curvature of stomach is supplied by:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Right + Left gastro-omental arteries.</div></div>
+<div class="qitem"><div class="q">3. Cystic artery branches from:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Right hepatic artery (Calot's triangle).</div></div>
+<div class="qitem"><div class="q">4. Pancreas head supply:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Sup. pancreaticoduodenal (← gastroduodenal ← celiac) + Inf. pancreaticoduodenal (← SMA).</div></div>
+<div class="qitem"><div class="q">5. SMA originates at:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">L1.</div></div>
+<div class="qitem"><div class="q">6. Marginal artery of Drummond connects:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">SMA ↔ IMA. Watershed at splenic flexure.</div></div>
+<div class="qitem"><div class="q">7. Hindgut parasympathetic supply:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Pelvic splanchnics (S2–S4).</div></div>
+<div class="qitem"><div class="q">8. Foregut visceral pain refers to:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Epigastric (T5–T9).</div></div>
+<div class="qitem"><div class="q">9. Midgut visceral pain refers to:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Periumbilical (T10–T11).</div></div>
+<div class="qitem"><div class="q">10. Hindgut visceral pain refers to:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Suprapubic (L1–L2).</div></div>
+<div class="qitem"><div class="q">11. Direct vs. indirect hernia distinguished by:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Inferior epigastric a. Direct = medial, Indirect = lateral.</div></div>
+<div class="qitem"><div class="q">12. SMA syndrome compresses 3rd duodenum between:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">SMA + aorta.</div></div>
+<div class="qitem"><div class="q">13. Caudate lobe drains into:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">IVC directly.</div></div>
+<div class="qitem"><div class="q">14. Left gonadal vein drains into:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Left renal vein → IVC.</div></div>
+<div class="qitem"><div class="q">15. Testicular cancer mets to:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Para-aortic (lumbar) nodes.</div></div>
+<div class="qitem"><div class="q">16. Uterine cancer via round ligament mets to:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Superficial inguinal nodes.</div></div>
+<div class="qitem"><div class="q">17. Cremaster derives from:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Internal oblique.</div></div>
+<div class="qitem"><div class="q">18. External spermatic fascia derives from:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">External oblique aponeurosis.</div></div>
+<div class="qitem"><div class="q">19. Internal spermatic fascia derives from:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Transversalis fascia.</div></div>
+<div class="qitem"><div class="q">20. Post-appendectomy anterior scrotum numbness:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Ilioinguinal nerve.</div></div>
+<div class="qitem"><div class="q">21. Loss of lateral thigh sensation:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Lateral femoral cutaneous nerve (L2, L3).</div></div>
+<div class="qitem"><div class="q">22. Loss of medial thigh after psoas block:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Obturator nerve.</div></div>
+<div class="qitem"><div class="q">23. Diaphragm openings T8/T10/T12:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">T8 IVC | T10 esophagus + vagal | T12 aorta + thoracic duct + azygos.</div></div>
+<div class="qitem"><div class="q">24. Right suprarenal hormones enter:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">IVC directly.</div></div>
+<div class="qitem"><div class="q">25. Splenectomy via gastrosplenic lig — what's at risk?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Fundus (short gastrics sacrificed).</div></div>
+<div class="qitem"><div class="q">26. Post-esophagogastrectomy conduit kept alive by:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Right gastro-omental a.</div></div>
+<div class="qitem"><div class="q">27. Bile duct opens where?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">2nd part of duodenum, at ampulla of Vater (major duodenal papilla).</div></div>
+<div class="qitem"><div class="q">28. Three ureteric stone constrictions:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">UPJ → pelvic brim → UVJ.</div></div>
+<div class="qitem"><div class="q">29. Tail of pancreas in which ligament?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Splenorenal.</div></div>
+<div class="qitem"><div class="q">30. Appendectomy — surgeon ligates which artery?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Ileocolic.</div></div>
+<div class="qitem"><div class="q">31. Anterior border of omental foramen:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Hepatoduodenal lig (portal triad).</div></div>
+<div class="qitem"><div class="q">32. Which is retroperitoneal: 1st duodenum, ascending colon, transverse colon, sigmoid, appendix?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Ascending colon (others intraperitoneal).</div></div>
+<div class="qitem"><div class="q">33. Inferior epigastric a. branches from:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">External iliac artery.</div></div>
+<div class="qitem"><div class="q">34. Arcuate line marks:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Where posterior rectus sheath disappears (~halfway between umbilicus + pubis).</div></div>
+<div class="qitem"><div class="q">35. Duodenum parts intra/retro:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">1st intraperitoneal; 2-4 retroperitoneal.</div></div>
+<div class="qitem"><div class="q">36. Pelvic splanchnic damage affects parasymp to which colon?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Descending (and sigmoid + rectum).</div></div>
+<div class="qitem"><div class="q">37. Diverticulitis of descending colon — referred pain?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Suprapubic / pubic symphysis (L1-L2).</div></div>
+<div class="qitem"><div class="q">38. SMA stenosis distal to right colic — what's necrotic?</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Distal ileum.</div></div>
+<div class="qitem"><div class="q">39. Lumbar plexus nerve on anterior surface of psoas:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Genitofemoral.</div></div>
+<div class="qitem"><div class="q">40. RUQ penetrating wound — most likely organ injured:</div><button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button><div class="a">Liver (right lobe) and/or gallbladder.</div></div>
+</div>
+
+<hr>
+<div class="chunk" style="background:var(--teal-pale);border-color:var(--teal);">
+  <h4 style="color:var(--teal);">Day 1 done. What now?</h4>
+  <p>Tomorrow (Day 2): drill the <strong>GI ANAT Practice Questions PDF</strong> using these concepts as anchors. The exam asks the same patterns with new wrappers.</p>
+  <p style="margin-bottom:0">Want me to build the Day 2 walkthrough or a Day 3 morning-of cheat sheet? Just ask.</p>
+</div>
+
+<p style="text-align:center;color:var(--ink-soft);font-size:13px;margin-top:32px;">Built for the GI block exam · 72-hour study guide · You've got this.</p>
+
+</main>
+</div>
+
+<script>
+function resetFill(button) {
+  const container = button.closest('.fill');
+  container.querySelectorAll('.blank.shown').forEach(el => el.classList.remove('shown'));
+}
+function resetQuiz(button) {
+  const container = button.closest('.quiz');
+  container.querySelectorAll('.qitem.revealed').forEach(el => el.classList.remove('revealed'));
+}
+function resetSpaced(button) {
+  const container = button.closest('.spaced');
+  container.querySelectorAll('.qitem.revealed').forEach(el => el.classList.remove('revealed'));
+}
+function resetPredict(button) {
+  const container = button.closest('.predict');
+  container.classList.remove('revealed');
+}
+function resetAll() {
+  document.querySelectorAll('.blank.shown').forEach(el => el.classList.remove('shown'));
+  document.querySelectorAll('.qitem.revealed').forEach(el => el.classList.remove('revealed'));
+  document.querySelectorAll('.predict.revealed').forEach(el => el.classList.remove('revealed'));
+  document.querySelectorAll('.done-check input[type="checkbox"]:checked').forEach(el => el.checked = false);
+  document.querySelectorAll('details.ref[open]').forEach(el => el.open = false);
+}
+</script>
+
+</body>
+</html>

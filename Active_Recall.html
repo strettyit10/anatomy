@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GI Anatomy — Active Recall Drill</title>
+<style>
+  :root {
+    --bg: #fbf9f6;
+    --surface: #ffffff;
+    --ink: #1c2230;
+    --ink-soft: #4a5568;
+    --ink-light: #6b7280;
+    --accent: #b14b2c;
+    --accent-soft: #fde8df;
+    --accent-pale: #fef5f0;
+    --teal: #2c7a7b;
+    --teal-soft: #e0f2f1;
+    --teal-pale: #f0f9f8;
+    --gold: #b8860b;
+    --gold-soft: #fef6e0;
+    --gold-pale: #fef9ec;
+    --plum: #7c4262;
+    --plum-soft: #f3e6ed;
+    --green: #2f7d32;
+    --green-soft: #e3f5e3;
+    --red: #b14b2c;
+    --red-soft: #fde8df;
+    --border: #e8e3da;
+    --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    margin: 0;
+    line-height: 1.6;
+    font-size: 13px;
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    nav.sidebar { position: static; height: auto; }
+  }
+
+  nav.sidebar {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding: 24px 16px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+  }
+  nav.sidebar h2 {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-light);
+    margin: 18px 0 8px;
+    font-weight: 600;
+  }
+  nav.sidebar a {
+    display: block;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 7px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+  nav.sidebar a:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+  .brand {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--accent);
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 14px;
+  }
+  .brand small { display: block; font-weight: 400; color: var(--ink-soft); font-size: 11px; margin-top: 4px; }
+  .reset-all-btn {
+    display: block;
+    width: 100%;
+    margin: 12px 0;
+    background: var(--ink);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .reset-all-btn:hover { background: var(--accent); }
+
+  /* Score tracker - sticky at top */
+  .score-bar {
+    position: sticky;
+    top: 0;
+    background: white;
+    border-bottom: 2px solid var(--accent);
+    padding: 12px 20px;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .score-bar .stats {
+    display: flex;
+    gap: 16px;
+    font-size: 13px;
+  }
+  .score-bar .stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .score-bar .stat strong {
+    font-size: 18px;
+    color: var(--accent);
+  }
+  .score-bar .pct {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--teal);
+    background: var(--teal-pale);
+    padding: 4px 12px;
+    border-radius: 6px;
+  }
+
+  main {
+    padding: 24px 36px 60px;
+    max-width: 820px;
+  }
+  @media (max-width: 900px) {
+    main { padding: 20px; }
+  }
+
+  h1 {
+    font-size: 28px;
+    margin: 0 0 8px;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  h1 .sub {
+    display: block;
+    font-size: 14px;
+    color: var(--ink-soft);
+    font-weight: 400;
+    margin-top: 6px;
+  }
+
+  .theme-header {
+    margin: 48px 0 8px;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, var(--accent-pale) 0%, var(--gold-pale) 100%);
+    border-radius: 12px;
+    border-left: 6px solid var(--accent);
+  }
+  .theme-header .label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .theme-header h2 {
+    font-size: 22px;
+    margin: 0;
+    color: var(--ink);
+  }
+  .theme-header .meta {
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* MCQ */
+  .mcq {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 16px 0;
+    position: relative;
+  }
+  .mcq.answered.correct { border-color: var(--green); background: var(--green-soft); }
+  .mcq.answered.incorrect { border-color: var(--red); background: #fff5f1; }
+  .mcq .q-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .mcq .q-text {
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .mcq .opts {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .mcq .opt {
+    text-align: left;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--ink);
+    font-family: inherit;
+    transition: background 0.1s;
+  }
+  .mcq .opt:hover { background: var(--accent-pale); }
+  .mcq.answered .opt { cursor: default; }
+  .mcq.answered .opt:hover { background: var(--surface); }
+  .mcq .opt.chosen-right { background: var(--green-soft); border-color: var(--green); color: var(--green); font-weight: 600; }
+  .mcq .opt.chosen-wrong { background: var(--red-soft); border-color: var(--red); color: var(--red); font-weight: 600; }
+  .mcq .opt.reveal-right { background: var(--green-soft); border-color: var(--green); color: var(--green); font-weight: 600; }
+  .mcq .explain {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: var(--teal-pale);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 6px 6px 0;
+    color: var(--teal);
+    font-size: 13px;
+    display: none;
+  }
+  .mcq.answered .explain { display: block; }
+  .mcq .reset-q {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: white;
+    border: 1px solid var(--ink-light);
+    color: var(--ink-light);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .mcq.answered .reset-q { opacity: 1; }
+
+  /* Fill in blank */
+  .fill {
+    background: white;
+    border: 2px solid var(--teal);
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin: 16px 0;
+    position: relative;
+  }
+  .fill .label {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .fill .stem { margin-bottom: 8px; color: var(--ink); }
+  .fill ol { margin: 6px 0 8px 22px; padding: 0; }
+  .fill li { margin: 8px 0; color: var(--ink); }
+  .fill .blank {
+    display: inline-block;
+    min-width: 100px;
+    border-bottom: 2px dotted var(--teal);
+    text-align: center;
+    color: transparent;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0 6px;
+    user-select: none;
+  }
+  .fill .blank.shown { color: var(--teal); }
+  .fill .reset-q {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: white;
+    border: 1px solid var(--teal);
+    color: var(--teal);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.6;
+  }
+  .fill .reset-q:hover { opacity: 1; }
+
+  /* Quick recall */
+  .recall {
+    background: var(--gold-pale);
+    border: 2px solid var(--gold);
+    border-radius: 10px;
+    padding: 14px 22px;
+    margin: 16px 0;
+    position: relative;
+  }
+  .recall .label {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .recall .q { font-weight: 600; margin-bottom: 8px; color: var(--ink); }
+  .recall .a {
+    background: white;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-top: 8px;
+    color: var(--gold);
+    border-left: 3px solid var(--gold);
+    display: none;
+    font-weight: 500;
+  }
+  .recall.revealed .a { display: block; }
+  .recall .reveal-btn {
+    background: var(--gold);
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .recall.revealed .reveal-btn { display: none; }
+  .recall .reset-q {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: white;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.6;
+  }
+  .recall .reset-q:hover { opacity: 1; }
+
+  /* Match the items */
+  .match {
+    background: white;
+    border: 2px solid var(--plum);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 16px 0;
+    position: relative;
+  }
+  .match .label {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--plum);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .match .stem { margin-bottom: 10px; }
+  .match-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 16px;
+    margin: 14px 0 6px;
+  }
+  .match-col { display: flex; flex-direction: column; gap: 8px; }
+  .match-col-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .match-prompt, .match-answer {
+    background: white;
+    border: 2px solid var(--border);
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    color: var(--ink);
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    line-height: 1.4;
+  }
+  .match-prompt:hover, .match-answer:hover {
+    border-color: var(--plum);
+    background: var(--plum-soft);
+  }
+  .match-prompt.selected, .match-answer.selected {
+    border-color: var(--plum);
+    background: var(--plum);
+    color: white;
+  }
+  .match-prompt.matched, .match-answer.matched {
+    border-color: var(--green);
+    background: var(--green-soft);
+    color: var(--green);
+    cursor: default;
+  }
+  .match-prompt.matched:hover, .match-answer.matched:hover {
+    background: var(--green-soft);
+    border-color: var(--green);
+  }
+  .match-prompt.wrong, .match-answer.wrong {
+    border-color: var(--red);
+    background: var(--red-soft);
+    color: var(--red);
+    animation: matchShake 0.4s;
+  }
+  @keyframes matchShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+  }
+  .match-status {
+    font-size: 12px;
+    color: var(--ink-soft);
+    margin-top: 8px;
+  }
+  .match.complete .match-status {
+    background: var(--green-soft);
+    color: var(--green);
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .match .reveal-btn {
+    background: var(--plum);
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+  .match.revealed .reveal-btn { display: none; }
+  .match .reset-q {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: white;
+    border: 1px solid var(--plum);
+    color: var(--plum);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.6;
+  }
+  .match .reset-q:hover { opacity: 1; }
+
+  /* Pathway */
+  .pathway {
+    background: #f7f4ee;
+    border: 2px dashed var(--accent);
+    border-radius: 10px;
+    padding: 16px 22px;
+    margin: 16px 0;
+    position: relative;
+  }
+  .pathway .label {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .pathway .q { font-weight: 600; margin-bottom: 10px; color: var(--ink); }
+  .pathway .steps {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin: 10px 0;
+  }
+  .pathway .step {
+    background: white;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    visibility: hidden;
+  }
+  .pathway.revealed .step { visibility: visible; }
+  .pathway .arr {
+    color: var(--accent);
+    font-weight: 700;
+    visibility: hidden;
+  }
+  .pathway.revealed .arr { visibility: visible; }
+  .pathway .reveal-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .pathway.revealed .reveal-btn { display: none; }
+  .pathway .reset-q {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: white;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.6;
+  }
+  .pathway .reset-q:hover { opacity: 1; }
+
+  .intro-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 16px 0 24px;
+    box-shadow: var(--shadow);
+  }
+  .intro-card h3 { margin: 0 0 8px; color: var(--accent); font-size: 16px; }
+
+  ul, ol { padding-left: 22px; }
+  li { margin: 4px 0; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+  @media print {
+    nav.sidebar { display: none; }
+    .layout { grid-template-columns: 1fr; }
+    main { padding: 0; max-width: 100%; }
+    .score-bar { position: static; }
+    .reset-q, .mcq .reset-q { display: none !important; }
+    .mcq .explain, .recall .a, .pathway .step, .pathway .arr, .match td.answer, .fill .blank { display: block !important; visibility: visible !important; color: inherit !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+<nav class="sidebar">
+  <div class="brand">Active Recall Drill<small>GI exam prep</small></div>
+  <button class="reset-all-btn" onclick="resetEverything()">Reset everything</button>
+
+  <h2>Themes by frequency</h2>
+  <a href="#t1">1. Vascular &amp; gut origin</a>
+  <a href="#t2">2. Peritoneum</a>
+  <a href="#t3">3. Liver / biliary</a>
+  <a href="#t4">4. Autonomic / pain</a>
+  <a href="#t5">5. Posterior wall nerves</a>
+  <a href="#t6">6. Renal / suprarenal</a>
+  <a href="#t7">7. SMA relationships</a>
+  <a href="#t8">8. Inguinal / cord</a>
+  <a href="#t9">9. CT cross-section</a>
+  <a href="#t10">10. Anterior wall</a>
+  <a href="#mixed">Mixed integration drill</a>
+
+  <h2>Other resources</h2>
+  <a href="GI_Study_Guide.html">Main study guide</a>
+  <a href="GI_Anatomy_By_Lab_Gallery.html">GI image gallery</a>
+</nav>
+
+<main>
+
+<div class="score-bar">
+  <div class="stats">
+    <div class="stat">Answered: <strong id="answered-count">0</strong></div>
+    <div class="stat">Correct: <strong id="correct-count" style="color:var(--green);">0</strong></div>
+    <div class="stat">Incorrect: <strong id="incorrect-count" style="color:var(--red);">0</strong></div>
+  </div>
+  <div class="pct" id="score-pct">— %</div>
+</div>
+
+<h1>GI Anatomy — Active Recall Drill<span class="sub">Mixed exercises (MCQ, fill-in, recall, match, pathway) organized by the 10 themes that show up on every exam. Score tracker auto-updates as you click.</span></h1>
+
+<div class="intro-card">
+<h3>How to use this</h3>
+<p><strong>For MCQs:</strong> Click an answer. Right = green, wrong = red. Click "Reset" on any card to try again.</p>
+<p><strong>For fill-in-blanks:</strong> Click each blank to reveal it (do this AFTER you've answered in your head).</p>
+<p><strong>For Quick Recall:</strong> Try to answer first, then click "Reveal" to check.</p>
+<p><strong>For Match:</strong> Try to match in your head first, then "Reveal."</p>
+<p><strong>For Pathway:</strong> Try to trace the sequence, then "Reveal."</p>
+<p style="margin-bottom:0;"><strong>Score bar at top</strong> tracks MCQ accuracy only. The other exercise types are for self-check (no scoring).</p>
+</div>
+
+<!-- ================== THEME 1: Vascular & gut origin ================== -->
+<div class="theme-header">
+<span class="label">Theme 1 of 10 · Highest frequency</span>
+<h2 id="t1">Vascular &amp; embryologic gut origin</h2>
+<div class="meta">~6 questions per exam</div>
+</div>
+
+<div class="mcq" data-correct="b">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q1 · MCQ</span>
+<div class="q-text">A 52-year-old has stenosis of the artery supplying the cecum. Which artery is involved?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Left colic artery</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Ileocolic artery</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Middle colic artery</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Inferior mesenteric artery</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Superior rectal artery</button>
+</div>
+<div class="explain">Cecum is midgut → SMA → ileocolic a. (which gives the appendicular branch). Right colic supplies ascending colon, middle colic supplies transverse, left colic + sigmoid + superior rectal are all IMA (hindgut).</div>
+</div>
+
+<div class="mcq" data-correct="d">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q2 · MCQ</span>
+<div class="q-text">A patient has SMA stenosis distal to the right colic branch. Which structure is most at risk for necrosis?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Ascending colon</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Proximal jejunum</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Descending colon</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Distal ileum</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Sigmoid colon</button>
+</div>
+<div class="explain">Distal ileum is supplied by ileal/ileocolic branches, which arise from SMA DOWNSTREAM of the right colic branch. The proximal jejunum + ascending colon branch off SMA upstream and are spared. Sigmoid + descending are IMA (hindgut), unaffected.</div>
+</div>
+
+<div class="mcq" data-correct="b">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q3 · MCQ</span>
+<div class="q-text">After esophagectomy + partial gastrectomy, the new gastric conduit must remain perfused. Injury to which artery is most catastrophic?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Left gastric</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Right gastro-omental</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Right gastric</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Short gastrics</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Superior pancreaticoduodenal</button>
+</div>
+<div class="explain">After proximal stomach removal, the L gastric, L gastro-omental, and short gastrics are all sacrificed. The right gastro-omental (off gastroduodenal → common hepatic) is the SOLE remaining supply to the conduit.</div>
+</div>
+
+<div class="mcq" data-correct="c">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q4 · MCQ</span>
+<div class="q-text">McBurney point appendicitis — the surgeon must ligate a direct branch of which artery?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Right colic artery</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Superior mesenteric artery</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Ileocolic artery</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Cecal artery</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Marginal artery of Drummond</button>
+</div>
+<div class="explain">The full pathway: appendix → appendicular a. → cecal branch of ileocolic → ileocolic → SMA. The surgeon ligates the appendicular's parent vessel = ileocolic.</div>
+</div>
+
+<div class="mcq" data-correct="b">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q5 · MCQ</span>
+<div class="q-text">Where is the most vulnerable colonic watershed area?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Hepatic flexure</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Splenic flexure</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Cecum</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Sigmoid colon</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Rectum</button>
+</div>
+<div class="explain">The splenic flexure sits at the SMA/IMA boundary, where the marginal artery of Drummond is often weakest — first to die from hypoperfusion (ischemic colitis).</div>
+</div>
+
+<div class="fill">
+<button class="reset-q" onclick="resetFill(this)">Reset</button>
+<span class="label">Fill-in · Embryologic gut origins → vasculature</span>
+<ol>
+<li><strong>Foregut</strong> = supplied by <span class="blank" onclick="this.classList.add('shown')">celiac trunk (T12)</span>, drained by <span class="blank" onclick="this.classList.add('shown')">portal/splenic vein</span>.</li>
+<li><strong>Midgut</strong> = supplied by <span class="blank" onclick="this.classList.add('shown')">SMA (L1)</span>, drained by <span class="blank" onclick="this.classList.add('shown')">SMV</span>.</li>
+<li><strong>Hindgut</strong> = supplied by <span class="blank" onclick="this.classList.add('shown')">IMA (L3)</span>, drained by <span class="blank" onclick="this.classList.add('shown')">IMV → splenic vein → portal vein</span>.</li>
+<li>The marginal artery of Drummond connects <span class="blank" onclick="this.classList.add('shown')">SMA</span> ↔ <span class="blank" onclick="this.classList.add('shown')">IMA</span>.</li>
+</ol>
+</div>
+
+<div class="recall">
+<button class="reset-q" onclick="resetRecall(this)">Reset</button>
+<span class="label">Quick Recall</span>
+<div class="q">List the celiac trunk's 3 main branches.</div>
+<button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button>
+<div class="a">(1) Common hepatic, (2) Splenic, (3) Left gastric.</div>
+</div>
+
+<div class="recall">
+<button class="reset-q" onclick="resetRecall(this)">Reset</button>
+<span class="label">Quick Recall</span>
+<div class="q">List all 5 branches of the SMA, proximal to distal.</div>
+<button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button>
+<div class="a">(1) Inferior pancreaticoduodenal, (2) Jejunal &amp; ileal aa., (3) Middle colic, (4) Right colic, (5) Ileocolic (→ appendicular).</div>
+</div>
+
+<div class="match">
+<button class="reset-q" onclick="resetMatch(this)">Reset</button>
+<span class="label">Match · Stomach region → blood supply</span>
+<div class="stem">Click a region (left), then its arterial supply (right).</div>
+<div class="match-grid">
+<div class="match-col prompts">
+<div class="match-col-label">Region</div>
+<button class="match-prompt" data-id="lc" onclick="selectMatchItem(this)">Lesser curvature</button>
+<button class="match-prompt" data-id="gc" onclick="selectMatchItem(this)">Greater curvature</button>
+<button class="match-prompt" data-id="fundus" onclick="selectMatchItem(this)">Fundus</button>
+<button class="match-prompt" data-id="pylorus" onclick="selectMatchItem(this)">Pylorus / 1st duodenum</button>
+</div>
+<div class="match-col answers">
+<div class="match-col-label">Supply</div>
+<button class="match-answer" data-id="lc" onclick="selectMatchItem(this)">Right + Left gastric (R from hepatic a. proper, L from celiac)</button>
+<button class="match-answer" data-id="gc" onclick="selectMatchItem(this)">Right + Left gastro-omental (R from gastroduodenal, L from splenic)</button>
+<button class="match-answer" data-id="fundus" onclick="selectMatchItem(this)">Short gastric arteries (from splenic)</button>
+<button class="match-answer" data-id="pylorus" onclick="selectMatchItem(this)">Gastroduodenal a. (from common hepatic)</button>
+</div>
+</div>
+<div class="match-status">Click a prompt on the left, then its match on the right.</div>
+</div>
+
+<div class="pathway">
+<button class="reset-q" onclick="resetPathway(this)">Reset</button>
+<span class="label">Pathway · Trace the venous drainage</span>
+<div class="q">Trace blood from a colon cancer at the splenic flexure → liver:</div>
+<div class="steps">
+<div class="step">Left colic v.</div>
+<div class="arr">→</div>
+<div class="step">IMV</div>
+<div class="arr">→</div>
+<div class="step">Splenic v.</div>
+<div class="arr">→</div>
+<div class="step">Portal v.</div>
+<div class="arr">→</div>
+<div class="step">Liver sinusoids</div>
+</div>
+<button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button>
+</div>
+
+<div class="mcq" data-correct="d">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q6 · MCQ</span>
+<div class="q-text">A 22-year-old with new-onset varices in the lower esophagus. The portal-caval anastomosis at this site connects which veins?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Superior rectal v. ↔ middle/inferior rectal vv.</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Paraumbilical vv. ↔ epigastric vv.</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Splenic v. ↔ left renal v.</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Left gastric v. ↔ esophageal vv. (azygos)</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) SMV ↔ IVC</button>
+</div>
+<div class="explain">Esophageal varices form at the L gastric (portal) ↔ esophageal (azygos/caval) anastomosis. Hemorrhoids = rectal anastomosis (A). Caput medusae = paraumbilical (B).</div>
+</div>
+
+<!-- ================== THEME 2: Peritoneum ================== -->
+<div class="theme-header">
+<span class="label">Theme 2 of 10</span>
+<h2 id="t2">Peritoneum</h2>
+<div class="meta">~2-3 questions per exam</div>
+</div>
+
+<div class="mcq" data-correct="c">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q7 · MCQ</span>
+<div class="q-text">Which structure is intraperitoneal?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Head of pancreas</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) 2nd part of duodenum</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Tail of pancreas</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Ascending colon</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Right kidney</button>
+</div>
+<div class="explain">The tail of pancreas sits in the splenorenal ligament (intraperitoneal). Head/body/uncinate are retroperitoneal. SAD PUCKER includes ascending/descending colon and kidneys (retroperitoneal). Only 1st part of duodenum is intraperitoneal — 2nd, 3rd, 4th are retroperitoneal.</div>
+</div>
+
+<div class="mcq" data-correct="a">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q8 · MCQ</span>
+<div class="q-text">A surgeon is performing the Pringle maneuver to control hepatic bleeding. The surgeon's fingers compress the hepatoduodenal ligament. Which structures does this occlude?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Bile duct, hepatic artery proper, portal vein</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Hepatic veins + IVC</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Right gastric a. + cystic duct</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Splenic vessels + tail of pancreas</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Round ligament + ligamentum venosum</button>
+</div>
+<div class="explain">The hepatoduodenal ligament is the free edge of the lesser omentum and contains the portal triad: bile duct, hepatic artery proper, portal vein. It also forms the anterior border of the omental foramen.</div>
+</div>
+
+<div class="mcq" data-correct="b">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q9 · MCQ</span>
+<div class="q-text">Splenectomy via the gastrosplenic ligament puts which gastric region at risk for ischemia?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Pylorus</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Fundus</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Lesser curvature</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Cardia</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Antrum</button>
+</div>
+<div class="explain">The gastrosplenic ligament contains the short gastric arteries, which uniquely supply the fundus. Cutting them risks fundus necrosis.</div>
+</div>
+
+<div class="mcq" data-correct="c">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q10 · MCQ</span>
+<div class="q-text">A patient with a perforated duodenal ulcer is supine when imaged. Where would peritoneal fluid most likely collect first?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Subphrenic recess</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Rectovesical pouch</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Hepatorenal recess (Morison's pouch)</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Splenorenal recess</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Paracolic gutter</button>
+</div>
+<div class="explain">Morison's pouch (between liver + R kidney) is the most dependent peritoneal space when SUPINE. When standing it's the rectovesical/rectouterine pouch.</div>
+</div>
+
+<div class="fill">
+<button class="reset-q" onclick="resetFill(this)">Reset</button>
+<span class="label">Fill-in · SAD PUCKER (retroperitoneal)</span>
+<ol>
+<li><span class="blank" onclick="this.classList.add('shown')">S</span>uprarenals</li>
+<li><span class="blank" onclick="this.classList.add('shown')">A</span>orta &amp; IVC</li>
+<li><span class="blank" onclick="this.classList.add('shown')">D</span>uodenum (parts 2-4)</li>
+<li><span class="blank" onclick="this.classList.add('shown')">P</span>ancreas (except tail)</li>
+<li><span class="blank" onclick="this.classList.add('shown')">U</span>reters</li>
+<li><span class="blank" onclick="this.classList.add('shown')">C</span>olon (asc + desc)</li>
+<li><span class="blank" onclick="this.classList.add('shown')">K</span>idneys</li>
+<li><span class="blank" onclick="this.classList.add('shown')">E</span>sophagus (lower)</li>
+<li><span class="blank" onclick="this.classList.add('shown')">R</span>ectum (lower 2/3)</li>
+</ol>
+</div>
+
+<div class="match">
+<button class="reset-q" onclick="resetMatch(this)">Reset</button>
+<span class="label">Match · Ligament → contents</span>
+<div class="stem">Click a ligament, then its contents.</div>
+<div class="match-grid">
+<div class="match-col prompts">
+<div class="match-col-label">Ligament</div>
+<button class="match-prompt" data-id="hd" onclick="selectMatchItem(this)">Hepatoduodenal</button>
+<button class="match-prompt" data-id="hg" onclick="selectMatchItem(this)">Hepatogastric</button>
+<button class="match-prompt" data-id="falc" onclick="selectMatchItem(this)">Falciform</button>
+<button class="match-prompt" data-id="gs" onclick="selectMatchItem(this)">Gastrosplenic</button>
+<button class="match-prompt" data-id="sr" onclick="selectMatchItem(this)">Splenorenal (lienorenal)</button>
+<button class="match-prompt" data-id="cor" onclick="selectMatchItem(this)">Coronary (with bare area)</button>
+</div>
+<div class="match-col answers">
+<div class="match-col-label">Contents</div>
+<button class="match-answer" data-id="hd" onclick="selectMatchItem(this)">Portal triad (bile duct + hepatic a. proper + portal v.)</button>
+<button class="match-answer" data-id="hg" onclick="selectMatchItem(this)">Right + Left gastric arteries</button>
+<button class="match-answer" data-id="falc" onclick="selectMatchItem(this)">Round ligament of liver (ligamentum teres = obliterated umbilical v.)</button>
+<button class="match-answer" data-id="gs" onclick="selectMatchItem(this)">Short gastric aa. + L gastro-omental a.</button>
+<button class="match-answer" data-id="sr" onclick="selectMatchItem(this)">Splenic vessels + tail of pancreas</button>
+<button class="match-answer" data-id="cor" onclick="selectMatchItem(this)">IVC + bare area of liver</button>
+</div>
+</div>
+<div class="match-status">Click a prompt on the left, then its match on the right.</div>
+</div>
+
+<div class="recall">
+<button class="reset-q" onclick="resetRecall(this)">Reset</button>
+<span class="label">Quick Recall</span>
+<div class="q">Name the 4 boundaries of the omental (epiploic) foramen of Winslow.</div>
+<button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button>
+<div class="a">Anterior: hepatoduodenal lig (portal triad). Posterior: IVC. Superior: caudate lobe of liver. Inferior: 1st part of duodenum.</div>
+</div>
+
+<!-- ================== THEME 3: Liver / biliary ================== -->
+<div class="theme-header">
+<span class="label">Theme 3 of 10</span>
+<h2 id="t3">Liver &amp; biliary</h2>
+<div class="meta">~2 questions per exam</div>
+</div>
+
+<div class="mcq" data-correct="d">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q11 · MCQ</span>
+<div class="q-text">A 45-year-old with ascites + jaundice. CT confirms Budd-Chiari syndrome. Imaging also shows hypertrophy of which liver lobe?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Right lobe</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Left lobe</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Quadrate lobe</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Caudate lobe</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Right hepatic vein territory</button>
+</div>
+<div class="explain">Caudate lobe drains DIRECTLY into IVC (bypasses hepatic veins). When hepatic veins are occluded (Budd-Chiari), only the caudate keeps draining → it hypertrophies. Classic exam Q.</div>
+</div>
+
+<div class="mcq" data-correct="a">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q12 · MCQ</span>
+<div class="q-text">A 33-year-old with postprandial pain + steatorrhea. ERCP shows obstruction of the duct that empties into the 2nd part of the duodenum. The stone is most likely lodged at:</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Hepatopancreatic ampulla (of Vater)</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Cystic duct</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Common hepatic duct</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Gallbladder fundus</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Hepatic veins</button>
+</div>
+<div class="explain">The ampulla of Vater is the final common pathway for both bile + pancreatic juice → 2nd duodenum. Obstruction here causes both obstructive jaundice + pancreatic enzyme block (steatorrhea).</div>
+</div>
+
+<div class="mcq" data-correct="b">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q13 · MCQ</span>
+<div class="q-text">During cholecystectomy, the surgeon ligates the cystic artery in Calot's triangle. The cystic artery branches from:</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Common hepatic artery</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Right hepatic artery</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Left hepatic artery</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Gastroduodenal artery</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Right gastric artery</button>
+</div>
+<div class="explain">Cystic a. branches from the right hepatic a. inside Calot's triangle (boundaries: cystic duct + common hepatic duct + inferior border of liver).</div>
+</div>
+
+<div class="recall">
+<button class="reset-q" onclick="resetRecall(this)">Reset</button>
+<span class="label">Quick Recall</span>
+<div class="q">Name the 4 lobes of the liver.</div>
+<button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button>
+<div class="a">Right, Left, Caudate (between IVC + ligamentum venosum), Quadrate (between gallbladder + ligamentum teres).</div>
+</div>
+
+<div class="pathway">
+<button class="reset-q" onclick="resetPathway(this)">Reset</button>
+<span class="label">Pathway · Trace bile from liver to duodenum</span>
+<div class="q">Order the structures bile passes through:</div>
+<div class="steps">
+<div class="step">R + L hepatic ducts</div>
+<div class="arr">→</div>
+<div class="step">Common hepatic duct</div>
+<div class="arr">→</div>
+<div class="step">+ Cystic duct (from GB)</div>
+<div class="arr">→</div>
+<div class="step">Bile duct</div>
+<div class="arr">→</div>
+<div class="step">+ Main pancreatic duct</div>
+<div class="arr">→</div>
+<div class="step">Ampulla of Vater</div>
+<div class="arr">→</div>
+<div class="step">2nd duodenum (major papilla)</div>
+</div>
+<button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button>
+</div>
+
+<div class="fill">
+<button class="reset-q" onclick="resetFill(this)">Reset</button>
+<span class="label">Fill-in · Liver structures</span>
+<ol>
+<li>The caudate lobe sits between the <span class="blank" onclick="this.classList.add('shown')">IVC</span> (right) and the <span class="blank" onclick="this.classList.add('shown')">ligamentum venosum</span> (left).</li>
+<li>The quadrate lobe sits between the <span class="blank" onclick="this.classList.add('shown')">gallbladder</span> (right) and the <span class="blank" onclick="this.classList.add('shown')">ligamentum teres</span> (left).</li>
+<li>The cystic artery is found in <span class="blank" onclick="this.classList.add('shown')">Calot's triangle</span>, branching from the <span class="blank" onclick="this.classList.add('shown')">right hepatic artery</span>.</li>
+<li>The ligamentum venosum is the obliterated <span class="blank" onclick="this.classList.add('shown')">ductus venosus</span>; the ligamentum teres is the obliterated <span class="blank" onclick="this.classList.add('shown')">umbilical vein</span>.</li>
+</ol>
+</div>
+
+<!-- ================== THEME 4: Autonomic / referred pain ================== -->
+<div class="theme-header">
+<span class="label">Theme 4 of 10</span>
+<h2 id="t4">Autonomic &amp; referred pain</h2>
+<div class="meta">~2-3 questions per exam</div>
+</div>
+
+<div class="mcq" data-correct="d">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q14 · MCQ</span>
+<div class="q-text">A 60-year-old with MS has demyelination of the pelvic splanchnic nerves. Parasympathetic input is lost to which structure?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Cecum</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Ascending colon</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Hepatic flexure</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Descending colon</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Jejunum</button>
+</div>
+<div class="explain">Pelvic splanchnics (S2-S4) supply parasympathetic to HINDGUT only (descending, sigmoid, rectum). Cecum, ascending, transverse colon = MIDGUT, supplied by vagus → unaffected.</div>
+</div>
+
+<div class="mcq" data-correct="c">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q15 · MCQ</span>
+<div class="q-text">A 32-year-old with sigmoid diverticulitis. Visceral pain refers to which body region?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Right shoulder</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Epigastrium</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Suprapubic / pubic symphysis</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Periumbilical</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Left flank</button>
+</div>
+<div class="explain">Hindgut (sigmoid) visceral pain refers to L1-L2 dermatomes = suprapubic. Foregut → epigastric (T5-T9). Midgut → periumbilical (T10-T11). GB/diaphragm → R shoulder (phrenic, C3-C5).</div>
+</div>
+
+<div class="mcq" data-correct="b">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q16 · MCQ</span>
+<div class="q-text">A patient with foregut peptic ulcer pain. The early visceral pain travels via which sympathetic preganglionic nerve?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Vagus nerve</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Greater splanchnic (T5-T9)</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Lesser splanchnic (T10-T11)</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Pelvic splanchnic (S2-S4)</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Lumbar splanchnics (L1-L2)</button>
+</div>
+<div class="explain">Foregut sympathetics: T5-T9 lateral horn → greater splanchnic → celiac ganglion. Pain afferents follow sympathetics back → referred to T5-T9 dermatomes (epigastric).</div>
+</div>
+
+<div class="mcq" data-correct="a">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q17 · MCQ</span>
+<div class="q-text">A patient with gallbladder inflammation has pain referred to the right shoulder. Which nerve carries this referred pain?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Phrenic nerve (C3-C5)</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Greater splanchnic (T5-T9)</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Right vagus</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Intercostal nerve T8</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Genitofemoral</button>
+</div>
+<div class="explain">Gallbladder irritation can affect the diaphragm (innervated by phrenic, C3-C5). Referred pain follows the phrenic to the C3-C5 dermatome = shoulder cap (Kehr-like sign).</div>
+</div>
+
+<div class="match">
+<button class="reset-q" onclick="resetMatch(this)">Reset</button>
+<span class="label">Match · Splanchnic nerve → spinal level + target</span>
+<div class="stem">Click a splanchnic nerve, then its level + target.</div>
+<div class="match-grid">
+<div class="match-col prompts">
+<div class="match-col-label">Splanchnic nerve</div>
+<button class="match-prompt" data-id="great" onclick="selectMatchItem(this)">Greater splanchnic</button>
+<button class="match-prompt" data-id="less" onclick="selectMatchItem(this)">Lesser splanchnic</button>
+<button class="match-prompt" data-id="least" onclick="selectMatchItem(this)">Least splanchnic</button>
+<button class="match-prompt" data-id="lumb" onclick="selectMatchItem(this)">Lumbar splanchnics</button>
+<button class="match-prompt" data-id="pelv" onclick="selectMatchItem(this)">Pelvic splanchnics</button>
+</div>
+<div class="match-col answers">
+<div class="match-col-label">Level + target</div>
+<button class="match-answer" data-id="great" onclick="selectMatchItem(this)">T5–T9 (foregut → celiac ganglion)</button>
+<button class="match-answer" data-id="less" onclick="selectMatchItem(this)">T10–T11 (midgut → sup. mesenteric ganglion)</button>
+<button class="match-answer" data-id="least" onclick="selectMatchItem(this)">T12 (kidneys → aorticorenal ganglion)</button>
+<button class="match-answer" data-id="lumb" onclick="selectMatchItem(this)">L1–L2 (hindgut → inferior mesenteric ganglion)</button>
+<button class="match-answer" data-id="pelv" onclick="selectMatchItem(this)">S2–S4 (PARASYMPATHETIC to hindgut)</button>
+</div>
+</div>
+<div class="match-status">Click a prompt on the left, then its match on the right.</div>
+</div>
+
+<div class="match">
+<button class="reset-q" onclick="resetMatch(this)">Reset</button>
+<span class="label">Match · Dermatome → landmark</span>
+<div class="stem">Click a spinal level, then its surface landmark.</div>
+<div class="match-grid">
+<div class="match-col prompts">
+<div class="match-col-label">Level</div>
+<button class="match-prompt" data-id="t4" onclick="selectMatchItem(this)">T4</button>
+<button class="match-prompt" data-id="t7" onclick="selectMatchItem(this)">T7</button>
+<button class="match-prompt" data-id="t8" onclick="selectMatchItem(this)">T8</button>
+<button class="match-prompt" data-id="t10" onclick="selectMatchItem(this)">T10</button>
+<button class="match-prompt" data-id="l1" onclick="selectMatchItem(this)">L1</button>
+</div>
+<div class="match-col answers">
+<div class="match-col-label">Landmark</div>
+<button class="match-answer" data-id="t4" onclick="selectMatchItem(this)">Nipple line</button>
+<button class="match-answer" data-id="t7" onclick="selectMatchItem(this)">Xiphoid process</button>
+<button class="match-answer" data-id="t8" onclick="selectMatchItem(this)">Subcostal margin (typical lap chole port)</button>
+<button class="match-answer" data-id="t10" onclick="selectMatchItem(this)">Umbilicus</button>
+<button class="match-answer" data-id="l1" onclick="selectMatchItem(this)">Inguinal / groin region</button>
+</div>
+</div>
+<div class="match-status">Click a prompt on the left, then its match on the right.</div>
+</div>
+
+<div class="recall">
+<button class="reset-q" onclick="resetRecall(this)">Reset</button>
+<span class="label">Quick Recall</span>
+<div class="q">Why does the suprarenal medulla NOT need a postganglionic synapse?</div>
+<button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button>
+<div class="a">The chromaffin cells of the suprarenal medulla ARE the postganglionic sympathetic neurons. They're innervated DIRECTLY by preganglionic greater splanchnic fibers (no synapse in celiac ganglion). They release epi/norepi straight into the bloodstream.</div>
+</div>
+
+<!-- ================== THEME 5: Posterior wall nerves ================== -->
+<div class="theme-header">
+<span class="label">Theme 5 of 10</span>
+<h2 id="t5">Posterior abdominal wall &amp; lumbar plexus</h2>
+<div class="meta">~2 questions per exam</div>
+</div>
+
+<div class="mcq" data-correct="b">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q18 · MCQ</span>
+<div class="q-text">Which lumbar plexus nerve runs on the ANTERIOR surface of the psoas major muscle?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Femoral</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Genitofemoral</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Obturator</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Iliohypogastric</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Lateral femoral cutaneous</button>
+</div>
+<div class="explain">Genitofemoral (L1, L2) is the ONLY lumbar plexus nerve on the anterior surface of psoas. Femoral, LFC, IH, II = lateral. Obturator = medial.</div>
+</div>
+
+<div class="mcq" data-correct="c">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q19 · MCQ</span>
+<div class="q-text">A 22-year-old hurdler gets a psoas block at L4/L5. After, he has loss of sensation on the medial thigh + weak adduction. Which nerve was injured?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Femoral nerve</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Lateral femoral cutaneous nerve</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Obturator nerve</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Genitofemoral nerve</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Iliohypogastric nerve</button>
+</div>
+<div class="explain">Obturator (L2-L4) emerges MEDIAL to psoas → motor + sensory to medial thigh (adductors). Femoral is lateral → anterior thigh + knee extension.</div>
+</div>
+
+<div class="mcq" data-correct="b">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q20 · MCQ</span>
+<div class="q-text">A 65-year-old with obesity and a tight belt complains of burning paresthesia over the lateral thigh ("meralgia paresthetica"). Which nerve is compressed?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Femoral nerve</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Lateral femoral cutaneous nerve (L2, L3)</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Obturator nerve</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Genitofemoral (femoral branch)</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Iliohypogastric</button>
+</div>
+<div class="explain">LFC (L2-L3) crosses the iliacus muscle deep to the inguinal ligament near ASIS. Compression there = meralgia paresthetica. Pure sensory to lateral thigh.</div>
+</div>
+
+<div class="recall">
+<button class="reset-q" onclick="resetRecall(this)">Reset</button>
+<span class="label">Quick Recall</span>
+<div class="q">Name the 6 lumbar plexus nerves (excluding subcostal T12).</div>
+<button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button>
+<div class="a">(1) Iliohypogastric (L1), (2) Ilioinguinal (L1), (3) Genitofemoral (L1, L2), (4) Lateral femoral cutaneous (L2, L3), (5) Femoral (L2-L4), (6) Obturator (L2-L4).</div>
+</div>
+
+<div class="match">
+<button class="reset-q" onclick="resetMatch(this)">Reset</button>
+<span class="label">Match · Lumbar plexus nerve → position vs. psoas</span>
+<table>
+<tr><td>Subcostal, iliohypogastric, ilioinguinal, LFC, femoral</td><td class="answer">LATERAL to psoas</td></tr>
+<tr><td>Genitofemoral</td><td class="answer">ANTERIOR surface of psoas</td></tr>
+<tr><td>Obturator</td><td class="answer">MEDIAL to psoas</td></tr>
+</table>
+<button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal all</button>
+</div>
+
+<div class="fill">
+<button class="reset-q" onclick="resetFill(this)">Reset</button>
+<span class="label">Fill-in · Diaphragm openings</span>
+<ol>
+<li>I 8 (ate) 10 EGGs At 12 mnemonic:</li>
+<li>IVC at <span class="blank" onclick="this.classList.add('shown')">T8</span></li>
+<li>Esophagus at <span class="blank" onclick="this.classList.add('shown')">T10</span> (with vagal trunks)</li>
+<li>Aorta at <span class="blank" onclick="this.classList.add('shown')">T12</span> (with thoracic duct + azygos)</li>
+</ol>
+</div>
+
+<!-- ================== THEME 6: Renal / suprarenal ================== -->
+<div class="theme-header">
+<span class="label">Theme 6 of 10</span>
+<h2 id="t6">Renal &amp; suprarenal</h2>
+<div class="meta">~2 questions per exam</div>
+</div>
+
+<div class="mcq" data-correct="b">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q21 · MCQ</span>
+<div class="q-text">Hormones from the RIGHT suprarenal gland enter circulation via which vein?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Right renal vein</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) IVC directly</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Hepatic portal vein</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Right suprarenal vein → left renal vein</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Inferior phrenic vein</button>
+</div>
+<div class="explain">CLASSIC TRAP: right suprarenal v. → IVC directly (NOT through right renal vein). LEFT suprarenal v. → left renal vein → IVC.</div>
+</div>
+
+<div class="mcq" data-correct="d">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q22 · MCQ</span>
+<div class="q-text">A 28-year-old male presents with left-sided varicocele. The most likely venous anatomy contributing to this is:</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Left gonadal v. drains directly into IVC</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Right gonadal v. crosses behind aorta</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Left renal v. is shorter than right</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Left gonadal v. drains into left renal v. (and may be compressed at SMA-aorta angle)</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Pampiniform plexus only exists on left</button>
+</div>
+<div class="explain">Left gonadal v. enters the longer left renal v. at a right angle. Plus possible nutcracker syndrome (left renal v. compressed between SMA and aorta) → backflow → varicocele. Right gonadal goes straight into IVC, less prone.</div>
+</div>
+
+<div class="mcq" data-correct="c">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q23 · MCQ</span>
+<div class="q-text">A 35-year-old male is diagnosed with testicular cancer. To stage for metastasis, which lymph nodes should be biopsied first?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Superficial inguinal nodes</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Deep inguinal nodes</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Para-aortic (lumbar) nodes</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) External iliac nodes</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Internal iliac nodes</button>
+</div>
+<div class="explain">CLASSIC TRAP: Testis develops at L2 (embryologic origin) → its lymph follows the gonadal vessels back to PARA-AORTIC nodes. Scrotum (skin) → superficial inguinal. Don't pick inguinal — that's the trap!</div>
+</div>
+
+<div class="mcq" data-correct="a">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q24 · MCQ</span>
+<div class="q-text">A 4-mm kidney stone formed in the renal pelvis becomes mobile. Where does it most likely become lodged FIRST?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Ureteropelvic junction (UPJ)</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Pelvic brim (crossing common iliac)</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Ureterovesical junction (UVJ)</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Trigone of bladder</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Major calyx</button>
+</div>
+<div class="explain">3 ureteric constrictions in order: UPJ → pelvic brim → UVJ. The UPJ is FIRST and most likely the first stop for a stone leaving the renal pelvis. UVJ is the most common stuck site for stones already past the brim.</div>
+</div>
+
+<div class="mcq" data-correct="d">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q25 · MCQ</span>
+<div class="q-text">The inferior suprarenal artery is a branch of:</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Inferior phrenic artery</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Aorta directly</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Common iliac</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Renal artery</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) SMA</button>
+</div>
+<div class="explain">Each suprarenal gets 3 arteries: superior (← inf. phrenic), middle (← aorta), inferior (← renal a.).</div>
+</div>
+
+<div class="match">
+<button class="reset-q" onclick="resetMatch(this)">Reset</button>
+<span class="label">Match · Vein → drainage destination</span>
+<table>
+<tr><td>Left gonadal v.</td><td class="answer">Left renal v. → IVC</td></tr>
+<tr><td>Right gonadal v.</td><td class="answer">IVC directly</td></tr>
+<tr><td>Left suprarenal v.</td><td class="answer">Left renal v. → IVC</td></tr>
+<tr><td>Right suprarenal v.</td><td class="answer">IVC directly</td></tr>
+</table>
+<button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal all</button>
+</div>
+
+<!-- ================== THEME 7: SMA relationships ================== -->
+<div class="theme-header">
+<span class="label">Theme 7 of 10</span>
+<h2 id="t7">SMA relationships</h2>
+<div class="meta">~1-2 questions per exam (always)</div>
+</div>
+
+<div class="mcq" data-correct="e">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q26 · MCQ</span>
+<div class="q-text">A 23-year-old with weight loss has bilious vomiting. CT shows compression of which structure between SMA and aorta?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Bile duct</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Ligament of Treitz</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Neck of pancreas</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Right renal vein</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) 3rd part of duodenum</button>
+</div>
+<div class="explain">SMA syndrome: SMA passes anterior to the 3rd part of duodenum, with aorta posterior. Mesenteric fat normally pads the angle; weight loss narrows it → compression → bilious vomiting + early satiety.</div>
+</div>
+
+<div class="mcq" data-correct="b">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q27 · MCQ</span>
+<div class="q-text">A patient with hematuria + left-sided varicocele. CT shows compression of a structure between SMA and aorta. Which structure?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) 3rd part of duodenum</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Left renal vein</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Splenic vein</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Right renal vein</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Portal vein</button>
+</div>
+<div class="explain">Nutcracker syndrome: left renal v. crosses anterior to aorta + posterior to SMA → compression. Backs up → hematuria + left varicocele (left gonadal v. drains into left renal v.).</div>
+</div>
+
+<div class="recall">
+<button class="reset-q" onclick="resetRecall(this)">Reset</button>
+<span class="label">Quick Recall</span>
+<div class="q">Name 4 important SMA relationships.</div>
+<button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button>
+<div class="a">(1) Anterior to 3rd duodenum (SMA syndrome). (2) Anterior to left renal vein (nutcracker syndrome). (3) Posterior to neck of pancreas. (4) Anterior to uncinate process. Originates at L1.</div>
+</div>
+
+<div class="fill">
+<button class="reset-q" onclick="resetFill(this)">Reset</button>
+<span class="label">Fill-in · SMA relationships</span>
+<ol>
+<li>SMA originates at vertebral level <span class="blank" onclick="this.classList.add('shown')">L1</span>.</li>
+<li>SMA syndrome compresses the <span class="blank" onclick="this.classList.add('shown')">3rd part of duodenum</span>.</li>
+<li>Nutcracker syndrome compresses the <span class="blank" onclick="this.classList.add('shown')">left renal vein</span>.</li>
+<li>The uncinate process of the pancreas wraps <span class="blank" onclick="this.classList.add('shown')">posterior</span> to the SMA.</li>
+</ol>
+</div>
+
+<!-- ================== THEME 8: Inguinal / spermatic cord ================== -->
+<div class="theme-header">
+<span class="label">Theme 8 of 10</span>
+<h2 id="t8">Inguinal &amp; spermatic cord</h2>
+<div class="meta">~2 questions per exam</div>
+</div>
+
+<div class="mcq" data-correct="a">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q28 · MCQ</span>
+<div class="q-text">A 75-year-old man with chronic cough has a hernia bulging MEDIAL to the inferior epigastric artery. What type of hernia?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Direct inguinal hernia</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Indirect inguinal hernia</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Femoral hernia</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Umbilical hernia</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Incisional hernia</button>
+</div>
+<div class="explain">"MD don't LIe": Medial = Direct. Bulges through Hesselbach's triangle (weak posterior wall, transversalis fascia). Acquired, older men, chronic strain.</div>
+</div>
+
+<div class="mcq" data-correct="b">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q29 · MCQ</span>
+<div class="q-text">A 28-year-old man has post-appendectomy paresthesia of the anterior scrotum. Which nerve was likely injured?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Iliohypogastric nerve</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Ilioinguinal nerve</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Genitofemoral nerve</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Femoral nerve</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Pudendal nerve</button>
+</div>
+<div class="explain">Ilioinguinal n. (L1) supplies anterior scrotum + medial thigh. Travels through inguinal canal (not deep ring) → most common nerve injured in appendectomy / hernia repair / lower abdominal surgery.</div>
+</div>
+
+<div class="mcq" data-correct="b">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q30 · MCQ</span>
+<div class="q-text">The cremaster muscle of the spermatic cord is derived from which abdominal wall layer?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) External oblique aponeurosis</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Internal oblique muscle</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Transversus abdominis</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Transversalis fascia</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Scarpa's fascia</button>
+</div>
+<div class="explain">Spermatic cord layers (outside-in): External spermatic fascia (← ext. oblique), Cremaster muscle/fascia (← int. oblique), Internal spermatic fascia (← transversalis fascia). Transversus abdominis arches OVER the cord — does NOT contribute a layer.</div>
+</div>
+
+<div class="mcq" data-correct="e">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q31 · MCQ</span>
+<div class="q-text">A woman has uterine cancer that has spread along the round ligament. Which lymph nodes are sentinel?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Internal iliac nodes</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) External iliac nodes</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Para-aortic nodes</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Deep inguinal nodes</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Superficial inguinal nodes</button>
+</div>
+<div class="explain">The round ligament traverses the inguinal canal and ends in the labia majora. Lymph following it drains to superficial inguinal nodes (uterine fundus has this special drainage route).</div>
+</div>
+
+<div class="match">
+<button class="reset-q" onclick="resetMatch(this)">Reset</button>
+<span class="label">Match · Spermatic cord layer → derived from</span>
+<table>
+<tr><td>External spermatic fascia</td><td class="answer">External oblique aponeurosis</td></tr>
+<tr><td>Cremaster muscle &amp; fascia</td><td class="answer">Internal oblique</td></tr>
+<tr><td>Internal spermatic fascia</td><td class="answer">Transversalis fascia</td></tr>
+<tr><td>(does NOT contribute)</td><td class="answer">Transversus abdominis</td></tr>
+</table>
+<button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal all</button>
+</div>
+
+<div class="recall">
+<button class="reset-q" onclick="resetRecall(this)">Reset</button>
+<span class="label">Quick Recall</span>
+<div class="q">Boundaries of Hesselbach's triangle (mnemonic RIP):</div>
+<button class="reveal-btn" onclick="this.parentElement.classList.add('revealed')">Reveal</button>
+<div class="a">R = Rectus abdominis (medial); I = Inferior epigastric a. (lateral); P = Poupart's (inguinal) ligament (inferior). Direct hernias bulge through here.</div>
+</div>
+
+<!-- ================== THEME 9: CT cross-section ================== -->
+<div class="theme-header">
+<span class="label">Theme 9 of 10</span>
+<h2 id="t9">CT cross-sectional anatomy</h2>
+<div class="meta">~1-2 questions per exam</div>
+</div>
+
+<div class="mcq" data-correct="b">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q32 · MCQ</span>
+<div class="q-text">On an axial CT at the L1 level, you see two large vessels in the midline anterior to the vertebral body. The structure on the patient's RIGHT (your left as the viewer) is:</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Aorta</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) IVC</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) SMA</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Portal vein</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Splenic vein</button>
+</div>
+<div class="explain">IVC sits to the patient's right of the aorta. Aorta is left-of-midline, more anterior. IVC is right-of-midline, larger, thinner-walled.</div>
+</div>
+
+<div class="mcq" data-correct="c">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q33 · MCQ</span>
+<div class="q-text">On axial CT at the pancreas level, the small round vessel just anterior to the aorta (and posterior to the pancreas) is:</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Celiac trunk</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Portal vein</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) SMA</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Hepatic artery</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Inferior phrenic a.</button>
+</div>
+<div class="explain">SMA branches off aorta at L1 and travels anteriorly behind the pancreas. The classic CT view at this level shows: aorta posterior, SMA emerging anteriorly, SMV right of SMA, left renal v. crossing between aorta and SMA.</div>
+</div>
+
+<div class="mcq" data-correct="b">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q34 · MCQ</span>
+<div class="q-text">A 55-year-old has an abdominal aortic aneurysm requiring endovascular repair. On CT, the target vessel is identified by which features?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Right of midline, large, thin-walled, oval</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Left of midline, anterior to vertebra, thick-walled, round</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Anterior to pancreas, small, branching</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Behind the liver, dependent</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) In the porta hepatis</button>
+</div>
+<div class="explain">Aorta on CT: left of midline, anterior to vertebral body, thick muscular walls, round. IVC is right-side, larger, oval, thin walls.</div>
+</div>
+
+<!-- ================== THEME 10: Anterior wall ================== -->
+<div class="theme-header">
+<span class="label">Theme 10 of 10</span>
+<h2 id="t10">Anterior abdominal wall</h2>
+<div class="meta">~1-2 questions per exam</div>
+</div>
+
+<div class="mcq" data-correct="e">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q35 · MCQ</span>
+<div class="q-text">A 32-year-old has a stab wound just lateral to the linea alba, in the suprapubic region. The blade enters the rectus muscle. The next layer it perforates is:</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Posterior rectus sheath</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Internal oblique aponeurosis</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Conjoint tendon</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) External oblique muscle</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Transversalis fascia</button>
+</div>
+<div class="explain">Below the arcuate line, there is NO posterior rectus sheath. All 3 aponeuroses pass anterior to rectus. So below arcuate line, only transversalis fascia separates rectus from peritoneum.</div>
+</div>
+
+<div class="mcq" data-correct="b">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q36 · MCQ</span>
+<div class="q-text">During a TRAM flap reconstruction, the surgeon ligates the inferior epigastric artery. This vessel branches from:</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Internal thoracic artery</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) External iliac artery</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Internal iliac artery</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Common iliac artery</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Femoral artery</button>
+</div>
+<div class="explain">Inferior epigastric is a branch of EXTERNAL iliac (just before it becomes the femoral). Superior epigastric = continuation of internal thoracic.</div>
+</div>
+
+<div class="mcq" data-correct="c">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q37 · MCQ</span>
+<div class="q-text">The arcuate line is located approximately:</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) At the costal margin</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) At the level of the umbilicus</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Halfway between umbilicus and pubic symphysis</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) At the pubic symphysis</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) At the iliac crest</button>
+</div>
+<div class="explain">Arcuate line ~midway between umbilicus + pubic symphysis. Below it the posterior rectus sheath disappears. Inferior epigastric a. enters the rectus sheath here.</div>
+</div>
+
+<div class="fill">
+<button class="reset-q" onclick="resetFill(this)">Reset</button>
+<span class="label">Fill-in · Anterior wall layers (superficial to deep)</span>
+<ol>
+<li>Skin</li>
+<li><span class="blank" onclick="this.classList.add('shown')">Camper's fascia</span> (fatty)</li>
+<li><span class="blank" onclick="this.classList.add('shown')">Scarpa's fascia</span> (membranous)</li>
+<li>External oblique → aponeurosis</li>
+<li>Internal oblique → aponeurosis</li>
+<li>Transversus abdominis → aponeurosis</li>
+<li><span class="blank" onclick="this.classList.add('shown')">Transversalis fascia</span></li>
+<li>Extraperitoneal fat</li>
+<li><span class="blank" onclick="this.classList.add('shown')">Parietal peritoneum</span></li>
+</ol>
+</div>
+
+<!-- ================== MIXED INTEGRATION DRILL ================== -->
+<div class="theme-header" style="background:linear-gradient(135deg,var(--teal-pale),var(--gold-pale));border-color:var(--teal);">
+<span class="label" style="color:var(--teal);">Final integration drill</span>
+<h2 id="mixed">Mixed exam-style MCQs (themes 1-10 combined)</h2>
+<div class="meta">Time yourself — aim for &lt;90 sec each</div>
+</div>
+
+<div class="mcq" data-correct="e">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q38 · Mixed MCQ</span>
+<div class="q-text">A 60-year-old has progressive weight loss + ascites. CT confirms hepatic vein thrombosis (Budd-Chiari). Which finding would be expected on imaging, AND why?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Atrophy of caudate lobe — it shares blood supply with R lobe</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Atrophy of L lobe — it has minimal portal supply</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Hypertrophy of quadrate lobe — it bypasses hepatic veins</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Increased flow through ligamentum teres</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Hypertrophy of caudate lobe — it drains directly into IVC, bypassing the obstructed hepatic veins</button>
+</div>
+<div class="explain">The caudate lobe has its own small veins draining DIRECTLY into IVC, NOT via hepatic veins. So when hepatic veins are obstructed (Budd-Chiari), only the caudate keeps draining → it hypertrophies.</div>
+</div>
+
+<div class="mcq" data-correct="d">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q39 · Mixed MCQ</span>
+<div class="q-text">A 25-year-old male has periumbilical pain that migrates to McBurney point over 6 hours. The pain is initially periumbilical because:</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) The appendix is anatomically near the umbilicus</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Foregut visceral pain refers there</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Hindgut visceral pain refers there</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) The appendix is midgut and visceral pain refers to T10 (umbilicus)</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) The pain is somatic from the start</button>
+</div>
+<div class="explain">Appendix = midgut → visceral pain refers to T10 dermatome (umbilicus). When inflammation reaches the parietal peritoneum, somatic afferents take over → sharp, well-localized pain at McBurney point.</div>
+</div>
+
+<div class="mcq" data-correct="b">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q40 · Mixed MCQ</span>
+<div class="q-text">A 67-year-old male undergoes esophagogastrectomy for gastric cancer. The proximal stomach is removed; a tubular gastric conduit remains. To preserve the conduit's perfusion, the surgeon must NOT damage:</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Left gastric artery</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Right gastro-omental artery</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Short gastric arteries</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Left gastro-omental artery</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Posterior gastric artery</button>
+</div>
+<div class="explain">After removing the proximal stomach, L gastric, L gastro-omental, and short gastrics are sacrificed (they all came from the resected segment). The right gastro-omental (← gastroduodenal ← common hepatic) is now the SOLE perfusion source for the conduit.</div>
+</div>
+
+<div class="mcq" data-correct="c">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q41 · Mixed MCQ</span>
+<div class="q-text">A 42-year-old female with sudden severe RUQ pain radiating to the right shoulder. Murphy sign is positive. The shoulder pain is referred via:</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Greater splanchnic n. (T5-T9)</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Right vagus nerve</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Right phrenic nerve (C3-C5)</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Intercostal nerves T6-T8</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Brachial plexus</button>
+</div>
+<div class="explain">Acute cholecystitis can irritate the diaphragm, which is innervated by phrenic n. (C3-C5). Pain referred to C3-C5 dermatome = shoulder cap. This is the classic Kehr-like sign for GB pathology.</div>
+</div>
+
+<div class="mcq" data-correct="d">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q42 · Mixed MCQ</span>
+<div class="q-text">A 22-year-old has a stab wound entering the abdominal wall just superior to the inguinal ligament, lateral to the inferior epigastric artery. The structure that traverses this region (and could be injured) is:</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Round ligament of liver</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Femoral nerve</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Obturator nerve</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Spermatic cord (entering the deep ring)</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) IVC</button>
+</div>
+<div class="explain">The deep inguinal ring is in the transversalis fascia, lateral to the inferior epigastric a. Spermatic cord exits the abdomen through the deep ring at this site (and the round ligament in females).</div>
+</div>
+
+<div class="mcq" data-correct="b">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q43 · Mixed MCQ</span>
+<div class="q-text">A 55-year-old has bleeding hemorrhoids. The internal hemorrhoids (above the pectinate line) drain via:</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Inferior rectal v. → internal pudendal v. → internal iliac v.</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Superior rectal v. → IMV → splenic v. → portal v.</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Middle rectal v. → IVC directly</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Vaginal venous plexus → uterine v.</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Ureteric v. → renal v.</button>
+</div>
+<div class="explain">Above pectinate line = portal drainage (sup. rectal v. → IMV). Below pectinate line = caval drainage (middle/inf. rectal vv. → internal iliac). Hemorrhoids form at this anastomosis in portal hypertension.</div>
+</div>
+
+<div class="mcq" data-correct="a">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q44 · Mixed MCQ</span>
+<div class="q-text">During a left adrenalectomy, the surgeon must control which vein, recognizing it drains differently from the right:</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Left suprarenal v. drains into LEFT RENAL VEIN, not IVC</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Left suprarenal v. drains into IVC directly</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Left suprarenal v. drains into splenic v.</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Left suprarenal v. drains into portal v.</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Left suprarenal v. drains into left gonadal v.</button>
+</div>
+<div class="explain">Left suprarenal v. → left renal v. → IVC. Right suprarenal v. → IVC directly. Same asymmetry exists for gonadal vv.</div>
+</div>
+
+<div class="mcq" data-correct="d">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q45 · Mixed MCQ</span>
+<div class="q-text">A 35-year-old male is told he has testicular cancer. CT shows enlarged lymph nodes. Which nodes would you expect to be affected?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Superficial inguinal nodes</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Deep inguinal nodes</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) External iliac nodes</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Para-aortic (lumbar) nodes at L2 level</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Mediastinal nodes only</button>
+</div>
+<div class="explain">CLASSIC TRAP. Testis develops at L2; its lymph follows gonadal vessels to PARA-AORTIC nodes — does NOT drain to inguinal. Inguinal drainage = scrotal SKIN only.</div>
+</div>
+
+<div class="mcq" data-correct="b">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q46 · Mixed MCQ</span>
+<div class="q-text">A patient has confirmed sigmoid diverticulitis. The visceral afferent pain travels via which nerves to which spinal levels?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Greater splanchnic, T5-T9</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Lumbar splanchnics, L1-L2</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Pelvic splanchnics, S2-S4</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Lesser splanchnic, T10-T11</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Vagus, brainstem</button>
+</div>
+<div class="explain">Hindgut visceral pain follows sympathetics back to L1-L2 (lumbar splanchnics) → referred to L1-L2 dermatomes (suprapubic). NOT pelvic splanchnics — those carry parasympathetic motor, not pain.</div>
+</div>
+
+<div class="mcq" data-correct="c">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q47 · Mixed MCQ</span>
+<div class="q-text">A patient has ureteric colic from a stone in the right ureter that just passed the UPJ. Where is the most likely NEXT site for the stone to lodge?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Renal hilum</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Renal pelvis</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Pelvic brim (where ureter crosses common iliac vessels)</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Ureterovesical junction</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Bladder dome</button>
+</div>
+<div class="explain">After UPJ, next constriction is the pelvic brim (where ureter crosses anterior to common iliac vessels). Then UVJ (most common stuck site overall).</div>
+</div>
+
+<div class="mcq" data-correct="d">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q48 · Mixed MCQ</span>
+<div class="q-text">An indirect inguinal hernia in a 7-year-old boy. The herniating bowel descends INTO the scrotum. Through which structure does it pass to enter the scrotum?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Femoral canal</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Lacunar ligament</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Hesselbach's triangle</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Patent processus vaginalis (within all 3 spermatic fascial layers)</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Obturator foramen</button>
+</div>
+<div class="explain">Indirect hernia is congenital — patent processus vaginalis. The hernia sac is covered by all 3 spermatic fascial layers (because it travels with the cord through the deep ring). Direct hernia bulges through Hesselbach's triangle (acquired) and only has external spermatic fascia covering.</div>
+</div>
+
+<div class="mcq" data-correct="b">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q49 · Mixed MCQ</span>
+<div class="q-text">A 45-year-old has chronic pancreatitis. CT shows splenic vein thrombosis. The most likely complication is:</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Hemorrhoids</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Isolated gastric varices (fundus)</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Caput medusae</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Ascites only</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Esophageal varices only</button>
+</div>
+<div class="explain">Splenic vein receives short gastric vv. (drain fundus). Splenic v. thrombosis backs up flow → fundus varices specifically. (Sinistral / left-sided portal hypertension — treat with splenectomy.)</div>
+</div>
+
+<div class="mcq" data-correct="c">
+<button class="reset-q" onclick="resetMcq(this)">Reset</button>
+<span class="q-num">Q50 · Mixed MCQ</span>
+<div class="q-text">A 33-year-old female receives a penetrating injury at the right hypochondrium, between the costal margin and umbilicus, midclavicular line. Which organ is most likely injured?</div>
+<div class="opts">
+<button class="opt" data-opt="a" onclick="answerMcq(this)">A) Spleen</button>
+<button class="opt" data-opt="b" onclick="answerMcq(this)">B) Sigmoid colon</button>
+<button class="opt" data-opt="c" onclick="answerMcq(this)">C) Liver (right lobe) and/or gallbladder</button>
+<button class="opt" data-opt="d" onclick="answerMcq(this)">D) Left kidney</button>
+<button class="opt" data-opt="e" onclick="answerMcq(this)">E) Sigmoid mesocolon</button>
+</div>
+<div class="explain">Right hypochondriac region = liver (right lobe) + gallbladder. Spleen = left hypochondriac. Sigmoid = left iliac.</div>
+</div>
+
+<hr>
+
+<div class="intro-card" style="background:var(--teal-pale);border-color:var(--teal);">
+<h3 style="color:var(--teal);">Done with the drill?</h3>
+<p>Check your final score in the bar at the top. Anything below 80% on a theme = high-priority review zone. Open the <a href="GI_Study_Guide.html">main study guide</a> and re-read those chunks.</p>
+<p style="margin-bottom:0;">Want me to add more questions on a specific theme? Or build the Day 3 morning-of cheat sheet next? Just ask.</p>
+</div>
+
+<p style="text-align:center;color:var(--ink-soft);font-size:12px;margin-top:32px;">50 MCQs + 12 fill-ins + 8 quick recalls + 6 matches + 3 pathways · GI exam prep · You've got this.</p>
+
+</main>
+</div>
+
+<script>
+// Score tracking
+const scoreState = { answered: 0, correct: 0, incorrect: 0 };
+
+function updateScore() {
+  document.getElementById('answered-count').textContent = scoreState.answered;
+  document.getElementById('correct-count').textContent = scoreState.correct;
+  document.getElementById('incorrect-count').textContent = scoreState.incorrect;
+  const pct = scoreState.answered === 0 ? '— %' : Math.round((scoreState.correct / scoreState.answered) * 100) + '%';
+  document.getElementById('score-pct').textContent = pct;
+}
+
+function answerMcq(button) {
+  const mcq = button.closest('.mcq');
+  if (mcq.classList.contains('answered')) return;
+  const correct = mcq.dataset.correct;
+  const chosen = button.dataset.opt;
+  mcq.classList.add('answered');
+  if (chosen === correct) {
+    button.classList.add('chosen-right');
+    mcq.classList.add('correct');
+    scoreState.correct++;
+  } else {
+    button.classList.add('chosen-wrong');
+    mcq.classList.add('incorrect');
+    scoreState.incorrect++;
+    // Highlight the correct answer
+    mcq.querySelectorAll('.opt').forEach(o => {
+      if (o.dataset.opt === correct) o.classList.add('reveal-right');
+    });
+  }
+  scoreState.answered++;
+  updateScore();
+}
+
+function resetMcq(button) {
+  const mcq = button.closest('.mcq');
+  if (!mcq.classList.contains('answered')) return;
+  // Decrement counters
+  if (mcq.classList.contains('correct')) scoreState.correct--;
+  if (mcq.classList.contains('incorrect')) scoreState.incorrect--;
+  scoreState.answered--;
+  mcq.classList.remove('answered', 'correct', 'incorrect');
+  mcq.querySelectorAll('.opt').forEach(o => {
+    o.classList.remove('chosen-right', 'chosen-wrong', 'reveal-right');
+  });
+  updateScore();
+}
+
+function resetFill(button) {
+  const fill = button.closest('.fill');
+  fill.querySelectorAll('.blank.shown').forEach(el => el.classList.remove('shown'));
+}
+
+function resetRecall(button) {
+  const r = button.closest('.recall');
+  r.classList.remove('revealed');
+}
+
+// Interactive match logic
+let selectedMatchItem = null;
+
+function shuffleMatchAnswers(matchEl) {
+  const col = matchEl.querySelector('.match-col.answers');
+  if (!col) return;
+  const items = Array.from(col.querySelectorAll('.match-answer'));
+  // Fisher-Yates shuffle
+  for (let i = items.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    if (i !== j) col.insertBefore(items[j], items[i].nextSibling);
+  }
+}
+
+function clearMatchSelection() {
+  if (selectedMatchItem) {
+    selectedMatchItem.classList.remove('selected');
+    selectedMatchItem = null;
+  }
+}
+
+function selectMatchItem(el) {
+  if (el.classList.contains('matched')) return;
+  // If clicking the same item, deselect
+  if (selectedMatchItem === el) {
+    clearMatchSelection();
+    return;
+  }
+  // If we already have a selection, attempt a match
+  if (selectedMatchItem) {
+    // Both must be in the same .match exercise
+    const m1 = selectedMatchItem.closest('.match');
+    const m2 = el.closest('.match');
+    if (m1 !== m2) {
+      // Switch selection to the new one
+      clearMatchSelection();
+      el.classList.add('selected');
+      selectedMatchItem = el;
+      return;
+    }
+    // One must be a prompt, the other an answer
+    const isPromptA = selectedMatchItem.classList.contains('match-prompt');
+    const isPromptB = el.classList.contains('match-prompt');
+    if (isPromptA === isPromptB) {
+      // Same type — switch selection
+      clearMatchSelection();
+      el.classList.add('selected');
+      selectedMatchItem = el;
+      return;
+    }
+    // Check if pair is correct
+    if (selectedMatchItem.dataset.id === el.dataset.id) {
+      // Match!
+      selectedMatchItem.classList.remove('selected');
+      selectedMatchItem.classList.add('matched');
+      el.classList.add('matched');
+      selectedMatchItem = null;
+      // Check if all matched
+      const remaining = m1.querySelectorAll('.match-prompt:not(.matched)').length;
+      if (remaining === 0) {
+        m1.classList.add('complete');
+        const status = m1.querySelector('.match-status');
+        if (status) status.textContent = 'All matched.';
+      }
+    } else {
+      // Wrong
+      el.classList.add('wrong');
+      selectedMatchItem.classList.add('wrong');
+      const wrongA = selectedMatchItem;
+      setTimeout(() => {
+        wrongA.classList.remove('wrong', 'selected');
+        el.classList.remove('wrong');
+      }, 500);
+      selectedMatchItem = null;
+    }
+  } else {
+    // First selection
+    el.classList.add('selected');
+    selectedMatchItem = el;
+  }
+}
+
+function resetMatch(button) {
+  const m = button.closest('.match');
+  m.classList.remove('complete');
+  m.querySelectorAll('.matched, .selected, .wrong').forEach(el => {
+    el.classList.remove('matched', 'selected', 'wrong');
+  });
+  if (selectedMatchItem && selectedMatchItem.closest('.match') === m) {
+    selectedMatchItem = null;
+  }
+  const status = m.querySelector('.match-status');
+  if (status) status.textContent = 'Click a prompt on the left, then its match on the right.';
+  shuffleMatchAnswers(m);
+}
+
+// On load, shuffle each match exercise
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.match').forEach(m => shuffleMatchAnswers(m));
+});
+
+function resetPathway(button) {
+  const p = button.closest('.pathway');
+  p.classList.remove('revealed');
+}
+
+function resetEverything() {
+  document.querySelectorAll('.mcq.answered').forEach(mcq => {
+    mcq.classList.remove('answered', 'correct', 'incorrect');
+    mcq.querySelectorAll('.opt').forEach(o => o.classList.remove('chosen-right', 'chosen-wrong', 'reveal-right'));
+  });
+  document.querySelectorAll('.blank.shown').forEach(el => el.classList.remove('shown'));
+  document.querySelectorAll('.recall.revealed, .pathway.revealed').forEach(el => el.classList.remove('revealed'));
+  document.querySelectorAll('.match').forEach(m => {
+    m.classList.remove('complete');
+    m.querySelectorAll('.matched, .selected, .wrong').forEach(el => el.classList.remove('matched', 'selected', 'wrong'));
+    const status = m.querySelector('.match-status');
+    if (status) status.textContent = 'Click a prompt on the left, then its match on the right.';
+    shuffleMatchAnswers(m);
+  });
+  selectedMatchItem = null;
+  scoreState.answered = 0;
+  scoreState.correct = 0;
+  scoreState.incorrect = 0;
+  updateScore();
+}
+</script>
+
+</body>
+</html>
